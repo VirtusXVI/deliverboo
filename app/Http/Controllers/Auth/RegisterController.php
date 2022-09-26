@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -75,7 +77,23 @@ class RegisterController extends Controller
             'restaurant_name' => $data['restaurant_name'],
             'address' => $data['address'],
             'p_iva' => $data['p_iva'],
+            'slug' => $this->slugControls($data['restaurant_name']),
             'restaurant_image' => Storage::put('restaurant_image', $data['restaurant_image'], 'public'),
         ]);
+    }
+
+    protected function slugControls($title){
+        $slug_to_save = Str::slug($title, '-');
+        $slug_base = $slug_to_save;
+        $existing_slug_post = User::where('slug','=', $slug_to_save)->first();
+        $i = 1;
+        while($existing_slug_post){
+            $slug_to_save = $slug_base . '-' . $i;
+
+            $existing_slug_post = User::where('slug', '=', $slug_to_save)->first();
+
+            $i++;
+        }
+        return $slug_to_save;
     }
 }

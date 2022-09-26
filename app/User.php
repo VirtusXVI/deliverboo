@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'restaurant_name', 'email', 'password', 'address', 'p_iva', 'restaurant_image'
+        'restaurant_name', 'email', 'password', 'address', 'p_iva', 'restaurant_image', 'slug'
     ];
 
     /**
@@ -36,4 +36,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function dish(){
+        return $this->hasMany('App\Dish');
+    }
 }

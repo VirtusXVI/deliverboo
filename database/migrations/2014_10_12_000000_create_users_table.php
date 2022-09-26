@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('address')->required();
             $table->unsignedBigInteger('p_iva')->unique()->required();
             $table->string('restaurant_image', 255)->nullable();
+            $table->string('slug', 255)->unique();
             $table->rememberToken();
             $table->timestamps();
         });
