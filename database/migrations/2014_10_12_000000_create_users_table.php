@@ -15,9 +15,9 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('password')->required();
-            $table->string('email')->unique()->required();
             $table->string('restaurant_name')->required();
+            $table->string('email')->unique()->required();
+            $table->string('password')->required();
             $table->string('address')->required();
             $table->unsignedBigInteger('p_iva')->unique()->required();
             $table->string('restaurant_image', 255)->nullable();

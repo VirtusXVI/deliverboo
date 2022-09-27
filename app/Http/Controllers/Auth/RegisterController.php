@@ -76,9 +76,9 @@ class RegisterController extends Controller
             $data['restaurant_image'] = $restaurant_image;
         }
         return User::create([
-            'password' => Hash::make($data['password']),
-            'email' => $data['email'],
             'restaurant_name' => $data['restaurant_name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
             'address' => $data['address'],
             'p_iva' => $data['p_iva'],
             'slug' => $this->slugControls($data['restaurant_name']),
