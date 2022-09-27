@@ -71,6 +71,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if (!empty($data['restaurant_image'])) {
+            $restaurant_image = Storage::put('restaurant_image', $data['restaurant_image']);
+            $data['restaurant_image'] = $restaurant_image;
+        }
         return User::create([
             'password' => Hash::make($data['password']),
             'email' => $data['email'],
@@ -78,7 +82,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'p_iva' => $data['p_iva'],
             'slug' => $this->slugControls($data['restaurant_name']),
-            'restaurant_image' => Storage::put('restaurant_image', $data['restaurant_image'], 'public'),
+            // 'restaurant_image' => Storage::put('restaurant_image', $data['restaurant_image'], 'public'),
         ]);
     }
 
