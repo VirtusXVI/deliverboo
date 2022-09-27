@@ -83,6 +83,7 @@ class RegisterController extends Controller
             'p_iva' => $data['p_iva'],
             'slug' => $this->slugControls($data['restaurant_name']),
             // 'restaurant_image' => Storage::put('restaurant_image', $data['restaurant_image'], 'public'),
+            'restaurant_image' => isset($data['restaurant_image']) ? $data['restaurant_image'] : null,
         ]);
     }
 
