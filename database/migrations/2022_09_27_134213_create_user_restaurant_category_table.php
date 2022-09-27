@@ -13,7 +13,7 @@ class CreateUserRestaurantCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_restaurant_category', function (Blueprint $table) {
+        Schema::create('restaurant_category_user', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('restaurant_category_id');
@@ -31,6 +31,6 @@ class CreateUserRestaurantCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_restaurant_category');
+        Schema::dropIfExists('restaurant_category_user');
     }
 }

@@ -94,6 +94,16 @@
                             <input class="form-control" type="file" id="restaurant_image" name="restaurant_image">
                         </div>
 
+                        <div class="form-check mb-3">
+                            @foreach ($categories as $category)
+                                <input class="form-check-input" type="checkbox" value="{{$category->id}}" id="category-{{$category->id}}" name="categories[]">
+                                <label class="form-check-label" for="restaurant_category">
+                                    {{$category->name}}
+                                </label>
+                                <br>
+                            @endforeach
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

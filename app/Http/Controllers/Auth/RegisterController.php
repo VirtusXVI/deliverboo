@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Restaurant_category;
 
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -75,7 +76,7 @@ class RegisterController extends Controller
             $restaurant_image = Storage::put('restaurant_image', $data['restaurant_image']);
             $data['restaurant_image'] = $restaurant_image;
         }
-        return User::create([
+        $user = User::create([
             'restaurant_name' => $data['restaurant_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -85,6 +86,10 @@ class RegisterController extends Controller
             // 'restaurant_image' => Storage::put('restaurant_image', $data['restaurant_image'], 'public'),
             'restaurant_image' => isset($data['restaurant_image']) ? $data['restaurant_image'] : null,
         ]);
+
+        $user->restaurant_category()->sync($data['categories']);
+
+        return $user;
     }
 
     protected function slugControls($title){
@@ -100,5 +105,13 @@ class RegisterController extends Controller
             $i++;
         }
         return $slug_to_save;
+    }
+
+    public function showRegistrationForm() {
+        $categories = Restaurant_category::all();
+        $data = [
+            'categories' => $categories,
+        ];
+        return view('auth.register', $data);
     }
 }
