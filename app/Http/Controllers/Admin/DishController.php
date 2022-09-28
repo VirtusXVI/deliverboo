@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Dish;
 
 class DishController extends Controller
 {
@@ -14,7 +15,9 @@ class DishController extends Controller
      */
     public function index()
     {
-        //
+        $dishes = Dish::all();
+
+        return view('admin.dishes.index',compact('dishes',$dishes));
     }
 
     /**

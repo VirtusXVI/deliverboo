@@ -11,6 +11,16 @@
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <div class="form-group row">
                             <label for="restaurant_name" class="col-md-4 col-form-label text-md-right">{{ __('Restaurant Name') }}</label>
 
@@ -97,11 +107,16 @@
                         <div class="form-check mb-3">
                             @foreach ($categories as $category)
                                 <input class="form-check-input" type="checkbox" value="{{$category->id}}" id="category-{{$category->id}}" name="categories[]">
-                                <label class="form-check-label" for="restaurant_category">
+                                <label class="form-check-label" for="category-{{$category->id}}">
                                     {{$category->name}}
                                 </label>
                                 <br>
                             @endforeach
+                            @error('categories')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
                         </div>
 
                         <div class="form-group row mb-0">

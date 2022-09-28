@@ -21,8 +21,10 @@ Route::middleware('auth')
 ->prefix('admin')
 ->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
+    Route::resource('dishes', 'DishController');
 });
+
 
 Route::get('{any?}', function() {
     return view('welcome');
-});
+})->where('any','.*');

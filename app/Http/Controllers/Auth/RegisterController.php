@@ -59,8 +59,9 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'address' => ['required','string'],
-            'p_iva' => ['required','digits:11','numeric'],
-            'restaurant_image' => ['nullable','file','mimes:jpeg,jpg,bmp,png']
+            'p_iva' => ['required', 'unique:users', 'digits:11', 'numeric'],
+            'restaurant_image' => ['nullable','file','mimes:jpeg,jpg,bmp,png'],
+            'categories' => ['required']
         ]);
     }
 
@@ -86,9 +87,9 @@ class RegisterController extends Controller
             // 'restaurant_image' => Storage::put('restaurant_image', $data['restaurant_image'], 'public'),
             'restaurant_image' => isset($data['restaurant_image']) ? $data['restaurant_image'] : null,
         ]);
-
+        // dd($user);
         $user->restaurant_category()->sync($data['categories']);
-
+        
         return $user;
     }
 
