@@ -13,7 +13,7 @@ class RemoveIdEcc extends Migration
      */
     public function up()
     {
-        Schema::table('user_restaurant_category', function (Blueprint $table) {
+        Schema::table('restaurant_category_user', function (Blueprint $table) {
             $table->dropColumn('id');
             $table->dropColumn('created_at');
             $table->dropColumn('updated_at');
@@ -27,7 +27,7 @@ class RemoveIdEcc extends Migration
      */
     public function down()
     {
-        Schema::table('user_restaurant_category', function (Blueprint $table) {
+        Schema::table('restaurant_category_user', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
