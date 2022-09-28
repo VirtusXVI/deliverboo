@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div>
+    <div class="container">
         
-        ciao
+        @foreach ($dishes as $dish)
+            <div>
+                <a href="{{ route('admin.dishes.show', ['dish' => $dish->id]) }}">{{ $dish->name }}</a>
+            </div>
+        @endforeach
 
     </div>
 @endsection

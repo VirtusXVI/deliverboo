@@ -87,7 +87,6 @@ class RegisterController extends Controller
             // 'restaurant_image' => Storage::put('restaurant_image', $data['restaurant_image'], 'public'),
             'restaurant_image' => isset($data['restaurant_image']) ? $data['restaurant_image'] : null,
         ]);
-        // dd($user);
         $user->restaurant_category()->sync($data['categories']);
         
         return $user;
