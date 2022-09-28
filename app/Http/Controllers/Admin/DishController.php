@@ -19,8 +19,7 @@ class DishController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $dishes = Dish::where('user_id', '=', $user->id);
-
+        $dishes = Dish::where('user_id', $user->id)->get();
         return view('admin.dishes.index',compact('dishes',$dishes));
     }
 
@@ -42,9 +41,11 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user();
         $request->validate($this->getValidationRules());
         $form_data = $request->all();
         $new_dish = new Dish();
+        $new_dish->user_id = $user->id;
         if(isset($form_data['dish_image'])) {
             $img_path = Storage::put('dish_image', $form_data['dish_image']);
             $form_data['dish_image'] = $img_path;
