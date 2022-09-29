@@ -78,7 +78,9 @@ class DishController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dish = Dish::findOrFail($id);
+
+        return view('admin.dishes.edit', compact('dish', $dish));
     }
 
     /**
@@ -90,7 +92,25 @@ class DishController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate($this->getValidationRules());
+        $form_data = $request->all();
+        $dish_to_update = Dish::findOrFail($id);
+
+        if(isset($form_data['dish_image'])) {
+            $img_path = Storage::put('dish_image', $form_data['dish_image']);
+            $form_data['dish_image'] = $img_path;
+        }
+        $dish_to_update->fill($form_data);
+
+        if($dish_to_update->name !== $form_data['name']) {
+            $form_data['slug'] = $this->slugControls($form_data['name']);
+        } else {
+            $form_data['slug'] = $dish_to_update->slug;
+        }
+
+        $dish_to_update->update($form_data);
+
+        return redirect()->route('admin.dishes.show', $dish_to_update->id);
     }
 
     /**
@@ -108,7 +128,7 @@ class DishController extends Controller
     protected function getValidationRules(){
         
         return [
-            'name' => 'required|unique:dishes,name|max:255',
+            'name' => 'required|max:255',
             'description' => 'nullable',
             'ingredients' => 'required',
             'price' => 'required|numeric',
@@ -120,12 +140,12 @@ class DishController extends Controller
     protected function slugControls($title){
         $slug_to_save = Str::slug($title, '-');
         $slug_base = $slug_to_save;
-        $existing_slug_post = Dish::where('slug','=', $slug_to_save)->first();
+        $existing_slug_dish = Dish::where('slug','=', $slug_to_save)->first();
         $i = 1;
-        while($existing_slug_post){
+        while($existing_slug_dish){
             $slug_to_save = $slug_base . '-' . $i;
 
-            $existing_slug_post = Dish::where('slug', '=', $slug_to_save)->first();
+            $existing_slug_dish = Dish::where('slug', '=', $slug_to_save)->first();
 
             $i++;
         }
