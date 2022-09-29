@@ -40,7 +40,13 @@
                 <label for="dish_image" class="form-label">Immagine</label>
                 <input class="form-control" type="file" id="dish_image" name="dish_image">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary mb-3">Submit</button>
+        </form>
+        <form action="{{ route('admin.dishes.destroy', $dish->id) }}" method="post">
+            @csrf
+            @method('DELETE')
+
+            <input class="btn btn-danger px-5" type="submit" value="Elimina Piatto" onClick="return confirm('Sicuro di voler concellare il piatto?')">
         </form>
     </div>
 @endsection

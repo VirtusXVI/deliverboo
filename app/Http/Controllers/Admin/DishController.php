@@ -121,7 +121,13 @@ class DishController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dish_to_destroy = Dish::findOrFail($id);
+        if($dish_to_destroy->dish_image) {
+            Storage::delete($dish_to_destroy->dish_image);
+        }
+        $dish_to_destroy->delete();
+
+        return redirect()->route('admin.dishes.index');
     }
     
 
