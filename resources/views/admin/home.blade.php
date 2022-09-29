@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@extends('admin.navlinks')
 
 @section('content')
     <h1>{{$user->restaurant_name}}</h1>

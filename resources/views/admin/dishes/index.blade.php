@@ -1,6 +1,8 @@
 @extends('layouts.app')
+@extends('admin.navlinks')
 
 @section('content')
+
     <div class="container">
         <h1>I tuoi piatti:</h1>
         @if ($deleted === 'yes')
