@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" 
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" onsubmit="return handleData()"
                         oninput='password_confirmation.setCustomValidity(password_confirmation.value != password.value ? "Le Password non corrispondono" : "")'>
                         @csrf
 
@@ -132,6 +132,7 @@
                                 </label>
                                 <br>
                             @endforeach
+                            <span style="color:red" id="category-error"></span>
                             @error('categories')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -151,5 +152,18 @@
             </div>
         </div>
     </div>
+    <script>
+        function handleData() {
+            let form_data = new FormData(document.querySelector("form"));
+            let categoryError = document.getElementById('category-error');
+
+            if(!form_data.has("categories[]")) {
+                categoryError.innerHTML = 'Seleziona almeno una categoria';
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
 </div>
 @endsection
