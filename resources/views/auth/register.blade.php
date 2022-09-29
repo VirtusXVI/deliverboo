@@ -8,7 +8,8 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" 
+                        oninput='password_confirmation.setCustomValidity(password_confirmation.value != password.value ? "Le Password non corrispondono" : "")'>
                         @csrf
 
                         @if ($errors->any())
