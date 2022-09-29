@@ -33,8 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="mr-3"><a href="{{route('admin.dishes.index')}}">Vai ai Piatti</a></li>
-                        <li class="mr-3"><a href="{{route('admin.dishes.create')}}">Vai alla Creazione</a></li>
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
