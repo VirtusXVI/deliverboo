@@ -3,6 +3,11 @@
 @section('content')
     <div class="container">
         <h1>I tuoi piatti:</h1>
+        @if ($deleted === 'yes')
+            <div class="alert alert-success" role="alert">
+                Piatto eliminato con successo
+            </div>
+        @endif
         @if ($dishes)
             @foreach ($dishes as $dish)
                 <div class="card mb-3">

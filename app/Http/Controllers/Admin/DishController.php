@@ -16,11 +16,18 @@ class DishController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request_info = $request->all();
+        $show_deleted_message = isset($request_info['deleted']) ? $request_info['deleted'] : null;
         $user = auth()->user();
         $dishes = Dish::where('user_id', $user->id)->get();
-        return view('admin.dishes.index',compact('dishes',$dishes));
+
+        $data = [
+            'dishes' => $dishes,
+            'deleted' => $show_deleted_message,
+        ];
+        return view('admin.dishes.index', $data);
     }
 
     /**
@@ -132,7 +139,7 @@ class DishController extends Controller
         }
         $dish_to_destroy->delete();
 
-        return redirect()->route('admin.dishes.index');
+        return redirect()->route('admin.dishes.index', ['deleted' => 'yes']);
     }
     
 
