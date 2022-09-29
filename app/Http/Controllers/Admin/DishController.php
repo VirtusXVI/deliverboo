@@ -78,9 +78,14 @@ class DishController extends Controller
      */
     public function edit($id)
     {
+        $user = auth()->user();
         $dish = Dish::findOrFail($id);
-
-        return view('admin.dishes.edit', compact('dish', $dish));
+        
+        if($user->id === $dish->user_id){
+            return view('admin.dishes.edit', compact('dish', $dish));
+        }else{
+            abort(404);
+        }
     }
 
     /**
