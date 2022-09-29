@@ -110,7 +110,7 @@ class DishController extends Controller
         return [
             'name' => 'required|unique:dishes,name|max:255',
             'description' => 'nullable',
-            'ingredients' => 'nullable',
+            'ingredients' => 'required',
             'price' => 'required|numeric',
             'dish_image' => 'nullable'
         ];
