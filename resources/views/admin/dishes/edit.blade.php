@@ -17,8 +17,8 @@
             @endif
 
             <div class="mb-3">
-                <label for="name" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Nome" value="{{old('name', $dish->name)}}">
+                <label for="name" class="form-label">Nome*</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nome" value="{{old('name', $dish->name)}}" required>
             </div>
 
             <div class="mb-3">
@@ -27,13 +27,13 @@
             </div>
 
             <div class="mb-3">
-                <label for="ingredients" class="form-label">Ingredienti</label>
-                <input type="text" class="form-control" id="ingredients" name="ingredients" placeholder="Ingredienti" value="{{old('ingredients', $dish->ingredients)}}">
+                <label for="ingredients" class="form-label">Ingredienti*</label>
+                <input type="text" class="form-control" id="ingredients" name="ingredients" placeholder="Ingredienti" value="{{old('ingredients', $dish->ingredients)}}" required>
             </div>
 
             <div class="mb-3">
-                <label for="price" class="form-label">Prezzo</label>
-                <input type="number" class="form-control" id="price" name="price" placeholder="Prezzo" value="{{old('price', $dish->price)}}">
+                <label for="price" class="form-label">Prezzo*</label>
+                <input type="text" class="form-control" id="price" name="price" placeholder="Prezzo" value="{{old('price', $dish->price)}}" required minlength="1" pattern="[0-9]+([.,][0-9]+)?">
             </div>
 
             <div class="mb-3">
