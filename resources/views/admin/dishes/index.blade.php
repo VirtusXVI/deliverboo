@@ -16,5 +16,6 @@
         @else 
             <h2>Non hai Piatti nel Menu, prova a crearne uno nella sezione 'Crea un nuovo piatto'.</h2>
         @endif
+        {{$dishes->links()}}
     </div>
 @endsection
