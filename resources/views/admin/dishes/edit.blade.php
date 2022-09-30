@@ -38,6 +38,10 @@
                 <input type="text" class="form-control" id="price" name="price" placeholder="Prezzo" value="{{old('price', $dish->price)}}" required minlength="1" pattern="[0-9]+([.,][0-9]+)?">
             </div>
 
+            <div>
+                <input type="checkbox" name="is_visible" {{ $dish->is_visible ? '' : 'checked' }}> Non disponibile
+            </div>
+
             <div class="mb-3">
                 <label for="dish_image" class="form-label">Immagine</label>
                 <input class="form-control" type="file" id="dish_image" name="dish_image">

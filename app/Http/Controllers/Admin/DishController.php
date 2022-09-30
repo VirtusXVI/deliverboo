@@ -117,6 +117,12 @@ class DishController extends Controller
         $form_data = $request->all();
         $dish_to_update = Dish::findOrFail($id);
 
+        if (isset($form_data['is_visible'])) {
+            $form_data['is_visible'] = false;
+        }else {
+            $form_data['is_visible'] = true;
+        }
+
         if(isset($form_data['dish_image'])) {
             $img_path = Storage::put('dish_image', $form_data['dish_image']);
             $form_data['dish_image'] = $img_path;
