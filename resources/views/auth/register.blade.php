@@ -8,6 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
+                    <div class="mb-3"><strong>I campi contrassegnati con * sono obbligatori.</strong></div>
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" onsubmit="return handleData()"
                         oninput='password_confirmation.setCustomValidity(password_confirmation.value != password.value ? "Le Password non corrispondono" : "")'>
                         @csrf
