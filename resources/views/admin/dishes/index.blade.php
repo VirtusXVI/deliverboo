@@ -12,9 +12,11 @@
         @endif
         @if ($dishes)
             @foreach ($dishes as $dish)
-                <div class="card mb-3">
-                    <h3><a class="card-title" href="{{ route('admin.dishes.show', ['dish' => $dish->id]) }}">{{ $dish->name }}</a></h3>
-                </div>
+                @if ($dish->is_visible)
+                    <div class="card mb-3">
+                        <h3><a class="card-title" href="{{ route('admin.dishes.show', ['dish' => $dish->id]) }}">{{ $dish->name }}</a></h3>
+                    </div>
+                @endif
             @endforeach
         @endif
     </div>
