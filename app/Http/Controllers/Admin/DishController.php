@@ -27,7 +27,6 @@ class DishController extends Controller
 
         $data = [
             'dishes' => $dishes,
-            'deleted' => $show_deleted_message,
         ];
         return view('admin.dishes.index', $data);
     }
@@ -137,6 +136,8 @@ class DishController extends Controller
 
         $dish_to_update->update($form_data);
 
+        Alert::success('Piatto modificato con successo!');
+
         return redirect()->route('admin.dishes.show', $dish_to_update->id);
     }
 
@@ -153,6 +154,8 @@ class DishController extends Controller
             Storage::delete($dish_to_destroy->dish_image);
         }
         $dish_to_destroy->delete();
+
+        Alert::success('Piatto Eliminato con successo!');
 
         return redirect()->route('admin.dishes.index', ['deleted' => 'yes']);
     }
