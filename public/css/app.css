@@ -10932,3 +10932,49 @@ a.text-dark:focus {
   }
 }
 
+#ms_pop-up {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 300px;
+  width: 550px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 1px 3px 20px;
+}
+
+#ms_pop-up form {
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#ms_pop-up form h2 {
+  color: red;
+  font-weight: 700;
+  font-size: 35px;
+  margin-bottom: 20px;
+}
+
+#ms_pop-up form p {
+  font-size: 18px;
+}
+
+#ms_pop-up form .clearfix {
+  width: 300px;
+}
+
+#ms_pop-up form span {
+  cursor: pointer;
+  position: absolute;
+  top: -30px;
+  right: -15px;
+  font-size: 30px;
+}
+

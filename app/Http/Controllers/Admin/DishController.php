@@ -18,10 +18,8 @@ class DishController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $request_info = $request->all();
-        $show_deleted_message = isset($request_info['deleted']) ? $request_info['deleted'] : null;
         $user = auth()->user();
         $dishes = Dish::where('user_id', $user->id)->get();
 
@@ -157,7 +155,7 @@ class DishController extends Controller
 
         Alert::success('Piatto Eliminato con successo!');
 
-        return redirect()->route('admin.dishes.index', ['deleted' => 'yes']);
+        return redirect()->route('admin.dishes.index');
     }
     
 
