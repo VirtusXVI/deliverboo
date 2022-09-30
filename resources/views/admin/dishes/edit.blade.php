@@ -35,7 +35,7 @@
 
             <div class="mb-3">
                 <label for="price" class="form-label">Prezzo*</label>
-                <input type="text" class="form-control" id="price" name="price" placeholder="Prezzo" value="{{old('price', $dish->price)}}" required minlength="1" pattern="[0-9]+([.,][0-9]+)?">
+                <input type="number" step="any" class="form-control" id="price" name="price" placeholder="Prezzo" value="{{old('price', $dish->price)}}" required minlength="1" min="0.01" max="99.99" oninvalid="this.setCustomValidity('inserire una cifra maggiore di 0 e minore di 100')" onchange="this.setCustomValidity('')">
             </div>
 
             <div>

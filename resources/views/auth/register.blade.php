@@ -107,7 +107,7 @@
                                     minlength="11" maxlength="11" 
                                     class="form-control @error('p_iva') is-invalid @enderror" 
                                     oninvalid="this.setCustomValidity('11 cifre (solo numeri)')"
-                                    onchange="this.setCustomValidity('')" 
+                                    onchange="this.setCustomValidity('')"
                                     name="p_iva" 
                                     value="{{ old('p_iva') }}" 
                                     required autocomplete="p_iva" autofocus>
