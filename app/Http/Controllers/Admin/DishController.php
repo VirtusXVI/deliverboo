@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Dish;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 use Illuminate\Support\Facades\Storage;
 
@@ -61,6 +63,8 @@ class DishController extends Controller
         $new_dish->slug = $this->slugControls($new_dish->name);
 
         $new_dish->save();
+
+        Alert::success('Nuovo piatto creato!', 'Continua nella sezione I miei Piatti');
 
         return redirect()->route('admin.dishes.show', $new_dish->id);
     }
