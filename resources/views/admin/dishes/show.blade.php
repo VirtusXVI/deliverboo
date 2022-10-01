@@ -2,14 +2,14 @@
 @extends('admin.navlinks')
 
 @section('content')
-    <div class="container">
-        <div class="card" style="width: 18rem;">
+    <div class="show container">
+        <div class="card w-100">
             {{-- <img src="..." class="card-img-top" alt="..."> --}}
             <div class="card-body">
-                <h5 class="card-title">{{ $dish->name }}</h5>
-                <p class="card-text">{{ $dish->description }}</p>
-                <p class="card-text">{{ $dish->ingredients }}</p>
-                <p class="card-title">{{ $dish->price }}</p>
+                <h1 class="mb-3">{{ $dish->name }}</h1>
+                <p class="mb-3">Descrizione: {{ $dish->description }}</p>
+                <div class="mb-3">Ingredienti: {{ $dish->ingredients }}</div>
+                <div class="mb-4">Prezzo: {{ $dish->price }}€</div>
                 <div class="d-flex">
                     <a href="{{ route('admin.dishes.edit', ['dish'=>$dish->id]) }}" class="btn btn-primary py-1 px-2 mr-2">Modifica</a>
 

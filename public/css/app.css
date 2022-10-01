@@ -10978,3 +10978,13 @@ a.text-dark:focus {
   font-size: 30px;
 }
 
+.home h1,
+.show h1 {
+  font-size: 60px;
+}
+
+.home div,
+.show div {
+  font-size: 30px;
+}
+
