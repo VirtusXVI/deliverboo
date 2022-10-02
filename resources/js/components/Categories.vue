@@ -83,6 +83,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../common/commons.scss';
+@import '../common/variables.scss';
 .categories-section {
     margin: 50px 0;
     position: relative;
@@ -95,7 +97,8 @@ export default {
         right: 0;
 
         span {
-            background-color: #49BEB7;
+            font-weight: 700;
+            background-color: $mainSecondColor;
             padding: 15px 50px;
             border-radius: 20px;
             color: white;

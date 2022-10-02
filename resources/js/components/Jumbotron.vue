@@ -17,6 +17,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../common/commons.scss';
+@import '../common/variables.scss';
 .jumbotron-height {
     height: 500px;
 }

@@ -1,8 +1,8 @@
 <template>
     <div class="info-services">
         <div class="ms-small-container">
-            <ul class="row info-services-card ">
-                 <li v-for="(item, index) in cardDetails" :key="index" class="col-sm-4 mt-4" :class="item.class">
+            <ul class="row info-services-card flex">
+                 <li v-for="(item, index) in cardDetails" :key="index" class="col-md-4 mt-4" :class="item.class">
                     <div class="card">
                         <div class="card-body">
                             <div class="thumb flex">
@@ -57,6 +57,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../common/commons.scss';
+@import '../common/variables.scss';
 .info-services {
     margin: 50px 0;
 
@@ -65,10 +67,12 @@ export default {
         display: flex;
     }
 
+    .row .info-services-card .flex {
+        justify-content: space-between;
+    }
+
     li {
-
-        animation: jump 1.8s;
-
+        padding: 20px;
         .card-body {
             padding: 0;
 

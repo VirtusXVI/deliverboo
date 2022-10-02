@@ -1,4 +1,91 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+#app .navbar {
+  background-color: rgba(73, 190, 182, 0.6509803922);
+  position: relative;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+#app .nav-item {
+  font-weight: 500;
+  font-size: 17px;
+}
+#app .navbar-light .navbar-nav .login {
+  background-color: #FCCF4D;
+  margin-right: 20px;
+  color: white;
+}
+#app .navbar-light .navbar-nav .register {
+  background-color: white;
+  color: #FCCF4D;
+}
+#app .navbar-light .navbar-nav .register,
+#app .navbar-light .navbar-nav .login {
+  border-radius: 40px;
+  padding: 3px 10px;
+  transition: 0.4s;
+}
+#app .navbar-light .navbar-nav .register:hover,
+#app .navbar-light .navbar-nav .login:hover {
+  background-color: #49BEB7;
+  color: white;
+  outline: 2px solid #FCCF4D;
+}
+#app .navbar-brand {
+  color: white !important;
+}
+#app .navbar-light .navbar-toggler {
+  color: white;
+  border-color: none;
+  background-color: #FCCF4D;
+}
+#app li {
+  list-style-type: none;
+}
+#app a {
+  text-decoration: none;
+}
+#app a:hover {
+  text-decoration: none;
+}
+#app footer {
+  height: 400px;
+  background-color: #49BEB7;
+}
+#app .footer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+#app .footer-content h2 {
+  font-size: 60px;
+  color: white;
+}
+#app .footer-content .copy {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+#app .links {
+  display: flex;
+  margin: 30px 0;
+}
+#app .links .title {
+  margin-bottom: 15px;
+  color: white;
+}
+#app .links span {
+  line-height: 40px;
+  color: white;
+}
+#app .links .social,
+#app .links .contacts {
+  width: 200px;
+}
+
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

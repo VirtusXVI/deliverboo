@@ -2227,11 +2227,11 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "ms-small-container"
   }, [_c("ul", {
-    staticClass: "row info-services-card"
+    staticClass: "row info-services-card flex"
   }, _vm._l(_vm.cardDetails, function (item, index) {
     return _c("li", {
       key: index,
-      staticClass: "col-sm-4 mt-4",
+      staticClass: "col-md-4 mt-4",
       "class": item["class"]
     }, [_c("div", {
       staticClass: "card"
@@ -2283,14 +2283,16 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "join-us-section"
+    staticClass: "join-us-section flex"
   }, [_c("div", {
-    staticClass: "text"
+    staticClass: "text flex"
   }, [_c("div", {
     staticClass: "title"
   }, [_c("h2", [_vm._v("Hai un'attività, ma ancora non usufruisci di Deliveboo?")])]), _vm._v(" "), _c("div", {
     staticClass: "description"
-  }, [_c("span", [_vm._v("Cosa stai aspettando?")]), _vm._v(" "), _c("br"), _vm._v(" "), _c("span", [_vm._v("Registrati subito alla nostra piattaforma!")])])]), _vm._v(" "), _c("button", {
+  }, [_c("span", [_vm._v("Cosa stai aspettando?")]), _vm._v(" "), _c("br"), _vm._v(" "), _c("span", [_vm._v("Registrati subito alla nostra piattaforma!")])]), _vm._v(" "), _c("div", {
+    staticClass: "button"
+  }, [_c("button", {
     attrs: {
       type: "submit"
     }
@@ -2298,7 +2300,14 @@ var staticRenderFns = [function () {
     attrs: {
       href: "/register"
     }
-  }, [_vm._v("REGISTRATI ORA")])])]);
+  }, [_vm._v("REGISTRATI ORA")])])])]), _vm._v(" "), _c("div", {
+    staticClass: "image flex"
+  }, [_c("img", {
+    attrs: {
+      src: __webpack_require__(/*! ../assets/joinus-ppl.png */ "./resources/js/assets/joinus-ppl.png"),
+      alt: ""
+    }
+  })])]);
 }];
 render._withStripped = true;
 
@@ -2357,7 +2366,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_vm._v("\n    ciaos\n")]);
+  return _c("main");
 };
 
 var staticRenderFns = [];
@@ -6793,10 +6802,10 @@ render._withStripped = true;
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
-
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, ".categories-section {\n  margin: 50px 0;\n  position: relative;\n}\n.categories-section .title {\n  text-align: center;\n  position: absolute;\n  top: -70px;\n  left: 0;\n  right: 0;\n}\n.categories-section .title span {\n  background-color: #49BEB7;\n  padding: 15px 50px;\n  border-radius: 20px;\n  color: white;\n}\n.categories-content li .card {\n  height: 150px;\n  border-radius: 20px;\n}\n.categories-content li .card-body {\n  justify-content: center;\n  align-items: center;\n  padding: 0;\n  overflow: hidden;\n  border-radius: 20px;\n  position: relative;\n  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);\n}\n.categories-content li .card-body img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.categories-content li .card-body .overlay {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n}\n.categories-content li .card-body .text {\n  position: absolute;\n  font-size: 35px;\n  font-weight: 500;\n  justify-content: center;\n  align-content: center;\n}\n.categories-content li .card-body .text a {\n  height: 100%;\n  width: 100%;\n  color: white;\n}\n@media screen and (max-width: 991px) {\n.categories-content li .card-body .text {\n    font-size: 25px;\n}\n}\n@media screen and (max-width: 767px) {\n.categories-content li .card-body .text {\n    font-size: 20px;\n}\n}\n@media screen and (max-width: 575px) {\n.categories-content li .card-body .text {\n    font-size: 40px;\n}\n}\n@media screen and (max-width: 455px) {\n.categories-section .title span {\n    font-size: 20px;\n}\n}\n@media screen and (max-width: 377px) {\n.categories-content li .card-body .text {\n    font-size: 30px;\n}\n.categories-section .title span {\n    font-size: 15px;\n    display: block;\n    margin: 0 15px;\n}\n}\n@media screen and (max-width: 277px) {\n.categories-content li .card-body .text {\n    font-size: 25px;\n}\n}", ""]);
+exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.categories-section {\n  margin: 50px 0;\n  position: relative;\n}\n.categories-section .title {\n  text-align: center;\n  position: absolute;\n  top: -70px;\n  left: 0;\n  right: 0;\n}\n.categories-section .title span {\n  font-weight: 700;\n  background-color: #FCCF4D;\n  padding: 15px 50px;\n  border-radius: 20px;\n  color: white;\n}\n.categories-content li .card {\n  height: 150px;\n  border-radius: 20px;\n}\n.categories-content li .card-body {\n  justify-content: center;\n  align-items: center;\n  padding: 0;\n  overflow: hidden;\n  border-radius: 20px;\n  position: relative;\n  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);\n}\n.categories-content li .card-body img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.categories-content li .card-body .overlay {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n}\n.categories-content li .card-body .text {\n  position: absolute;\n  font-size: 35px;\n  font-weight: 500;\n  justify-content: center;\n  align-content: center;\n}\n.categories-content li .card-body .text a {\n  height: 100%;\n  width: 100%;\n  color: white;\n}\n@media screen and (max-width: 991px) {\n.categories-content li .card-body .text {\n    font-size: 25px;\n}\n}\n@media screen and (max-width: 767px) {\n.categories-content li .card-body .text {\n    font-size: 20px;\n}\n}\n@media screen and (max-width: 575px) {\n.categories-content li .card-body .text {\n    font-size: 40px;\n}\n}\n@media screen and (max-width: 455px) {\n.categories-section .title span {\n    font-size: 20px;\n}\n}\n@media screen and (max-width: 377px) {\n.categories-content li .card-body .text {\n    font-size: 30px;\n}\n.categories-section .title span {\n    font-size: 15px;\n    display: block;\n    margin: 0 15px;\n}\n}\n@media screen and (max-width: 277px) {\n.categories-content li .card-body .text {\n    font-size: 25px;\n}\n}", ""]);
 
 // exports
 
@@ -6812,10 +6821,10 @@ exports.push([module.i, ".categories-section {\n  margin: 50px 0;\n  position: r
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
-
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, ".info-services[data-v-15624917] {\n  margin: 50px 0;\n}\n.info-services .down[data-v-15624917] {\n  padding-top: 50px;\n  display: flex;\n}\n.info-services li[data-v-15624917] {\n  animation: jump 1.8s;\n}\n.info-services li .card-body[data-v-15624917] {\n  padding: 0;\n}\n.info-services li .card-body .thumb[data-v-15624917] {\n  justify-content: center;\n  padding: 30px;\n}\n.info-services li .card-body .thumb img[data-v-15624917] {\n  width: 75%;\n}\n.info-services li .card-body .text[data-v-15624917] {\n  flex-direction: column;\n  align-items: center;\n  padding: 0px 20px 20px 20px;\n}\n.info-services li .card-body .text .title[data-v-15624917], .info-services li .card-body .text .description[data-v-15624917] {\n  text-align: center;\n}\n@media screen and (max-width: 575px) {\n.info-services .down[data-v-15624917] {\n    padding-top: 0;\n    display: block;\n}\n}", ""]);
+exports.push([module.i, "*[data-v-15624917] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container[data-v-15624917] {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container[data-v-15624917] {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex[data-v-15624917] {\n  display: flex;\n}\nimg[data-v-15624917] {\n  width: 100%;\n  display: block;\n}\nul[data-v-15624917] {\n  list-style-type: none;\n}\na[data-v-15624917] {\n  text-decoration: none;\n  color: inherit;\n}\na[data-v-15624917]:hover {\n  text-decoration: none;\n}\n.info-services[data-v-15624917] {\n  margin: 50px 0;\n}\n.info-services .down[data-v-15624917] {\n  padding-top: 50px;\n  display: flex;\n}\n.info-services .row .info-services-card .flex[data-v-15624917] {\n  justify-content: space-between;\n}\n.info-services li[data-v-15624917] {\n  padding: 20px;\n}\n.info-services li .card-body[data-v-15624917] {\n  padding: 0;\n}\n.info-services li .card-body .thumb[data-v-15624917] {\n  justify-content: center;\n  padding: 30px;\n}\n.info-services li .card-body .thumb img[data-v-15624917] {\n  width: 75%;\n}\n.info-services li .card-body .text[data-v-15624917] {\n  flex-direction: column;\n  align-items: center;\n  padding: 0px 20px 20px 20px;\n}\n.info-services li .card-body .text .title[data-v-15624917], .info-services li .card-body .text .description[data-v-15624917] {\n  text-align: center;\n}\n@media screen and (max-width: 575px) {\n.info-services .down[data-v-15624917] {\n    padding-top: 0;\n    display: block;\n}\n}", ""]);
 
 // exports
 
@@ -6829,13 +6838,12 @@ exports.push([module.i, ".info-services[data-v-15624917] {\n  margin: 50px 0;\n}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var escape = __webpack_require__(/*! ../../../node_modules/css-loader/lib/url/escape.js */ "./node_modules/css-loader/lib/url/escape.js");
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
-
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, ".join-us-section {\n  background-image: url(" + escape(__webpack_require__(/*! ../assets/Joinus.png */ "./resources/js/assets/Joinus.png")) + ");\n  height: 400px;\n  background-size: contain;\n  background-repeat: no-repeat;\n  position: relative;\n}\n.join-us-section .text {\n  padding: 30px;\n  color: white;\n  width: 55%;\n  font-family: \"Open Sans\", sans-serif;\n}\n.join-us-section .text .title h2 {\n  font-size: 35px;\n  font-weight: 700;\n}\n.join-us-section .text .description {\n  font-size: 22px;\n  font-weight: 400;\n  padding: 25px 0;\n}\n.join-us-section button {\n  font-size: 20px;\n  font-weight: 600;\n  border: transparent;\n  color: white;\n  background-color: #FCCF4D;\n  padding: 15px 30px;\n  border-radius: 40px;\n  margin-left: 30px;\n  transition: 0.3s;\n}\n.join-us-section button:hover {\n  color: #FCCF4D;\n  background-color: #49BEB7;\n  outline: 2px solid #FCCF4D;\n  scale: 1.1;\n}", ""]);
+exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.join-us-section {\n  margin: 50px 0;\n  height: 400px;\n  background: rgb(2, 0, 36);\n  background: linear-gradient(90deg, rgb(2, 0, 36) 0%, rgb(73, 190, 183) 0%, rgb(255, 255, 255) 100%);\n  position: relative;\n  align-items: center;\n}\n.join-us-section .image {\n  width: 30%;\n  height: 100%;\n  align-items: flex-end;\n  justify-content: flex-end;\n}\n.join-us-section .image img {\n  max-width: 505px;\n  -o-object-fit: contain;\n     object-fit: contain;\n  bottom: 0;\n}\n.join-us-section .text {\n  width: 70%;\n  padding: 30px;\n  color: white;\n  font-family: \"Open Sans\", sans-serif;\n  flex-direction: column;\n  justify-content: center;\n}\n.join-us-section .text .title h2 {\n  font-size: 35px;\n  font-weight: 700;\n}\n.join-us-section .text .description {\n  font-size: 22px;\n  font-weight: 400;\n  padding: 25px 0;\n}\n.join-us-section .text button {\n  font-size: 20px;\n  font-weight: 600;\n  border: transparent;\n  color: white;\n  background-color: #FCCF4D;\n  padding: 15px 30px;\n  border-radius: 40px;\n  transition: 0.3s;\n}\n.join-us-section .text button:hover {\n  color: #FCCF4D;\n  background-color: #49BEB7;\n  outline: 2px solid #FCCF4D;\n  scale: 1.1;\n}\n@media screen and (max-width: 1124px) {\n.join-us-section .image {\n    width: 50%;\n}\n.join-us-section .text {\n    width: 50%;\n}\n}\n@media screen and (max-width: 895px) {\n.join-us-section {\n    height: 100%;\n    flex-direction: column;\n    background: rgb(255, 255, 255);\n    background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(73, 190, 183) 100%);\n}\n.join-us-section .image {\n    width: 100%;\n    align-items: center;\n    justify-content: center;\n}\n.join-us-section .text {\n    width: 100%;\n    text-align: center;\n}\n}", ""]);
 
 // exports
 
@@ -6852,10 +6860,10 @@ exports.push([module.i, ".join-us-section {\n  background-image: url(" + escape(
 var escape = __webpack_require__(/*! ../../../node_modules/css-loader/lib/url/escape.js */ "./node_modules/css-loader/lib/url/escape.js");
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
-
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, ".jumbotron-height {\n  height: 500px;\n}\n.jumbotron-content {\n  background-image: url(" + escape(__webpack_require__(/*! ../assets/slide-pizzeria-athena.jpg */ "./resources/js/assets/slide-pizzeria-athena.jpg")) + ");\n  height: 500px;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  justify-content: center;\n  align-items: center;\n}\n.jumbotron-content .overlay {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.7);\n}\n.jumbotron-content .jumbotron-text {\n  z-index: 10;\n  color: white;\n  text-align: center;\n  animation: jumbotronScaleText 1.8s;\n}\n.jumbotron-content .jumbotron-text h1 {\n  font-size: 60px;\n}\n.jumbotron-content .jumbotron-text p {\n  font-size: 17px;\n}\n@keyframes jumbotronScaleText {\n0% {\n    scale: 0;\n    opacity: 0;\n}\n100% {\n    scale: 1;\n    opacity: 1;\n}\n}\n@media screen and (max-width: 355px) {\n.jumbotron-content .jumbotron-text h1 {\n    font-size: 40px;\n}\n}", ""]);
+exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.jumbotron-height {\n  height: 500px;\n}\n.jumbotron-content {\n  background-image: url(" + escape(__webpack_require__(/*! ../assets/slide-pizzeria-athena.jpg */ "./resources/js/assets/slide-pizzeria-athena.jpg")) + ");\n  height: 500px;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  justify-content: center;\n  align-items: center;\n}\n.jumbotron-content .overlay {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.7);\n}\n.jumbotron-content .jumbotron-text {\n  z-index: 10;\n  color: white;\n  text-align: center;\n  animation: jumbotronScaleText 1.8s;\n}\n.jumbotron-content .jumbotron-text h1 {\n  font-size: 60px;\n}\n.jumbotron-content .jumbotron-text p {\n  font-size: 17px;\n}\n@keyframes jumbotronScaleText {\n0% {\n    scale: 0;\n    opacity: 0;\n}\n100% {\n    scale: 1;\n    opacity: 1;\n}\n}\n@media screen and (max-width: 355px) {\n.jumbotron-content .jumbotron-text h1 {\n    font-size: 40px;\n}\n}", ""]);
 
 // exports
 
@@ -54071,17 +54079,6 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ "./resources/js/assets/Joinus.png":
-/*!****************************************!*\
-  !*** ./resources/js/assets/Joinus.png ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/Joinus.png?eae23de0b75109b1045f31f884468c8c";
-
-/***/ }),
-
 /***/ "./resources/js/assets/courier.png":
 /*!*****************************************!*\
   !*** ./resources/js/assets/courier.png ***!
@@ -54101,6 +54098,17 @@ module.exports = "/images/courier.png?23e826ee74d0fb416eec592ad72d6b97";
 /***/ (function(module, exports) {
 
 module.exports = "/images/food-delivery.png?780a498730b74ab36437f2f0e7394ec6";
+
+/***/ }),
+
+/***/ "./resources/js/assets/joinus-ppl.png":
+/*!********************************************!*\
+  !*** ./resources/js/assets/joinus-ppl.png ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/joinus-ppl.png?c6a305a0091b364d9f0c8f8973720f8d";
 
 /***/ }),
 
