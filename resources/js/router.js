@@ -4,6 +4,7 @@ Vue.use(VueRouter)
 
 
 import HomePage from './pages/HomePage.vue';
+import Categories from './pages/Categories.vue';
 
 const router = new VueRouter({
     mode: 'history',
@@ -12,6 +13,11 @@ const router = new VueRouter({
             path: '/',
             name: 'home',
             component: HomePage
+        },
+        {
+            path: '/categorie',
+            name: 'categorie',
+            component: Categories
         }
     ]
 });

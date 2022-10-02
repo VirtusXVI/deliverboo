@@ -53,14 +53,17 @@
     
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
+                            <li>
+                                <a href="/categorie">Categorie</a>
+                            </li>
                             <!-- Authentication Links -->
                             @guest
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link login" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                                 @if (Route::has('register'))
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        <a class="nav-link register" href="{{ route('register') }}">{{ __('Register') }}</a>
                                     </li>
                                 @endif
                             @else
@@ -153,7 +156,33 @@
         font-weight: 500;
         font-size: 17px;
     }
-    .nav-link,  .navbar-brand{
+
+    .navbar-light .navbar-nav .login{
+        background-color: #FCCF4D;
+        margin-right: 20px;
+        color: white;
+    }
+
+    .navbar-light .navbar-nav .register{
+        background-color: white;
+        color: #FCCF4D;
+    }
+
+    .navbar-light .navbar-nav .register, 
+    .navbar-light .navbar-nav .login {
+        border-radius: 40px;
+        padding: 3px 10px;
+        transition: 0.4s
+    }
+
+    .navbar-light .navbar-nav .register:hover,
+    .navbar-light .navbar-nav .login:hover{
+        background-color: #49BEB7;
+        color: white;
+        outline: 2px solid #FCCF4D;
+    }
+
+    .navbar-brand{
         color: white !important;
     }
     .navbar-light .navbar-toggler {
