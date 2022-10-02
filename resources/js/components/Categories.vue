@@ -66,7 +66,7 @@
                     <div class="card-body flex">
                             <a class="overlay" href="#"></a>
                         <img src="../assets/slide-pizzeria-athena.jpg" alt="">
-                        <div class="text">
+                        <div class="text flex">
                             <a href="#">PASTICCERIA</a>
                         </div>
                     </div>
@@ -108,14 +108,14 @@ export default {
     li {
         .card {
             height: 150px;
-            border-radius: 30px;
+            border-radius: 20px;
         }
         .card-body {
             justify-content: center;
             align-items: center;
             padding: 0;              
             overflow: hidden;
-            border-radius: 30px;
+            border-radius: 20px;
             position: relative;
             box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);
 
@@ -136,6 +136,8 @@ export default {
                 position: absolute;
                 font-size: 35px;
                 font-weight: 500;
+                justify-content: center;
+                align-content: center;
 
                 a {
                     height: 100%;

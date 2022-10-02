@@ -68,7 +68,7 @@ export default {
 
 
 
-@media screen and (max-width: 397px) {
+@media screen and (max-width: 355px) {
     .jumbotron-content .jumbotron-text h1{
         font-size: 40px;
     }
