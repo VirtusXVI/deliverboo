@@ -9,8 +9,12 @@
             <div class="row row-cols-3">
                 @foreach ($dishes as $dish)
                 @if ($dish->is_visible == 1)
+                    {{-- Image --}}
                     <div class="col mb-4">
                         <div class="card text-center p-3">
+                            @if ($dish->dish_image)
+                                <img src="{{ asset('storage/' . $dish->dish_image) }}" alt="{{ $dish->title }}">
+                            @endif
                             <h3><a class="card-title" href="{{ route('admin.dishes.show', ['dish' => $dish->id]) }}">{{ $dish->name }}</a></h3>
                         </div>
                     </div>

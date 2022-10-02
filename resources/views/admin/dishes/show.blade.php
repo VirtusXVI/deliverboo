@@ -4,8 +4,11 @@
 @section('content')
     <div class="show container">
         <div class="card w-100">
-            {{-- <img src="..." class="card-img-top" alt="..."> --}}
             <div class="card-body">
+                {{-- Image --}}
+                @if ($dish->dish_image)
+                    <img src="{{ asset('storage/' . $dish->dish_image) }}" alt="{{ $dish->title }}">
+                @endif
                 <h1 class="mb-3">{{ $dish->name }}</h1>
                 <p class="mb-3">Descrizione: {{ $dish->description }}</p>
                 <div class="mb-3">Ingredienti: {{ $dish->ingredients }}</div>
