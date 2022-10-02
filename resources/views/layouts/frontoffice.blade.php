@@ -34,7 +34,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="front-office-layout">
         <header>
             <nav class="navbar navbar-expand-md navbar-light shadow-sm">
                 <div class="container">
@@ -63,7 +63,7 @@
                                 </li>
                                 @if (Route::has('register'))
                                     <li class="nav-item">
-                                        <a class="nav-link register" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        <a class="nav-link register" href="{{ route('register') }}">{{ __('Registrati') }}</a>
                                     </li>
                                 @endif
                             @else
