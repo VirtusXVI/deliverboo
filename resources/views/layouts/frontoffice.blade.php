@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('page_title')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Deliveboo
@@ -33,7 +33,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        @yield('navlinks')
+                        {{-- @yield('navlinks') --}}
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -50,7 +50,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->restaurant_name }}
                                 </a>
 
@@ -72,11 +72,38 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('frontoffice-content')
+        <main>
+            @yield('content')
         </main>
 
         @include('sweetalert::alert')
     </div>
 </body>
 </html>
+
+<style>
+    .navbar{
+        background-color: #49beb6a6;
+        position: relative;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .nav-item {
+        font-weight: 500;
+        font-size: 17px;
+    }
+
+    .nav-link,  .navbar-brand{
+        color: white !important;
+    }
+
+    .navbar-light .navbar-toggler {
+        color: white;
+        border-color: white;
+        background-color: white
+    }
+</style>
