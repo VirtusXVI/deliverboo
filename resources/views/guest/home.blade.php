@@ -1,9 +1,11 @@
 @extends('layouts.frontoffice')
 
-@section('frontoffice-content')
+@section('page_title')
+   HomePage 
+@endsection
+
+@section('content')
     <div id="root">
-        <div class="container">
-            <h2>Ecco le categorie dei ristoranti</h2>
-        </div>
+        
     </div>
 @endsection

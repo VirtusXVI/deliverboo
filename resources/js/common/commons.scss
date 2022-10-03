@@ -1,0 +1,39 @@
+// RESET 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// Common
+.ms-container{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.ms-small-container{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+}
