@@ -1931,8 +1931,7 @@ __webpack_require__.r(__webpack_exports__);
         'thumb': __webpack_require__(/*! ../assets/online-order.png */ "./resources/js/assets/online-order.png"),
         'alt': 'Icona ordine del cio dal telefono',
         'title': 'Ordina facilmente',
-        'description': 'Ordina con un solo CLICK i tuoi piatti preferiti dal tuo telefono ovunque tu sia senza preoccupazioni!',
-        'class': 'down'
+        'description': 'Ordina con un solo CLICK i tuoi piatti preferiti dal tuo telefono ovunque tu sia senza preoccupazioni!'
       }, {
         'thumb': __webpack_require__(/*! ../assets/food-delivery.png */ "./resources/js/assets/food-delivery.png"),
         'alt': 'Icona in viaggio per la consegn del cibo ordinato',
@@ -1942,8 +1941,7 @@ __webpack_require__.r(__webpack_exports__);
         'thumb': __webpack_require__(/*! ../assets/courier.png */ "./resources/js/assets/courier.png"),
         'alt': 'Icona consegna del cio dal telefono',
         'title': 'Devi solo goderti il cibo',
-        'description': 'Riceverai il tuo ordine comodamente a casa, in ufficcio o qualunque sia la tua posizione. Ora non ti resta che gustarti il cibo!',
-        'class': 'down'
+        'description': 'Riceverai il tuo ordine comodamente a casa, in ufficcio o qualunque sia la tua posizione. Ora non ti resta che gustarti il cibo!'
       }]
     };
   }
@@ -6837,7 +6835,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "*[data-v-15624917] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container[data-v-15624917] {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container[data-v-15624917] {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex[data-v-15624917] {\n  display: flex;\n}\nimg[data-v-15624917] {\n  width: 100%;\n  display: block;\n}\nul[data-v-15624917] {\n  list-style-type: none;\n}\na[data-v-15624917] {\n  text-decoration: none;\n  color: inherit;\n}\na[data-v-15624917]:hover {\n  text-decoration: none;\n}\n.info-services[data-v-15624917] {\n  margin: 50px 0;\n}\n.info-services .down[data-v-15624917] {\n  padding-top: 50px;\n  display: flex;\n}\n.info-services .row .info-services-card .flex[data-v-15624917] {\n  justify-content: space-between;\n}\n.info-services li[data-v-15624917] {\n  padding: 20px;\n}\n.info-services li .card-body[data-v-15624917] {\n  padding: 0;\n}\n.info-services li .card-body .thumb[data-v-15624917] {\n  justify-content: center;\n  padding: 30px;\n}\n.info-services li .card-body .thumb img[data-v-15624917] {\n  width: 75%;\n}\n.info-services li .card-body .text[data-v-15624917] {\n  flex-direction: column;\n  align-items: center;\n  padding: 0px 20px 20px 20px;\n}\n.info-services li .card-body .text .title[data-v-15624917], .info-services li .card-body .text .description[data-v-15624917] {\n  text-align: center;\n}\n@media screen and (max-width: 575px) {\n.info-services .down[data-v-15624917] {\n    padding-top: 0;\n    display: block;\n}\n}", ""]);
+exports.push([module.i, "*[data-v-15624917] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container[data-v-15624917] {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container[data-v-15624917] {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex[data-v-15624917] {\n  display: flex;\n}\nimg[data-v-15624917] {\n  width: 100%;\n  display: block;\n}\nul[data-v-15624917] {\n  list-style-type: none;\n}\na[data-v-15624917] {\n  text-decoration: none;\n  color: inherit;\n}\na[data-v-15624917]:hover {\n  text-decoration: none;\n}\n.info-services[data-v-15624917] {\n  margin: 50px 0;\n}\n.info-services .row .info-services-card .flex[data-v-15624917] {\n  justify-content: space-between;\n}\n.info-services li[data-v-15624917] {\n  padding: 20px;\n}\n.info-services li .card-body[data-v-15624917] {\n  padding: 0;\n}\n.info-services li .card-body .thumb[data-v-15624917] {\n  justify-content: center;\n  padding: 30px;\n}\n.info-services li .card-body .thumb img[data-v-15624917] {\n  width: 75%;\n}\n.info-services li .card-body .text[data-v-15624917] {\n  flex-direction: column;\n  align-items: center;\n  padding: 0px 20px 20px 20px;\n}\n.info-services li .card-body .text .title[data-v-15624917], .info-services li .card-body .text .description[data-v-15624917] {\n  text-align: center;\n}\n@media screen and (max-width: 575px) {\n.info-services .down[data-v-15624917] {\n    padding-top: 0;\n    display: block;\n}\n}", ""]);
 
 // exports
 

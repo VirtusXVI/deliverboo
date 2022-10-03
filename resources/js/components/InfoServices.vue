@@ -35,7 +35,6 @@ export default {
                     'alt': 'Icona ordine del cio dal telefono',
                     'title': 'Ordina facilmente',
                     'description': 'Ordina con un solo CLICK i tuoi piatti preferiti dal tuo telefono ovunque tu sia senza preoccupazioni!',
-                    'class': 'down'
                 },
                 {
                     'thumb': require('../assets/food-delivery.png'),
@@ -48,7 +47,6 @@ export default {
                     'alt': 'Icona consegna del cio dal telefono',
                     'title': 'Devi solo goderti il cibo',
                     'description': 'Riceverai il tuo ordine comodamente a casa, in ufficcio o qualunque sia la tua posizione. Ora non ti resta che gustarti il cibo!',
-                    'class': 'down'
                 }
             ]
         }
@@ -61,11 +59,6 @@ export default {
 @import '../common/variables.scss';
 .info-services {
     margin: 50px 0;
-
-     .down{
-        padding-top: 50px;
-        display: flex;
-    }
 
     .row .info-services-card .flex {
         justify-content: space-between;
