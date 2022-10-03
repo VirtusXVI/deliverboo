@@ -85,6 +85,10 @@ export default {
                 outline: 2px solid $mainSecondColor;
                 scale: 1.1;
             }
+
+            a:hover {
+                color: inherit;
+            }
         }
     }
 

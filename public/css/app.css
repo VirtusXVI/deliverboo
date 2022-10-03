@@ -41,6 +41,9 @@
   border-color: none;
   background-color: #FCCF4D;
 }
+.front-office-layout .navbar-light .navbar-nav .nav-link {
+  color: white !important;
+}
 .front-office-layout li {
   list-style-type: none;
 }
@@ -84,6 +87,10 @@
 .front-office-layout .links .social,
 .front-office-layout .links .contacts {
   width: 200px;
+}
+
+.home div, .show div {
+  font-size: 15px !important;
 }
 
 /*!
