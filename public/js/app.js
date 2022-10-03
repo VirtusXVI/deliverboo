@@ -1912,7 +1912,8 @@ __webpack_require__.r(__webpack_exports__);
   name: 'Categories',
   data: function data() {
     return {
-      categories: []
+      categories: [],
+      categories_images: ['https://www.buttalapasta.it/wp-content/uploads/2017/11/pizza-margherita.jpg', 'https://www.donnamoderna.com/content/uploads/2021/01/sushi-nigiri.jpg', 'https://www.fattoincasadabenedetta.it/wp-content/uploads/2019/12/tagliatelle-al-rag%C3%B9-di-salsiccia.jpg', 'https://athome.starbucks.com/sites/default/files/2021-08/LatteArtatHome_Header_0.jpg', 'https://www.ricettedalmondo.it/images/foto-ricette/t/29620-torta-della-nonna.jpg', 'https://vegnews.com/media/W1siZiIsIjI5NDQ2L1ZlZ05ld3MuVmVnYW5GYXN0Rm9vZC5Nb250eXNHb29kQnVyZ2VyLmpwZyJdLFsicCIsInRodW1iIiwiMTYwMHg5NDYjIix7ImZvcm1hdCI6ImpwZyJ9XSxbInAiLCJvcHRpbWl6ZSJdXQ/VegNews.VeganFastFood.MontysGoodBurger.jpg?sha=892e9c726614c0f8']
     };
   },
   methods: {
@@ -2109,8 +2110,8 @@ var render = function render() {
       }
     }, [_vm._v(_vm._s(category.name))]), _vm._v(" "), _c("img", {
       attrs: {
-        src: __webpack_require__(/*! ../assets/slide-pizzeria-athena.jpg */ "./resources/js/assets/slide-pizzeria-athena.jpg"),
-        alt: ""
+        src: _vm.categories_images[index],
+        alt: category.name
       }
     })])])]);
   }), 0)]);

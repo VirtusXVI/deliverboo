@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-body flex">
                         <a class="overlay" href="#categories">{{category.name}}</a>
-                        <img src="../assets/slide-pizzeria-athena.jpg" alt="">
+                        <img :src="categories_images[index]" :alt="category.name">
                     </div>
                 </div>
             </li>
@@ -25,6 +25,14 @@ export default {
     data() {
         return {
             categories: [],
+            categories_images: [
+                'https://www.buttalapasta.it/wp-content/uploads/2017/11/pizza-margherita.jpg',
+                'https://www.donnamoderna.com/content/uploads/2021/01/sushi-nigiri.jpg',
+                'https://www.fattoincasadabenedetta.it/wp-content/uploads/2019/12/tagliatelle-al-rag%C3%B9-di-salsiccia.jpg',
+                'https://athome.starbucks.com/sites/default/files/2021-08/LatteArtatHome_Header_0.jpg',
+                'https://www.ricettedalmondo.it/images/foto-ricette/t/29620-torta-della-nonna.jpg',
+                'https://vegnews.com/media/W1siZiIsIjI5NDQ2L1ZlZ05ld3MuVmVnYW5GYXN0Rm9vZC5Nb250eXNHb29kQnVyZ2VyLmpwZyJdLFsicCIsInRodW1iIiwiMTYwMHg5NDYjIix7ImZvcm1hdCI6ImpwZyJ9XSxbInAiLCJvcHRpbWl6ZSJdXQ/VegNews.VeganFastFood.MontysGoodBurger.jpg?sha=892e9c726614c0f8'
+            ]
         }
     },
 
