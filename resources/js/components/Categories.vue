@@ -6,69 +6,11 @@
             </h2>
         </div>
        <ul class="row categories-content">
-            <li class="col-sm-4 mt-4">
+            <li v-for="category, index in categories" :key="index" class="col-sm-4 mt-4">
                 <div class="card">
                     <div class="card-body flex">
-                            <a class="overlay" href="#categories"></a>
+                        <a class="overlay" href="#categories">{{category.name}}</a>
                         <img src="../assets/slide-pizzeria-athena.jpg" alt="">
-                        <div class="text">
-                            <a href="#">PASTICCERIA</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-             <li class="col-sm-4 mt-4">
-                <div class="card">
-                    <div class="card-body flex">
-                            <a class="overlay" href="#"></a>
-                        <img src="../assets/slide-pizzeria-athena.jpg" alt="">
-                        <div class="text">
-                            <a href="#">PASTICCERIA</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-             <li class="col-sm-4 mt-4">
-                <div class="card">
-                    <div class="card-body flex">
-                            <a class="overlay" href="#"></a>
-                        <img src="../assets/slide-pizzeria-athena.jpg" alt="">
-                        <div class="text">
-                            <a href="#">PASTICCERIA</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-             <li class="col-sm-4 mt-4">
-                <div class="card">
-                    <div class="card-body flex">
-                            <a class="overlay" href="#"></a>
-                        <img src="../assets/slide-pizzeria-athena.jpg" alt="">
-                        <div class="text">
-                            <a href="#">PASTICCERIA</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-             <li class="col-sm-4 mt-4">
-                <div class="card">
-                    <div class="card-body flex">
-                            <a class="overlay" href="#"></a>
-                        <img src="../assets/slide-pizzeria-athena.jpg" alt="">
-                        <div class="text">
-                            <a href="#">PASTICCERIA</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-             <li class="col-sm-4 mt-4">
-                <div class="card">
-                    <div class="card-body flex">
-                            <a class="overlay" href="#"></a>
-                        <img src="../assets/slide-pizzeria-athena.jpg" alt="">
-                        <div class="text flex">
-                            <a href="#">PASTICCERIA</a>
-                        </div>
                     </div>
                 </div>
             </li>
@@ -78,13 +20,33 @@
 
 <script>
 export default {
-    name: 'Categories'
+    name: 'Categories',
+
+    data() {
+        return {
+            categories: [],
+        }
+    },
+
+    methods: {
+        getCategoriesFromApi(){
+            axios.get('http://127.0.0.1:8000/api/categorie')
+            .then((response) => {
+            this.categories = response.data.results;
+            });
+        }
+    },
+
+    mounted() {
+        this.getCategoriesFromApi()
+    }
 }
 </script>
 
 <style lang="scss">
 @import '../common/commons.scss';
 @import '../common/variables.scss';
+
 .categories-section {
     margin: 50px 0;
     position: relative;
@@ -103,7 +65,7 @@ export default {
             border-radius: 20px;
             color: white;
         }
-        
+
     }
 }
 .categories-content {
@@ -116,7 +78,7 @@ export default {
         .card-body {
             justify-content: center;
             align-items: center;
-            padding: 0;              
+            padding: 0;
             overflow: hidden;
             border-radius: 20px;
             position: relative;
@@ -129,24 +91,23 @@ export default {
             }
 
             .overlay {
-                position: absolute;
                 height: 100%;
                 width: 100%;
                 background-color: rgba(0, 0, 0, 0.5);
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
             }
 
-            .text {
-                position: absolute;
+            a {
+                display: inline-block;
+                height: 100%;
+                width: 100%;
+                color: white;
+                text-align: center;
                 font-size: 35px;
-                font-weight: 500;
-                justify-content: center;
-                align-content: center;
-
-                a {
-                    height: 100%;
-                    width: 100%;
-                    color: white;
-                }
+                line-height: 150px;
             }
         }
     }
@@ -154,22 +115,21 @@ export default {
 
 
 
-
 @media screen and (max-width: 991px) {
-    .categories-content li .card-body .text {
+    .categories-content li .card-body a {
         font-size: 25px;
     }
 }
 
 
 @media screen and (max-width: 767px) {
-    .categories-content li .card-body .text {
+    .categories-content li .card-body a {
         font-size: 20px;
     }
 }
 
 @media screen and (max-width: 575px) {
-    .categories-content li .card-body .text {
+    .categories-content li .card-body a {
         font-size: 40px;
     }
 }
@@ -181,7 +141,7 @@ export default {
 }
 
 @media screen and (max-width: 377px) {
-    .categories-content li .card-body .text {
+    .categories-content li .card-body a {
         font-size: 30px;
     }
 
@@ -193,7 +153,7 @@ export default {
 }
 
 @media screen and (max-width: 277px) {
-    .categories-content li .card-body .text {
+    .categories-content li .card-body a {
         font-size: 25px;
     }
 }

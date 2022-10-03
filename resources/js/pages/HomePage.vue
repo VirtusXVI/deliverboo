@@ -34,7 +34,26 @@ export default {
         Jumbotron,
         Categories,
         InfoServices,
-        JoinUs
+        JoinUs,
+    },
+
+    data() {
+        return {
+            categories: [],
+        }
+    },
+
+    methods: {
+        getCategoriesFromApi(){
+            axios.get('http://127.0.0.1:8000/api/categorie')
+            .then((response) => {
+            this.restaurants = response.data.results;
+            });
+        }
+    },
+
+    mounted() {
+        this.getCategoriesFromApi()
     }
 }
 </script>
