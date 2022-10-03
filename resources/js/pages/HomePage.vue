@@ -10,6 +10,11 @@
             <Categories />
         </section>
 
+    <!-- Categories -->
+        <section class="restaurants-section">
+            <Restaurants />
+        </section>
+
     <!-- Info Services -->
         <section>
             <InfoServices />
@@ -27,6 +32,7 @@ import Jumbotron from '../components/Jumbotron.vue'
 import Categories from '../components/Categories.vue'
 import InfoServices from '../components/InfoServices.vue'
 import JoinUs from '../components/JoinUs.vue'
+import Restaurants from '../components/Restaurants.vue'
 
 export default {
     name: 'HomePage',
@@ -35,6 +41,7 @@ export default {
         Categories,
         InfoServices,
         JoinUs,
+        Restaurants,
     },
 
     data() {

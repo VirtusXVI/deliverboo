@@ -5,16 +5,19 @@
                 <span>LE NOSTRE CATEGORIE</span>
             </h2>
         </div>
-       <ul class="row categories-content">
-            <li v-for="category, index in categories" :key="index" class="col-sm-4 mt-4">
-                <div class="card">
-                    <div class="card-body flex">
-                        <a class="overlay" href="#categories">{{category.name}}</a>
-                        <img :src="categories_images[index]" :alt="category.name">
+
+        <form @submit.prevent="sendCategory()">
+            <ul class="row categories-content">
+                <li v-for="category, index in categories" :key="index" class="col-sm-4 mt-4">
+                    <div class="card">
+                        <div class="card-body flex">
+                            <a type="submit" class="overlay" href="#categories" @click="getCategoryId(index + 1)">{{category.name}}</a>
+                            <img :src="categories_images[index]" :alt="category.name">
+                        </div>
                     </div>
-                </div>
-            </li>
-       </ul>
+                </li>
+            </ul>
+        </form>
     </div>
 </template>
 
@@ -32,7 +35,8 @@ export default {
                 'https://athome.starbucks.com/sites/default/files/2021-08/LatteArtatHome_Header_0.jpg',
                 'https://www.ricettedalmondo.it/images/foto-ricette/t/29620-torta-della-nonna.jpg',
                 'https://vegnews.com/media/W1siZiIsIjI5NDQ2L1ZlZ05ld3MuVmVnYW5GYXN0Rm9vZC5Nb250eXNHb29kQnVyZ2VyLmpwZyJdLFsicCIsInRodW1iIiwiMTYwMHg5NDYjIix7ImZvcm1hdCI6ImpwZyJ9XSxbInAiLCJvcHRpbWl6ZSJdXQ/VegNews.VeganFastFood.MontysGoodBurger.jpg?sha=892e9c726614c0f8'
-            ]
+            ],
+            categoryId: []
         }
     },
 
@@ -41,6 +45,24 @@ export default {
             axios.get('http://127.0.0.1:8000/api/categorie')
             .then((response) => {
             this.categories = response.data.results;
+            });
+        },
+        getCategoryId(id) {
+            if(this.categoryId.includes(id)) {
+                let index = this.categoryId.indexOf(id);
+                if (index !== -1) {
+                    this.categoryId.splice(index, 1);
+                }
+            } else {
+                this.categoryId.push(id);
+            }
+            console.log(this.categoryId)
+        },
+        sendCategory() {
+            axios.post('/api/ristoranti')
+            .then((response) => {
+                this.categoryId = response;
+                console.log(response);
             });
         }
     },

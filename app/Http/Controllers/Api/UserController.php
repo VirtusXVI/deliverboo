@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Restaurant_category;
 
 class UserController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
 
-        $user = User::all();
+        $user = User::find(1)->restaurant_category()->get();
 
         $data = [
             'success' => true,
