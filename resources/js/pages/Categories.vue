@@ -1,24 +1,18 @@
 <template>
-    <main>
-        <div class="categories flex">
-            <div class="category-select">
-        
-            </div>
+    <div class="categories flex">
+        <div class="category-select">
+            <Restaurants />
         </div>
-    </main>
+    </div>
 </template>
 
 <script>
+import Restaurants from '../components/Restaurants.vue'
 export default {
-    name: 'Categories', 
-    data() {
-        return {
-
-        }
+    name: 'Categories',
+    components: {
+        Restaurants
     },
-    methods: {
-
-    }
 }
 </script>
 
