@@ -1,5 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
-.front-office-layout .navbar {
+html {
+  scroll-behavior: smooth;
+}
+html .front-office-layout .navbar {
   background-color: rgba(73, 190, 182, 0.6509803922);
   position: relative;
   position: fixed;
@@ -8,88 +11,87 @@
   left: 0;
   right: 0;
 }
-.front-office-layout .nav-item {
+html .front-office-layout .nav-item {
   font-weight: 500;
   font-size: 17px;
 }
-.front-office-layout .navbar-light .navbar-nav .login {
+html .front-office-layout .navbar-light .navbar-nav .login {
   background-color: #FCCF4D;
   margin-right: 20px;
   color: white;
 }
-.front-office-layout .navbar-light .navbar-nav .register {
+html .front-office-layout .navbar-light .navbar-nav .register {
   background-color: white;
   color: #FCCF4D;
 }
-.front-office-layout .navbar-light .navbar-nav .register,
-.front-office-layout .navbar-light .navbar-nav .login {
+html .front-office-layout .navbar-light .navbar-nav .register,
+html .front-office-layout .navbar-light .navbar-nav .login {
   border-radius: 40px;
   padding: 3px 10px;
   transition: 0.4s;
 }
-.front-office-layout .navbar-light .navbar-nav .register:hover,
-.front-office-layout .navbar-light .navbar-nav .login:hover {
+html .front-office-layout .navbar-light .navbar-nav .register:hover,
+html .front-office-layout .navbar-light .navbar-nav .login:hover {
   background-color: #49BEB7;
   color: white;
   outline: 2px solid #FCCF4D;
 }
-.front-office-layout .navbar-brand {
+html .front-office-layout .navbar-brand {
   color: white !important;
 }
-.front-office-layout .navbar-light .navbar-toggler {
+html .front-office-layout .navbar-light .navbar-toggler {
   color: white;
   border-color: none;
   background-color: #FCCF4D;
 }
-.front-office-layout .navbar-light .navbar-nav .nav-link {
+html .front-office-layout .navbar-light .navbar-nav .nav-link {
   color: white !important;
 }
-.front-office-layout li {
+html .front-office-layout li {
   list-style-type: none;
 }
-.front-office-layout a {
+html .front-office-layout a {
   text-decoration: none;
 }
-.front-office-layout a:hover {
+html .front-office-layout a:hover {
   text-decoration: none;
 }
-.front-office-layout footer {
+html .front-office-layout footer {
   height: 400px;
   background-color: #49BEB7;
 }
-.front-office-layout .footer-content {
+html .front-office-layout .footer-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
 }
-.front-office-layout .footer-content h2 {
+html .front-office-layout .footer-content h2 {
   font-size: 60px;
   color: white;
 }
-.front-office-layout .footer-content .copy {
+html .front-office-layout .footer-content .copy {
   display: flex;
   justify-content: center;
   color: white;
 }
-.front-office-layout .links {
+html .front-office-layout .links {
   display: flex;
   margin: 30px 0;
 }
-.front-office-layout .links .title {
+html .front-office-layout .links .title {
   margin-bottom: 15px;
   color: white;
 }
-.front-office-layout .links span {
+html .front-office-layout .links span {
   line-height: 40px;
   color: white;
 }
-.front-office-layout .links .social,
-.front-office-layout .links .contacts {
+html .front-office-layout .links .social,
+html .front-office-layout .links .contacts {
   width: 200px;
 }
-
-.home div, .show div {
+html .home div, html .show div {
   font-size: 15px !important;
 }
 

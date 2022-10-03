@@ -1,5 +1,5 @@
 <template>
-    <div class="container cateogries-section">
+    <div class="container cateogries-section" id="categories">
         <div class="title">
             <h2>
                 <span>LE NOSTRE CATEGORIE</span>
@@ -9,7 +9,7 @@
             <li class="col-sm-4 mt-4">
                 <div class="card">
                     <div class="card-body flex">
-                            <a class="overlay" href="#"></a>
+                            <a class="overlay" href="#categories"></a>
                         <img src="../assets/slide-pizzeria-athena.jpg" alt="">
                         <div class="text">
                             <a href="#">PASTICCERIA</a>

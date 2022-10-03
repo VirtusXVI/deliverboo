@@ -1,107 +1,111 @@
-.front-office-layout {
-    .navbar{
-        background-color: #49beb6a6;
-        position: relative;
-        position: fixed;
-        z-index: 9999;
-        top: 0;
-        left: 0;
-        right: 0;
-    }
-    .nav-item {
-        font-weight: 500;
-        font-size: 17px;
-    }
+html {
+    scroll-behavior: smooth;
 
-    .navbar-light .navbar-nav .login{
-        background-color: #FCCF4D;
-        margin-right: 20px;
-        color: white;
+    .front-office-layout {
+        .navbar{
+            background-color: #49beb6a6;
+            position: relative;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        .nav-item {
+            font-weight: 500;
+            font-size: 17px;
+        }
+    
+        .navbar-light .navbar-nav .login{
+            background-color: #FCCF4D;
+            margin-right: 20px;
+            color: white;
+        }
+    
+        .navbar-light .navbar-nav .register{
+            background-color: white;
+            color: #FCCF4D;
+        }
+    
+        .navbar-light .navbar-nav .register, 
+        .navbar-light .navbar-nav .login {
+            border-radius: 40px;
+            padding: 3px 10px;
+            transition: 0.4s
+        }
+    
+        .navbar-light .navbar-nav .register:hover,
+        .navbar-light .navbar-nav .login:hover{
+            background-color: #49BEB7;
+            color: white;
+            outline: 2px solid #FCCF4D;
+        }
+    
+        .navbar-brand{
+            color: white !important;
+        }
+        .navbar-light .navbar-toggler {
+            color: white;
+            border-color: none;
+            background-color: #FCCF4D
+        }
+    
+        .navbar-light .navbar-nav .nav-link {
+            color: white !important; 
+        }
+    
+        li {
+            list-style-type: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: none;
+        }
+        footer {
+            height: 400px;
+            background-color: #49BEB7;
+        }
+    
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%
+        }
+        .footer-content h2{
+            font-size: 60px;
+            color: white;
+        }
+    
+        .footer-content .copy {
+            display: flex;
+            justify-content: center;
+            color: white;
+        }
+        .links {
+            display: flex;
+            margin: 30px 0;
+        }
+    
+        .links .title {
+            margin-bottom: 15px;
+            color: white;
+        }
+    
+        .links span {
+            line-height: 40px;
+            color: white;
+        }
+    
+        .links .social, 
+        .links .contacts {
+            width: 200px;
+        }
     }
-
-    .navbar-light .navbar-nav .register{
-        background-color: white;
-        color: #FCCF4D;
+    
+    .home div, .show div{
+        font-size: 15px !important;
     }
-
-    .navbar-light .navbar-nav .register, 
-    .navbar-light .navbar-nav .login {
-        border-radius: 40px;
-        padding: 3px 10px;
-        transition: 0.4s
-    }
-
-    .navbar-light .navbar-nav .register:hover,
-    .navbar-light .navbar-nav .login:hover{
-        background-color: #49BEB7;
-        color: white;
-        outline: 2px solid #FCCF4D;
-    }
-
-    .navbar-brand{
-        color: white !important;
-    }
-    .navbar-light .navbar-toggler {
-        color: white;
-        border-color: none;
-        background-color: #FCCF4D
-    }
-
-    .navbar-light .navbar-nav .nav-link {
-        color: white !important; 
-    }
-
-    li {
-        list-style-type: none;
-    }
-    a{
-        text-decoration: none;
-    }
-    a:hover {
-        text-decoration: none;
-    }
-    footer {
-        height: 400px;
-        background-color: #49BEB7;
-    }
-
-    .footer-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 100%
-    }
-    .footer-content h2{
-        font-size: 60px;
-        color: white;
-    }
-
-    .footer-content .copy {
-        display: flex;
-        justify-content: center;
-        color: white;
-    }
-    .links {
-        display: flex;
-        margin: 30px 0;
-    }
-
-    .links .title {
-        margin-bottom: 15px;
-        color: white;
-    }
-
-    .links span {
-        line-height: 40px;
-        color: white;
-    }
-
-    .links .social, 
-    .links .contacts {
-        width: 200px;
-    }
-}
-
-.home div, .show div{
-    font-size: 15px !important;
 }
