@@ -1914,7 +1914,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       categories: [],
       categories_images: ['https://www.giallozafferano.it/images/249-24919/Pizza-napoletana_450x300.jpg', 'https://www.donnamoderna.com/content/uploads/2021/01/sushi-nigiri.jpg', 'https://www.fattoincasadabenedetta.it/wp-content/uploads/2019/12/tagliatelle-al-rag%C3%B9-di-salsiccia.jpg', 'https://athome.starbucks.com/sites/default/files/2021-08/LatteArtatHome_Header_0.jpg', 'https://www.ricettedalmondo.it/images/foto-ricette/t/29620-torta-della-nonna.jpg', 'https://vegnews.com/media/W1siZiIsIjI5NDQ2L1ZlZ05ld3MuVmVnYW5GYXN0Rm9vZC5Nb250eXNHb29kQnVyZ2VyLmpwZyJdLFsicCIsInRodW1iIiwiMTYwMHg5NDYjIix7ImZvcm1hdCI6ImpwZyJ9XSxbInAiLCJvcHRpbWl6ZSJdXQ/VegNews.VeganFastFood.MontysGoodBurger.jpg?sha=892e9c726614c0f8'],
-      categoryId: []
+      categoryId: [],
+      filtered_restaurants: []
     };
   },
   methods: {
@@ -1940,7 +1941,45 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('http://127.0.0.1:8000/api/ristoranti', {
         id: this.categoryId
       }).then(function (response) {
-        console.log(response.data.results);
+        var specificity = response.data.results.length;
+        var filtered_restaurants = response.data.results;
+        var all_restaurants = [];
+        var super_restaurants = [];
+        filtered_restaurants.forEach(function (element) {
+          var restaurants = element.user;
+          restaurants.forEach(function (element) {
+            var correct_restaurants = 0;
+            all_restaurants.push(element);
+          });
+        });
+
+        if (specificity > 1) {
+          for (var i = 0; i < all_restaurants.length; i++) {
+            var local_specificity = 0;
+
+            for (var j = 0; j < all_restaurants.length; j++) {
+              if (all_restaurants[j].id === all_restaurants[i].id) {
+                local_specificity++;
+              }
+            }
+
+            if (local_specificity === specificity) {
+              if (!super_restaurants.includes(all_restaurants[i])) {
+                super_restaurants.push(all_restaurants[i]);
+              }
+
+              for (var k = 0; k < super_restaurants.length; k++) {
+                if (super_restaurants[k].id === all_restaurants[i].id) {
+                  super_restaurants.pop();
+                }
+              }
+            }
+          }
+        } else {
+          super_restaurants = all_restaurants;
+        }
+
+        console.log(super_restaurants);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -54979,8 +55018,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Loris\boolean-projects\progetto-finale\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Loris\boolean-projects\progetto-finale\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\virtu\BooleanProjects\deliverboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\virtu\BooleanProjects\deliverboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

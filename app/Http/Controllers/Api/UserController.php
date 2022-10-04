@@ -18,7 +18,10 @@ class UserController extends Controller
             $array_filter = $filt;
         }
 
-        $users = Restaurant_category::with('user')->whereIn('id', $array_filter)->get();
+        $users = Restaurant_category::with('user')
+        ->whereIn('id', $array_filter)
+        ->get();
+
 
         $data = [
             'results' => $users
