@@ -1,7 +1,7 @@
 <template>
    <div>
     <!-- Jumbotron -->
-        <section class="jumbotron-section">
+        <section>
             <Jumbotron />
         </section>
 
@@ -68,4 +68,7 @@ export default {
 <style lang="scss">
 @import '../common/commons.scss';
 @import '../common/variables.scss';
+body{
+    min-width: 480px;
+}
 </style>

@@ -1945,10 +1945,11 @@ __webpack_require__.r(__webpack_exports__);
         var filtered_restaurants = response.data.results;
         var all_restaurants = [];
         var super_restaurants = [];
+        var pushable = true;
+        var displayable_restaurants = [];
         filtered_restaurants.forEach(function (element) {
           var restaurants = element.user;
           restaurants.forEach(function (element) {
-            var correct_restaurants = 0;
             all_restaurants.push(element);
           });
         });
@@ -1967,14 +1968,23 @@ __webpack_require__.r(__webpack_exports__);
               if (!super_restaurants.includes(all_restaurants[i])) {
                 super_restaurants.push(all_restaurants[i]);
               }
+            } // se è uguale si fa uno splice e si rimuove l'elemento utilizzando l'index del secondo ciclo
 
-              for (var k = 0; k < super_restaurants.length; k++) {
-                if (super_restaurants[k].id === all_restaurants[i].id) {
-                  super_restaurants.pop();
-                }
-              }
-            }
-          }
+
+            console.log(super_restaurants);
+          } // ciclo sull'array super restaurants
+          // for(let i = 0; i < super_restaurants.length; i++){
+          //     let sameElement = 0;
+          //     // secondo ciclo sull'array restaurants
+          //     for(let j = 0; j < super_restaurants.length; j++){
+          //         // controllo che l'id dell' elemento del secondo ciclo sia diverso dall'id dell'elemento del primo ciclo
+          //         if(sameElement < 1){
+          //             sameElement++;
+          //         }else{
+          //         }
+          //     }
+          // }
+
         } else {
           super_restaurants = all_restaurants;
         }
@@ -2184,7 +2194,7 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "container cateogries-section",
+    staticClass: "container-fluid categories-section",
     attrs: {
       id: "categories"
     }
@@ -2196,11 +2206,11 @@ var render = function render() {
       }
     }
   }, [_c("ul", {
-    staticClass: "row categories-content"
+    staticClass: "row row-cols-6 categories-content"
   }, _vm._l(_vm.categories, function (category, index) {
     return _c("li", {
       key: index,
-      staticClass: "col-sm-4 mt-4"
+      staticClass: "col"
     }, [_c("div", {
       staticClass: "card"
     }, [_c("div", {
@@ -2221,11 +2231,7 @@ var render = function render() {
         alt: category.name
       }
     })])])]);
-  }), 0), _vm._v(" "), _c("button", {
-    attrs: {
-      type: "submit"
-    }
-  }, [_vm._v("Prova")])])]);
+  }), 0), _vm._v(" "), _vm._m(1)])]);
 };
 
 var staticRenderFns = [function () {
@@ -2235,6 +2241,18 @@ var staticRenderFns = [function () {
   return _c("div", {
     staticClass: "title"
   }, [_c("h2", [_c("span", [_vm._v("LE NOSTRE CATEGORIE")])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "container d-flex justify-content-center align-items-center mt-5"
+  }, [_c("button", {
+    staticClass: "btn",
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("Filtra")])]);
 }];
 render._withStripped = true;
 
@@ -2465,9 +2483,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("section", {
-    staticClass: "jumbotron-section"
-  }, [_c("Jumbotron")], 1), _vm._v(" "), _c("section", {
+  return _c("div", [_c("section", [_c("Jumbotron")], 1), _vm._v(" "), _c("section", {
     staticClass: "categories-section"
   }, [_c("Categories")], 1), _vm._v(" "), _c("section", {
     staticClass: "restaurants-section"
@@ -6882,7 +6898,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.categories-section {\n  margin: 50px 0;\n  position: relative;\n}\n.categories-section .title {\n  text-align: center;\n  position: absolute;\n  top: -70px;\n  left: 0;\n  right: 0;\n}\n.categories-section .title span {\n  font-weight: 700;\n  background-color: #FCCF4D;\n  padding: 15px 50px;\n  border-radius: 20px;\n  color: white;\n}\n.categories-content li .card {\n  height: 150px;\n  border-radius: 20px;\n}\n.categories-content li .card-body {\n  justify-content: center;\n  align-items: center;\n  padding: 0;\n  overflow: hidden;\n  border-radius: 20px;\n  position: relative;\n  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);\n}\n.categories-content li .card-body img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.categories-content li .card-body .overlay {\n  height: 100%;\n  width: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n}\n.categories-content li .card-body a {\n  display: inline-block;\n  height: 100%;\n  width: 100%;\n  color: white;\n  text-align: center;\n  font-size: 35px;\n  line-height: 150px;\n}\n@media screen and (max-width: 991px) {\n.categories-content li .card-body a {\n    font-size: 25px;\n}\n}\n@media screen and (max-width: 767px) {\n.categories-content li .card-body a {\n    font-size: 20px;\n}\n}\n@media screen and (max-width: 575px) {\n.categories-content li .card-body a {\n    font-size: 40px;\n}\n}\n@media screen and (max-width: 455px) {\n.categories-section .title span {\n    font-size: 20px;\n}\n}\n@media screen and (max-width: 377px) {\n.categories-content li .card-body a {\n    font-size: 30px;\n}\n.categories-section .title span {\n    font-size: 15px;\n    display: block;\n    margin: 0 15px;\n}\n}\n@media screen and (max-width: 277px) {\n.categories-content li .card-body a {\n    font-size: 25px;\n}\n}", ""]);
+exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.categories-section {\n  padding-block: 60px;\n  position: relative;\n}\n.categories-section .title {\n  text-align: center;\n  position: absolute;\n  top: -19px;\n  left: 0;\n  right: 0;\n}\n.categories-section .title span {\n  font-weight: 700;\n  background-color: #FCCF4D;\n  padding: 15px 50px;\n  border-radius: 20px;\n  color: white;\n}\n.categories-section .categories-content li .card {\n  height: 150px;\n  border-radius: 20px;\n}\n.categories-section .categories-content li .card-body {\n  justify-content: center;\n  align-items: center;\n  padding: 0;\n  overflow: hidden;\n  border-radius: 20px;\n  position: relative;\n  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);\n}\n.categories-section .categories-content li .card-body img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.categories-section .categories-content li .card-body .overlay {\n  height: 100%;\n  width: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n}\n.categories-section .categories-content li .card-body a {\n  color: white;\n  text-align: center;\n  line-height: 150px;\n  font-size: 35px;\n}\n.categories-section .btn {\n  background-color: #FCCF4D;\n  color: #49BEB7;\n  padding: 10px 50px;\n  border-radius: 16px;\n  font-weight: 600;\n  font-size: 20px;\n}\n@media screen and (max-width: 1200px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 25px;\n    line-height: 120px;\n}\n.categories-section .categories-content li .card {\n    height: 120px;\n}\n.categories-section .categories-content li {\n    padding: 0 5px;\n}\n}\n@media screen and (max-width: 992px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 20px;\n    line-height: 100px;\n}\n.categories-section .categories-content li .card {\n    height: 100px;\n}\n.categories-section .categories-content li {\n    padding: 0;\n}\n}\n@media screen and (max-width: 768px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 15px;\n    line-height: 80px;\n}\n.categories-section .categories-content li .card {\n    height: 80px;\n}\n}", ""]);
 
 // exports
 
@@ -6978,7 +6994,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}", ""]);
+exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\nbody {\n  min-width: 480px;\n}", ""]);
 
 // exports
 

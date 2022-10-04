@@ -1,5 +1,5 @@
 <template>
-    <div class="container cateogries-section" id="categories">
+    <div class="container-fluid categories-section" id="categories">
         <div class="title">
             <h2>
                 <span>LE NOSTRE CATEGORIE</span>
@@ -7,8 +7,8 @@
         </div>
 
         <form @submit.prevent="sendCategory()">
-            <ul class="row categories-content">
-                <li v-for="category, index in categories" :key="index" class="col-sm-4 mt-4">
+            <ul class="row row-cols-6 categories-content">
+                <li v-for="category, index in categories" :key="index" class="col">
                     <div class="card">
                         <div class="card-body flex">
                             <a class="overlay" href="#categories" @click="getCategoryId(category.id)">{{category.name}}</a>
@@ -17,7 +17,9 @@
                     </div>
                 </li>
             </ul>
-            <button type="submit">Prova</button>
+            <div class="container d-flex justify-content-center align-items-center mt-5">
+                <button type="submit" class="btn">Filtra</button>
+            </div>
         </form>
     </div>
 </template>
@@ -69,34 +71,46 @@ export default {
                 let filtered_restaurants = response.data.results;
                 let all_restaurants = [];
                 let super_restaurants = [];
+                let pushable = true;
+                let displayable_restaurants = [];
                 filtered_restaurants.forEach(element => {
                     let restaurants = element.user;
                     restaurants.forEach(element => {
-                        let correct_restaurants = 0;
                         all_restaurants.push(element);
                     });
                 });
                 if(specificity > 1){
                     for(let i = 0; i < all_restaurants.length; i++){
-                    let local_specificity = 0;
-                    for(let j = 0; j < all_restaurants.length; j++){
-                        if(all_restaurants[j].id === all_restaurants[i].id){
-                            local_specificity++;
-                        }
-                    }
-                    if(local_specificity === specificity){
-                        if(!super_restaurants.includes(all_restaurants[i])){
-                            super_restaurants.push(all_restaurants[i]);
-                        }
-
-                        for(let k = 0; k < super_restaurants.length; k++){
-                            if(super_restaurants[k].id === all_restaurants[i].id){
-                                super_restaurants.pop();
+                        let local_specificity = 0;
+                        for(let j = 0; j < all_restaurants.length; j++){
+                            if(all_restaurants[j].id === all_restaurants[i].id){
+                                local_specificity++;
                             }
                         }
+                        if(local_specificity === specificity){
+                            if(!super_restaurants.includes(all_restaurants[i])){
+                                super_restaurants.push(all_restaurants[i]);
+                            }
+                        }
+                        // se è uguale si fa uno splice e si rimuove l'elemento utilizzando l'index del secondo ciclo
+                        console.log(super_restaurants);
                     }
+                    // ciclo sull'array super restaurants
+                    // for(let i = 0; i < super_restaurants.length; i++){
+                    //     let sameElement = 0;
+                    //     // secondo ciclo sull'array restaurants
+                    //     for(let j = 0; j < super_restaurants.length; j++){
+                    //         // controllo che l'id dell' elemento del secondo ciclo sia diverso dall'id dell'elemento del primo ciclo
+
+                    //         if(sameElement < 1){
+                    //             sameElement++;
+                    //         }else{
+
+                    //         }
+                    //     }
+                    // }
                 }
-                }else{
+                else{
                     super_restaurants = all_restaurants;
                 }
                 console.log(super_restaurants);
@@ -118,13 +132,13 @@ export default {
 @import '../common/variables.scss';
 
 .categories-section {
-    margin: 50px 0;
+    padding-block: 60px;
     position: relative;
 
     .title {
         text-align: center;
         position: absolute;
-        top: -70px;
+        top: -19px;
         left: 0;
         right: 0;
 
@@ -137,94 +151,96 @@ export default {
         }
 
     }
-}
-.categories-content {
+    .categories-content {
 
-    li {
-        .card {
-            height: 150px;
-            border-radius: 20px;
-        }
-        .card-body {
-            justify-content: center;
-            align-items: center;
-            padding: 0;
-            overflow: hidden;
-            border-radius: 20px;
-            position: relative;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
+        li {
+            .card {
+                height: 150px;
+                border-radius: 20px;
             }
+            .card-body {
+                justify-content: center;
+                align-items: center;
+                padding: 0;
+                overflow: hidden;
+                border-radius: 20px;
+                position: relative;
+                box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);
 
-            .overlay {
-                height: 100%;
-                width: 100%;
-                background-color: rgba(0, 0, 0, 0.5);
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-            }
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
 
-            a {
-                display: inline-block;
-                height: 100%;
-                width: 100%;
-                color: white;
-                text-align: center;
-                font-size: 35px;
-                line-height: 150px;
+                .overlay {
+                    height: 100%;
+                    width: 100%;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                }
+
+                a {
+                    color: white;
+                    text-align: center;
+                    line-height: 150px;
+                    font-size: 35px;
+                }
             }
         }
+    }
+
+    .btn {
+        background-color: $mainSecondColor;
+        color: $mainFirstColor;
+        padding: 10px 50px;
+        border-radius: 16px;
+        font-weight: 600;
+        font-size: 20px;
     }
 }
 
 
 
-@media screen and (max-width: 991px) {
-    .categories-content li .card-body a {
+@media screen and (max-width: 1200px) {
+    .categories-section .categories-content li .card .card-body a {
         font-size: 25px;
+        line-height: 120px;
+    }
+
+    .categories-section .categories-content li .card {
+        height: 120px;
+    }
+
+    .categories-section .categories-content li {
+        padding: 0 5px;
     }
 }
-
-
-@media screen and (max-width: 767px) {
-    .categories-content li .card-body a {
+@media screen and (max-width: 992px) {
+    .categories-section .categories-content li .card .card-body a {
         font-size: 20px;
+        line-height: 100px;
+    }
+
+    .categories-section .categories-content li .card {
+        height: 100px;
+    }
+
+    .categories-section .categories-content li {
+        padding: 0;
     }
 }
-
-@media screen and (max-width: 575px) {
-    .categories-content li .card-body a {
-        font-size: 40px;
-    }
-}
-
-@media screen and (max-width: 455px) {
-    .categories-section .title span {
-        font-size: 20px;
-    }
-}
-
-@media screen and (max-width: 377px) {
-    .categories-content li .card-body a {
-        font-size: 30px;
-    }
-
-    .categories-section .title span {
+@media screen and (max-width: 768px) {
+    .categories-section .categories-content li .card .card-body a {
         font-size: 15px;
-        display: block;
-        margin: 0 15px;
+        line-height: 80px;
     }
-}
 
-@media screen and (max-width: 277px) {
-    .categories-content li .card-body a {
-        font-size: 25px;
+    .categories-section .categories-content li .card {
+        height: 80px;
     }
 }
 </style>
