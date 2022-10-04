@@ -16,25 +16,28 @@ html .front-office-layout .nav-item {
   font-size: 17px;
 }
 html .front-office-layout .navbar-light .navbar-nav .login {
-  background-color: #FCCF4D;
+  color: #49BEB7 !important;
+  font-weight: 600;
   margin-right: 20px;
-  color: white;
+  border: 2px solid transparent;
+  background-color: #FCCF4D !important;
 }
 html .front-office-layout .navbar-light .navbar-nav .register {
-  background-color: white;
-  color: #FCCF4D;
+  color: white !important;
+  border: 2px solid transparent;
 }
 html .front-office-layout .navbar-light .navbar-nav .register,
 html .front-office-layout .navbar-light .navbar-nav .login {
+  background-color: #49BEB7;
   border-radius: 40px;
   padding: 3px 10px;
   transition: 0.4s;
 }
-html .front-office-layout .navbar-light .navbar-nav .register:hover,
+html .front-office-layout .navbar-light .navbar-nav .register:hover {
+  border: 2px solid #FCCF4D;
+}
 html .front-office-layout .navbar-light .navbar-nav .login:hover {
-  background-color: #49BEB7;
-  color: white;
-  outline: 2px solid #FCCF4D;
+  border: 2px solid white;
 }
 html .front-office-layout .navbar-brand {
   color: white !important;
@@ -43,9 +46,6 @@ html .front-office-layout .navbar-light .navbar-toggler {
   color: white;
   border-color: none;
   background-color: #FCCF4D;
-}
-html .front-office-layout .navbar-light .navbar-nav .nav-link {
-  color: white !important;
 }
 html .front-office-layout li {
   list-style-type: none;

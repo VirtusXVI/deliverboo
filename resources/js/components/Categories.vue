@@ -42,6 +42,7 @@ export default {
             ],
             categoryId: [],
             filtered_restaurants: [],
+            // isActive: false,
         }
     },
 
@@ -138,7 +139,7 @@ export default {
     .title {
         text-align: center;
         position: absolute;
-        top: -19px;
+        top: -77px;
         left: 0;
         right: 0;
 
@@ -148,6 +149,7 @@ export default {
             padding: 15px 50px;
             border-radius: 20px;
             color: white;
+            border: 5px solid #f8fafc;
         }
 
     }
@@ -201,6 +203,10 @@ export default {
         font-weight: 600;
         font-size: 20px;
     }
+
+    // .is-active {
+    //     box-shadow: 0px 0px 5px;
+    // }
 }
 
 

@@ -54,10 +54,7 @@
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
                             <li>
-                                <a href="/">Home</a>
-                            </li>
-                            <li>
-                                <a href="/categorie">Categorie</a>
+                                <a href="/" class="btn btn-home mr-3" style="color: white">Home</a>
                             </li>
                             <!-- Authentication Links -->
                             @guest
