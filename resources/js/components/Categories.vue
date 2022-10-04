@@ -60,9 +60,6 @@ export default {
             }
         },
         sendCategory() {
-            // for(let i = 0; i < this.categoryId.length; i++) {
-
-            // }
             axios.post('http://127.0.0.1:8000/api/ristoranti', {
                 id: this.categoryId
             })
@@ -72,17 +69,6 @@ export default {
             .catch(function (error) {
                 console.log(error);
             });
-            // EXAMPLE
-            // axios.post('/user', {
-            //     firstName: 'Fred',
-            //     lastName: 'Flintstone'
-            // })
-            // .then(function (response) {
-            //     console.log(response);
-            // })
-            // .catch(function (error) {
-            //     console.log(error);
-            // });
         }
     },
 
