@@ -21,5 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/ristoranti', 'Api\Usercontroller@index');
 // Route::get('/posts/{slug}', 'Api\Postcontroller@show');
 
+Route::get('/piatti/{id}', 'Api\Dishcontroller@index');
+
+Route::get('/dettagli-piatti/{slug}', 'Api\DishdetailsController@index');
+
 Route::get('/categorie', 'Api\Categoriescontroller@index');
 // Route::get('/posts/{slug}', 'Api\Postcontroller@show');

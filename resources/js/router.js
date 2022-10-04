@@ -5,6 +5,8 @@ Vue.use(VueRouter)
 
 import HomePage from './pages/HomePage.vue';
 import Categories from './pages/Categories.vue';
+import RestaurantMenu from './pages/RestaurantMenu.vue';
+import MenuDetails from './pages/MenuDetails.vue';
 
 const router = new VueRouter({
     mode: 'history',
@@ -18,6 +20,16 @@ const router = new VueRouter({
             path: '/categorie',
             name: 'categorie',
             component: Categories
+        },
+        {
+            path: '/menu-ristorante/:id',
+            name: 'menu',
+            component: RestaurantMenu
+        },
+        {
+            path: '/menu-ristorante/dettagli-piatto/:slug',
+            name: 'dish',
+            component: MenuDetails
         }
     ]
 });
