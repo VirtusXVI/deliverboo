@@ -11,17 +11,19 @@
                 <li v-for="category, index in categories" :key="index" class="col-sm-4 mt-4">
                     <div class="card">
                         <div class="card-body flex">
-                            <a type="submit" class="overlay" href="#categories" @click="getCategoryId(index + 1)">{{category.name}}</a>
+                            <a class="overlay" href="#categories" @click="getCategoryId(category.id)">{{category.name}}</a>
                             <img :src="categories_images[index]" :alt="category.name">
                         </div>
                     </div>
                 </li>
             </ul>
+            <button type="submit">Prova</button>
         </form>
     </div>
 </template>
 
 <script>
+
 export default {
     name: 'Categories',
 
@@ -29,7 +31,7 @@ export default {
         return {
             categories: [],
             categories_images: [
-                'https://www.buttalapasta.it/wp-content/uploads/2017/11/pizza-margherita.jpg',
+                'https://www.giallozafferano.it/images/249-24919/Pizza-napoletana_450x300.jpg',
                 'https://www.donnamoderna.com/content/uploads/2021/01/sushi-nigiri.jpg',
                 'https://www.fattoincasadabenedetta.it/wp-content/uploads/2019/12/tagliatelle-al-rag%C3%B9-di-salsiccia.jpg',
                 'https://athome.starbucks.com/sites/default/files/2021-08/LatteArtatHome_Header_0.jpg',
@@ -56,14 +58,31 @@ export default {
             } else {
                 this.categoryId.push(id);
             }
-            console.log(this.categoryId)
         },
         sendCategory() {
-            axios.post('/api/ristoranti')
-            .then((response) => {
-                this.categoryId = response;
-                console.log(response);
+            // for(let i = 0; i < this.categoryId.length; i++) {
+
+            // }
+            axios.post('http://127.0.0.1:8000/api/ristoranti', {
+                id: this.categoryId
+            })
+            .then(function (response) {
+                console.log(response.data.results);
+            })
+            .catch(function (error) {
+                console.log(error);
             });
+            // EXAMPLE
+            // axios.post('/user', {
+            //     firstName: 'Fred',
+            //     lastName: 'Flintstone'
+            // })
+            // .then(function (response) {
+            //     console.log(response);
+            // })
+            // .catch(function (error) {
+            //     console.log(error);
+            // });
         }
     },
 

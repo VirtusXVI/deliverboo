@@ -10,31 +10,20 @@ use App\Restaurant_category;
 class UserController extends Controller
 {
     public function index(Request $request) {
+        $filter = $request->all();
 
-        $user = User::find(1)->restaurant_category()->get();
+        $array_filter = [];
+
+        foreach($filter as $filt) {
+            $array_filter = $filt;
+        }
+
+        $users = Restaurant_category::with('user')->whereIn('id', $array_filter)->get();
 
         $data = [
-            'success' => true,
-            'results' => $user
+            'results' => $users
         ];
 
         return response()->json($data);
     }
-
-    // public function show($slug) {
-    //     $post = Post::where('slug', '=', $slug)->with(['tags', 'category'])->first();
-
-    //     if($post) {
-    //         $data = [
-    //             'success' => true,
-    //             'results' => $post
-    //         ];
-    //     } else {
-    //         $data = [
-    //             'success' => false
-    //         ];
-    //     }
-
-    //     return response()->json($data);
-    // }
 }

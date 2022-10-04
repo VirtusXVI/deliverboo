@@ -1913,7 +1913,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       categories: [],
-      categories_images: ['https://www.buttalapasta.it/wp-content/uploads/2017/11/pizza-margherita.jpg', 'https://www.donnamoderna.com/content/uploads/2021/01/sushi-nigiri.jpg', 'https://www.fattoincasadabenedetta.it/wp-content/uploads/2019/12/tagliatelle-al-rag%C3%B9-di-salsiccia.jpg', 'https://athome.starbucks.com/sites/default/files/2021-08/LatteArtatHome_Header_0.jpg', 'https://www.ricettedalmondo.it/images/foto-ricette/t/29620-torta-della-nonna.jpg', 'https://vegnews.com/media/W1siZiIsIjI5NDQ2L1ZlZ05ld3MuVmVnYW5GYXN0Rm9vZC5Nb250eXNHb29kQnVyZ2VyLmpwZyJdLFsicCIsInRodW1iIiwiMTYwMHg5NDYjIix7ImZvcm1hdCI6ImpwZyJ9XSxbInAiLCJvcHRpbWl6ZSJdXQ/VegNews.VeganFastFood.MontysGoodBurger.jpg?sha=892e9c726614c0f8'],
+      categories_images: ['https://www.giallozafferano.it/images/249-24919/Pizza-napoletana_450x300.jpg', 'https://www.donnamoderna.com/content/uploads/2021/01/sushi-nigiri.jpg', 'https://www.fattoincasadabenedetta.it/wp-content/uploads/2019/12/tagliatelle-al-rag%C3%B9-di-salsiccia.jpg', 'https://athome.starbucks.com/sites/default/files/2021-08/LatteArtatHome_Header_0.jpg', 'https://www.ricettedalmondo.it/images/foto-ricette/t/29620-torta-della-nonna.jpg', 'https://vegnews.com/media/W1siZiIsIjI5NDQ2L1ZlZ05ld3MuVmVnYW5GYXN0Rm9vZC5Nb250eXNHb29kQnVyZ2VyLmpwZyJdLFsicCIsInRodW1iIiwiMTYwMHg5NDYjIix7ImZvcm1hdCI6ImpwZyJ9XSxbInAiLCJvcHRpbWl6ZSJdXQ/VegNews.VeganFastFood.MontysGoodBurger.jpg?sha=892e9c726614c0f8'],
       categoryId: []
     };
   },
@@ -1935,16 +1935,27 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.categoryId.push(id);
       }
-
-      console.log(this.categoryId);
     },
     sendCategory: function sendCategory() {
-      var _this2 = this;
-
-      axios.post('/api/ristoranti').then(function (response) {
-        _this2.categoryId = response;
-        console.log(response);
-      });
+      // for(let i = 0; i < this.categoryId.length; i++) {
+      // }
+      axios.post('http://127.0.0.1:8000/api/ristoranti', {
+        id: this.categoryId
+      }).then(function (response) {
+        console.log(response.data.results);
+      })["catch"](function (error) {
+        console.log(error);
+      }); // EXAMPLE
+      // axios.post('/user', {
+      //     firstName: 'Fred',
+      //     lastName: 'Flintstone'
+      // })
+      // .then(function (response) {
+      //     console.log(response);
+      // })
+      // .catch(function (error) {
+      //     console.log(error);
+      // });
     }
   },
   mounted: function mounted() {
@@ -2170,12 +2181,11 @@ var render = function render() {
     }, [_c("a", {
       staticClass: "overlay",
       attrs: {
-        type: "submit",
         href: "#categories"
       },
       on: {
         click: function click($event) {
-          return _vm.getCategoryId(index + 1);
+          return _vm.getCategoryId(category.id);
         }
       }
     }, [_vm._v(_vm._s(category.name))]), _vm._v(" "), _c("img", {
@@ -2184,7 +2194,11 @@ var render = function render() {
         alt: category.name
       }
     })])])]);
-  }), 0)])]);
+  }), 0), _vm._v(" "), _c("button", {
+    attrs: {
+      type: "submit"
+    }
+  }, [_vm._v("Prova")])])]);
 };
 
 var staticRenderFns = [function () {
