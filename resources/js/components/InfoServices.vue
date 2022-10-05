@@ -2,7 +2,7 @@
     <div class="info-services">
         <div class="container">
             <ul class="row row-cols-lg-3 row-cols-1">
-                 <li v-for="(item, index) in cardDetails" :key="index" class="col" :class="item.class">
+                <li v-for="(item, index) in cardDetails" :key="index" class="col" :class="item.class">
                     <div class="card">
                         <div class="card-body">
                             <div class="thumb">
