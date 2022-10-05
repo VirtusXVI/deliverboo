@@ -55,7 +55,7 @@ export default {
         let total = 0;
 
         for (let menu of this.$store.state.cart) {
-            total += menu.totalPrice;
+            total += parseFloat(menu.totalPrice);
         }
         
         return parseFloat(total).toFixed(2);
@@ -66,6 +66,7 @@ export default {
 
 <style lang="scss" scoped>
 .removeBtn {
+    font-size: 20px;
     margin-right: 1rem;
     color: red;
 }
