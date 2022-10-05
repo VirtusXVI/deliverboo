@@ -93,19 +93,6 @@ export default {
     }
 }
 
-// @media screen and (max-width: 575px) {
-//     .info-services .down{
-//         padding-top: 0;
-//         display: block;
-//     }
-// }
-
-// @media screen and (max-width: 1200px) {
-//     .info-services .container {
-//         padding-inline: 200px;
-//     }
-// }
-
 @media screen and (max-width: 1000px) {
     .info-services .container {
         padding-inline: 150px;
