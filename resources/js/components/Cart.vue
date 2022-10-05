@@ -13,8 +13,12 @@
                 {{ menu.name }} x {{ menu.quantity }} - Prezzo: &euro;{{ menu.totalPrice }}
                 <span class="removeBtn ml-3"
                     title="Remove from cart"
-                    @click.prevent="removeFromCart(menu)">X
+                    @click.prevent="removeFromCart(menu)">-
                 </span>
+                <!-- <span class="removeBtn ml-3"
+                    title="Remove from cart"
+                    @click.prevent="increaseQuantityFromCart(menu)">+
+                </span> -->
             </a>
 
             <a class="navbar-item" href="">
@@ -54,7 +58,7 @@ export default {
             total += menu.totalPrice;
         }
         
-        return parseInt(total).toFixed(2);
+        return parseFloat(total).toFixed(2);
     }
 }
 }

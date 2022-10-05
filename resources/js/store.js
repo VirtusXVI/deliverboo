@@ -33,6 +33,7 @@ let store = {
                 state.cartCount -= product.quantity;
         
                 state.cart.splice(index, 1);
+                
             }
             this.commit('saveCart');
         },
