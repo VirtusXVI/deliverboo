@@ -24,8 +24,27 @@
 
         <section>
             <div v-for="restaurant,index in super_restaurants" :key="index">
-                <div>
-                    {{ restaurant.restaurant_name }}
+                <div class="card">
+                    <div class="card-img-top">
+                        <img :src="'storage/' + restaurant.restaurant_image" :alt="restaurant.restaurant_name">
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h5>{{restaurant.restaurant_name}}</h5>
+                        </div>
+                        <div class="card-text">
+                            <p>{{restaurant.address}}</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <router-link 
+                        :to="{
+                            name: 'menu', 
+                            params: {id: restaurant.id}
+                        }" class="ms-btn">Scopri dettagli 
+                    </router-link>
+                    </div>
                 </div>
             </div>
         </section>

@@ -2434,7 +2434,32 @@ var render = function render() {
   }), 0), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c("section", _vm._l(_vm.super_restaurants, function (restaurant, index) {
     return _c("div", {
       key: index
-    }, [_c("div", [_vm._v("\n                " + _vm._s(restaurant.restaurant_name) + "\n            ")])]);
+    }, [_c("div", {
+      staticClass: "card"
+    }, [_c("div", {
+      staticClass: "card-img-top"
+    }, [_c("img", {
+      attrs: {
+        src: "storage/" + restaurant.restaurant_image,
+        alt: restaurant.restaurant_name
+      }
+    })]), _vm._v(" "), _c("div", {
+      staticClass: "card-body"
+    }, [_c("div", {
+      staticClass: "card-title"
+    }, [_c("h5", [_vm._v(_vm._s(restaurant.restaurant_name))])]), _vm._v(" "), _c("div", {
+      staticClass: "card-text"
+    }, [_c("p", [_vm._v(_vm._s(restaurant.address))])])]), _vm._v(" "), _c("div", [_c("router-link", {
+      staticClass: "ms-btn",
+      attrs: {
+        to: {
+          name: "menu",
+          params: {
+            id: restaurant.id
+          }
+        }
+      }
+    }, [_vm._v("Scopri dettagli \n                ")])], 1)])]);
   }), 0)]);
 };
 
@@ -56047,7 +56072,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -56098,8 +56123,8 @@ if (token) {
 
 window.Vue = vue__WEBPACK_IMPORTED_MODULE_1___default.a;
 
-window.Vuex = vuex__WEBPACK_IMPORTED_MODULE_2__["default"];
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__["default"]);
+window.Vuex = vuex__WEBPACK_IMPORTED_MODULE_3__["default"];
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_3__["default"]);
 
 /***/ }),
 
@@ -57144,8 +57169,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\NicoY\boolean_projects\deliverboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\NicoY\boolean_projects\deliverboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\acesp\Boolean66\PHP\deliverboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\acesp\Boolean66\PHP\deliverboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

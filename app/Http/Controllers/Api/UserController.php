@@ -32,8 +32,7 @@ class UserController extends Controller
 
     public function filter(Request $request) {
         $filter = $this->index($request);
-
-
+        
         return response()->json($filter);
     }
     
