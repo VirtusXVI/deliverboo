@@ -1963,8 +1963,7 @@ __webpack_require__.r(__webpack_exports__);
       categories_images: ['https://www.giallozafferano.it/images/249-24919/Pizza-napoletana_450x300.jpg', 'https://www.donnamoderna.com/content/uploads/2021/01/sushi-nigiri.jpg', 'https://www.fattoincasadabenedetta.it/wp-content/uploads/2019/12/tagliatelle-al-rag%C3%B9-di-salsiccia.jpg', 'https://athome.starbucks.com/sites/default/files/2021-08/LatteArtatHome_Header_0.jpg', 'https://www.ricettedalmondo.it/images/foto-ricette/t/29620-torta-della-nonna.jpg', 'https://vegnews.com/media/W1siZiIsIjI5NDQ2L1ZlZ05ld3MuVmVnYW5GYXN0Rm9vZC5Nb250eXNHb29kQnVyZ2VyLmpwZyJdLFsicCIsInRodW1iIiwiMTYwMHg5NDYjIix7ImZvcm1hdCI6ImpwZyJ9XSxbInAiLCJvcHRpbWl6ZSJdXQ/VegNews.VeganFastFood.MontysGoodBurger.jpg?sha=892e9c726614c0f8'],
       categoryId: [],
       filtered_restaurants: [],
-      isActive: [],
-      super_restaurants: []
+      isActive: []
     };
   },
   methods: {
@@ -1978,17 +1977,6 @@ __webpack_require__.r(__webpack_exports__);
     sendCategory: function sendCategory() {
       axios.post('http://127.0.0.1:8000/api/ristoranti', {
         id: this.categoryId
-      }).then(function (response) {})["catch"](function (error) {
-        console.log(error);
-      });
-    },
-    getFilteredRestaurants: function getFilteredRestaurants() {
-      var _this2 = this;
-
-      axios.get('http://127.0.0.1:8000/api/filteredrestaurants', {
-        params: {
-          id: this.categoryId
-        }
       }).then(function (response) {
         var specificity = response.data.results.length;
         var filtered_restaurants = response.data.results;
@@ -2013,19 +2001,23 @@ __webpack_require__.r(__webpack_exports__);
 
             if (local_specificity === specificity) {
               if (!displayable_restaurants.includes(all_restaurants[i])) {
-                var elementToPush = all_restaurants[i]; // dichiaro una variabile is_present inizializzata a false
-
-                var is_present = false; // controllo che l'elemento che sto per pushare non abbia l'id di un elemento già presente all'interno dell'array
-
-                for (var _j = 0; _j < displayable_restaurants.length; _j++) {
-                  if (elementToPush.id === displayable_restaurants[_j].id) {
-                    is_present = true;
-                  }
-                } // se l'elemento che sto per pushare non ha lo stesso id di un elemento che è già presente nell'array lo pusho
+                displayable_restaurants.push(all_restaurants[i]);
+              }
+            }
+          } // ciclo sull'array super restaurants
 
 
-                if (is_present === false) {
-                  displayable_restaurants.push(elementToPush);
+          for (var _i = 0; _i < displayable_restaurants.length; _i++) {
+            var sameElement = 0; // secondo ciclo sull'array restaurants
+
+            for (var _j = 0; _j < displayable_restaurants.length; _j++) {
+              // controllo che l'id dell' elemento del secondo ciclo sia diverso dall'id dell'elemento del primo ciclo
+              if (sameElement < 1 && displayable_restaurants[_j].id === displayable_restaurants[_i].id) {
+                sameElement++;
+              } else {
+                if (sameElement > 0 && displayable_restaurants[_j].id === displayable_restaurants[_i].id) {
+                  // se è uguale si fa uno splice e si rimuove l'elemento utilizzando l'index del secondo ciclo
+                  displayable_restaurants.splice(displayable_restaurants[_j], 1);
                 }
               }
             }
@@ -2034,7 +2026,9 @@ __webpack_require__.r(__webpack_exports__);
           displayable_restaurants = all_restaurants;
         }
 
-        _this2.super_restaurants = displayable_restaurants;
+        console.log(displayable_restaurants);
+      })["catch"](function (error) {
+        console.log(error);
       });
     },
     toggle: function toggle(array, item) {
@@ -2399,7 +2393,7 @@ var render = function render() {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        _vm.sendCategory(), _vm.getFilteredRestaurants();
+        return _vm.sendCategory();
       }
     }
   }, [_c("ul", {
@@ -2431,11 +2425,7 @@ var render = function render() {
         alt: category.name
       }
     })])])]);
-  }), 0), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c("section", _vm._l(_vm.super_restaurants, function (restaurant, index) {
-    return _c("div", {
-      key: index
-    }, [_c("div", [_vm._v("\n                " + _vm._s(restaurant.restaurant_name) + "\n            ")])]);
-  }), 0)]);
+  }), 0), _vm._v(" "), _vm._m(1)])]);
 };
 
 var staticRenderFns = [function () {

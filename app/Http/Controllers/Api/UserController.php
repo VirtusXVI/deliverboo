@@ -29,10 +29,5 @@ class UserController extends Controller
 
         return response()->json($data);
     }
-    public function filter(Request $request) {
-        $filter = $this->index($request);
-
-
-        return response()->json($filter);
-    }
+    
 }

@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/ristoranti', 'Api\Usercontroller@index');
-Route::get('/filteredrestaurants', 'Api\Usercontroller@filter');
+
 // Route::get('/posts/{slug}', 'Api\Postcontroller@show');
 
 Route::get('/piatti/{id}', 'Api\Dishcontroller@index');
