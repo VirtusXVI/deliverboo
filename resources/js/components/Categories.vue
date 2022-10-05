@@ -61,8 +61,6 @@ export default {
                 let specificity = response.data.results.length;
                 let filtered_restaurants = response.data.results;
                 let all_restaurants = [];
-                let super_restaurants = [];
-                let pushable = true;
                 let displayable_restaurants = [];
                 filtered_restaurants.forEach(element => {
                     let restaurants = element.user;
@@ -79,32 +77,34 @@ export default {
                             }
                         }
                         if(local_specificity === specificity){
-                            if(!super_restaurants.includes(all_restaurants[i])){
-                                super_restaurants.push(all_restaurants[i]);
+                            if(!displayable_restaurants.includes(all_restaurants[i])){
+                                displayable_restaurants.push(all_restaurants[i]);
                             }
                         }
-                        // se è uguale si fa uno splice e si rimuove l'elemento utilizzando l'index del secondo ciclo
-                        console.log(super_restaurants);
                     }
                     // ciclo sull'array super restaurants
-                    // for(let i = 0; i < super_restaurants.length; i++){
-                    //     let sameElement = 0;
-                    //     // secondo ciclo sull'array restaurants
-                    //     for(let j = 0; j < super_restaurants.length; j++){
-                    //         // controllo che l'id dell' elemento del secondo ciclo sia diverso dall'id dell'elemento del primo ciclo
+                    for(let i = 0; i < displayable_restaurants.length; i++){
+                        let sameElement = 0;
+                        // secondo ciclo sull'array restaurants
+                        for(let j = 0; j < displayable_restaurants.length; j++){
+                            // controllo che l'id dell' elemento del secondo ciclo sia diverso dall'id dell'elemento del primo ciclo
 
-                    //         if(sameElement < 1){
-                    //             sameElement++;
-                    //         }else{
-
-                    //         }
-                    //     }
-                    // }
+                            if(sameElement < 1 && displayable_restaurants[j].id === displayable_restaurants[i].id){
+                                sameElement++;
+                            }else{
+                                if(sameElement > 0 && displayable_restaurants[j].id === displayable_restaurants[i].id){
+                                    // se è uguale si fa uno splice e si rimuove l'elemento utilizzando l'index del secondo ciclo
+                                    displayable_restaurants.splice(displayable_restaurants[j], 1);
+                                }
+                            }
+                            
+                        }
+                    }
                 }
                 else{
-                    super_restaurants = all_restaurants;
+                    displayable_restaurants = all_restaurants;
                 }
-                console.log(super_restaurants);
+                console.log(displayable_restaurants);
             })
             .catch(function (error) {
                 console.log(error);

@@ -13,13 +13,13 @@
                         <div class="dish-details">
                             <div class="card-body">
                                 <div class="description">
-                                        <div class="title">
-                                            <span><strong>{{menu.name}}</strong></span>
-                                        </div>
-                                        <div class="price">
-                                            <span><strong>Prezzo:</strong></span>
-                                            <p class="card-text">{{menu.price}} &euro;</p>
-                                        </div>
+                                    <div class="title">
+                                        <span><strong>{{menu.name}}</strong></span>
+                                    </div>
+                                    <div class="price">
+                                        <span><strong>Prezzo:</strong></span>
+                                        <p class="card-text">{{menu.price}} &euro;</p>
+                                    </div>
                                 </div>
 
                                 <div class="button">

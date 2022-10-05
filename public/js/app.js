@@ -1934,8 +1934,6 @@ __webpack_require__.r(__webpack_exports__);
         var specificity = response.data.results.length;
         var filtered_restaurants = response.data.results;
         var all_restaurants = [];
-        var super_restaurants = [];
-        var pushable = true;
         var displayable_restaurants = [];
         filtered_restaurants.forEach(function (element) {
           var restaurants = element.user;
@@ -1955,31 +1953,33 @@ __webpack_require__.r(__webpack_exports__);
             }
 
             if (local_specificity === specificity) {
-              if (!super_restaurants.includes(all_restaurants[i])) {
-                super_restaurants.push(all_restaurants[i]);
+              if (!displayable_restaurants.includes(all_restaurants[i])) {
+                displayable_restaurants.push(all_restaurants[i]);
               }
-            } // se è uguale si fa uno splice e si rimuove l'elemento utilizzando l'index del secondo ciclo
-
-
-            console.log(super_restaurants);
+            }
           } // ciclo sull'array super restaurants
-          // for(let i = 0; i < super_restaurants.length; i++){
-          //     let sameElement = 0;
-          //     // secondo ciclo sull'array restaurants
-          //     for(let j = 0; j < super_restaurants.length; j++){
-          //         // controllo che l'id dell' elemento del secondo ciclo sia diverso dall'id dell'elemento del primo ciclo
-          //         if(sameElement < 1){
-          //             sameElement++;
-          //         }else{
-          //         }
-          //     }
-          // }
 
+
+          for (var _i = 0; _i < displayable_restaurants.length; _i++) {
+            var sameElement = 0; // secondo ciclo sull'array restaurants
+
+            for (var _j = 0; _j < displayable_restaurants.length; _j++) {
+              // controllo che l'id dell' elemento del secondo ciclo sia diverso dall'id dell'elemento del primo ciclo
+              if (sameElement < 1 && displayable_restaurants[_j].id === displayable_restaurants[_i].id) {
+                sameElement++;
+              } else {
+                if (sameElement > 0 && displayable_restaurants[_j].id === displayable_restaurants[_i].id) {
+                  // se è uguale si fa uno splice e si rimuove l'elemento utilizzando l'index del secondo ciclo
+                  displayable_restaurants.splice(displayable_restaurants[_j], 1);
+                }
+              }
+            }
+          }
         } else {
-          super_restaurants = all_restaurants;
+          displayable_restaurants = all_restaurants;
         }
 
-        console.log(super_restaurants);
+        console.log(displayable_restaurants);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -55515,8 +55515,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Loris\boolean-projects\progetto-finale\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Loris\boolean-projects\progetto-finale\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\virtu\BooleanProjects\deliverboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\virtu\BooleanProjects\deliverboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
