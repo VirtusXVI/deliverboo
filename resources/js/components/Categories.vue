@@ -6,7 +6,7 @@
             </h2>
         </div>
 
-        <form @submit.prevent="sendCategory()">
+        <form @submit.prevent="sendCategory(), getFilteredRestaurants()">
             <ul class="row row-cols-6 categories-content">
                 <li v-for="category, index in categories" :key="index" class="col">
                     <div class="card" :class="{'is-active' : isActive.includes(index)}">
@@ -21,6 +21,14 @@
                 <button type="submit" class="btn">Filtra</button>
             </div>
         </form>
+
+        <section>
+            <div v-for="restaurant,index in super_restaurants" :key="index">
+                <div>
+                    {{ restaurant.restaurant_name }}
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 
@@ -43,6 +51,7 @@ export default {
             categoryId: [],
             filtered_restaurants: [],
             isActive: [],
+            super_restaurants:[],
         }
     },
 
@@ -58,6 +67,14 @@ export default {
                 id: this.categoryId
             })
             .then(function (response) {
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        },
+        getFilteredRestaurants(){
+            axios.get('http://127.0.0.1:8000/api/filteredrestaurants', { params: {id: this.categoryId} })
+            .then((response) => {
                 let specificity = response.data.results.length;
                 let filtered_restaurants = response.data.results;
                 let all_restaurants = [];
@@ -78,37 +95,30 @@ export default {
                         }
                         if(local_specificity === specificity){
                             if(!displayable_restaurants.includes(all_restaurants[i])){
-                                displayable_restaurants.push(all_restaurants[i]);
-                            }
-                        }
-                    }
-                    // ciclo sull'array super restaurants
-                    for(let i = 0; i < displayable_restaurants.length; i++){
-                        let sameElement = 0;
-                        // secondo ciclo sull'array restaurants
-                        for(let j = 0; j < displayable_restaurants.length; j++){
-                            // controllo che l'id dell' elemento del secondo ciclo sia diverso dall'id dell'elemento del primo ciclo
+                                let elementToPush = all_restaurants[i];
+                                // dichiaro una variabile is_present inizializzata a false
+                                let is_present = false;
+                                // controllo che l'elemento che sto per pushare non abbia l'id di un elemento già presente all'interno dell'array
+                                for(let j = 0; j < displayable_restaurants.length; j++){
+                                    if(elementToPush.id === displayable_restaurants[j].id){
+                                        is_present = true;
+                                    }
+                                }
 
-                            if(sameElement < 1 && displayable_restaurants[j].id === displayable_restaurants[i].id){
-                                sameElement++;
-                            }else{
-                                if(sameElement > 0 && displayable_restaurants[j].id === displayable_restaurants[i].id){
-                                    // se è uguale si fa uno splice e si rimuove l'elemento utilizzando l'index del secondo ciclo
-                                    displayable_restaurants.splice(displayable_restaurants[j], 1);
+                                // se l'elemento che sto per pushare non ha lo stesso id di un elemento che è già presente nell'array lo pusho
+                                if(is_present === false){
+                                    displayable_restaurants.push(elementToPush);
                                 }
                             }
-                            
                         }
                     }
                 }
                 else{
                     displayable_restaurants = all_restaurants;
                 }
-                console.log(displayable_restaurants);
+
+                this.super_restaurants = displayable_restaurants;
             })
-            .catch(function (error) {
-                console.log(error);
-            });
         },
         toggle(array, item) {
             if(array.includes(item)) {
