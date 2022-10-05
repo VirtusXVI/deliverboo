@@ -1,5 +1,6 @@
 <template>
     <section>
+
         <div class="container">
             <div v-for="restaurant, index in restaurants" :key="index">
                 <div class="card">

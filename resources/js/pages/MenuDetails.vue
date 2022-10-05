@@ -28,7 +28,7 @@
                     <span>
                         {{dishDetails.ingredients}} 
                     </span>
-                </div>
+                </div>                
             </div>
         </div>
     </main>

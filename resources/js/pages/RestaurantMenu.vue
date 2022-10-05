@@ -1,5 +1,6 @@
 <template>
     <main class="restaurant-menu">
+        <Cart />
         <div class="jumbotron">
             immagine ristorante
         </div>
@@ -30,6 +31,7 @@
                                         }" class="ms-btn">Scopri dettagli 
                                     </router-link>
                                 </div>
+                                <button class="button is-success" @click="addToCart(menu)">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -40,8 +42,14 @@
 </template>
 
 <script>
+import Cart from '../components/Cart.vue'
     export default {
         name: 'RestaurantMenu',
+
+        components: {
+            Cart,
+        },
+
         data() {
             return {
                 menuRestaurant: []
@@ -54,7 +62,11 @@
                 .then((response) => {
                     this.menuRestaurant = response.data.results;
                 })
-            }
+            },
+
+            addToCart(menu) {
+                this.$store.commit('addToCart', menu);
+            },
         },
     
         mounted() {

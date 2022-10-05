@@ -56,6 +56,11 @@
                             <li>
                                 <a href="/" class="btn btn-home mr-3" style="color: white">Home</a>
                             </li>
+                            <div id="navbarExampleTransparentExample" class="navbar-menu"> 
+                                <div class="navbar-end">
+                                    {{-- <cart-dropdown></cart-dropdown> --}}
+                                </div>
+                            </div>
                             <!-- Authentication Links -->
                             @guest
                                 <li class="nav-item">
