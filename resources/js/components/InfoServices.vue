@@ -1,18 +1,18 @@
 <template>
     <div class="info-services">
-        <div class="ms-small-container">
-            <ul class="row info-services-card flex">
-                 <li v-for="(item, index) in cardDetails" :key="index" class="col-md-4 mt-4" :class="item.class">
+        <div class="container">
+            <ul class="row row-cols-lg-3 row-cols-1">
+                 <li v-for="(item, index) in cardDetails" :key="index" class="col" :class="item.class">
                     <div class="card">
                         <div class="card-body">
-                            <div class="thumb flex">
+                            <div class="thumb">
                                 <img :src="item.thumb" :alt="item.alt">
                             </div>
-                            <div class="text flex">
+                            <div class="text">
                                 <div class="title">
                                     <h4>{{item.title}}</h4>
                                 </div>
-                                <div class="description">
+                                <div class="description mt-3">
                                     <p>{{item.description}}</p>
                                 </div>
                             </div>
@@ -59,42 +59,62 @@ export default {
 @import '../common/variables.scss';
 .info-services {
     margin: 50px 0;
+    .container {
+        margin: 0 auto;
+    
+        li {
+            padding: 20px;
+            
+            .card {
+                min-height: 400px;
+                .card-body {
+                    padding: 0;
 
-    .row .info-services-card .flex {
-        justify-content: space-between;
-    }
+                    .thumb {
+                        padding: 30px;
 
-    li {
-        padding: 20px;
-        .card-body {
-            padding: 0;
+                        img{
+                            display: block;
+                            width: 75%;
+                            margin: 0 auto;
+                        }
+                    }
 
-            .thumb {
-                justify-content: center;
-                padding: 30px;
+                    .text {
+                        padding: 0px 20px 20px 20px;
 
-                img{
-                    width: 75%;
-                }
-            }
-
-            .text {
-                flex-direction: column;
-                align-items: center;
-                padding: 0px 20px 20px 20px;
-
-                .title, .description {
-                    text-align: center;
+                        .title, .description {
+                            text-align: center;
+                        }
+                    }
                 }
             }
         }
     }
 }
 
-@media screen and (max-width: 575px) {
-    .info-services .down{
-        padding-top: 0;
-        display: block;
+// @media screen and (max-width: 575px) {
+//     .info-services .down{
+//         padding-top: 0;
+//         display: block;
+//     }
+// }
+
+// @media screen and (max-width: 1200px) {
+//     .info-services .container {
+//         padding-inline: 200px;
+//     }
+// }
+
+@media screen and (max-width: 1000px) {
+    .info-services .container {
+        padding-inline: 150px;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .info-services .container {
+        padding-inline: 75px;
     }
 }
 </style>

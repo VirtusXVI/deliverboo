@@ -9,9 +9,9 @@
         <form @submit.prevent="sendCategory()">
             <ul class="row row-cols-6 categories-content">
                 <li v-for="category, index in categories" :key="index" class="col">
-                    <div class="card">
+                    <div class="card" :class="{'is-active' : isActive.includes(index)}">
                         <div class="card-body flex">
-                            <a class="overlay" href="#categories" @click="getCategoryId(category.id)">{{category.name}}</a>
+                            <a class="overlay" href="#categories" @click="toggle(categoryId, category.id), toggle(isActive, index)">{{category.name}}</a>
                             <img :src="categories_images[index]" :alt="category.name">
                         </div>
                     </div>
@@ -42,7 +42,7 @@ export default {
             ],
             categoryId: [],
             filtered_restaurants: [],
-            // isActive: false,
+            isActive: [],
         }
     },
 
@@ -52,16 +52,6 @@ export default {
             .then((response) => {
             this.categories = response.data.results;
             });
-        },
-        getCategoryId(id) {
-            if(this.categoryId.includes(id)) {
-                let index = this.categoryId.indexOf(id);
-                if (index !== -1) {
-                    this.categoryId.splice(index, 1);
-                }
-            } else {
-                this.categoryId.push(id);
-            }
         },
         sendCategory() {
             axios.post('http://127.0.0.1:8000/api/ristoranti', {
@@ -119,6 +109,16 @@ export default {
             .catch(function (error) {
                 console.log(error);
             });
+        },
+        toggle(array, item) {
+            if(array.includes(item)) {
+                let index = array.indexOf(item);
+                if (index !== -1) {
+                    array.splice(index, 1);
+                }
+            } else {
+                array.push(item);
+            }
         }
     },
 
@@ -204,9 +204,11 @@ export default {
         font-size: 20px;
     }
 
-    // .is-active {
-    //     box-shadow: 0px 0px 5px;
-    // }
+    .is-active {
+        box-shadow: 0px 0px 10px;
+        border: 3px solid $mainFirstColor;
+        background-color: $mainFirstColor;
+    }
 }
 
 

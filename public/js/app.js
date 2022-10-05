@@ -1915,8 +1915,8 @@ __webpack_require__.r(__webpack_exports__);
       categories: [],
       categories_images: ['https://www.giallozafferano.it/images/249-24919/Pizza-napoletana_450x300.jpg', 'https://www.donnamoderna.com/content/uploads/2021/01/sushi-nigiri.jpg', 'https://www.fattoincasadabenedetta.it/wp-content/uploads/2019/12/tagliatelle-al-rag%C3%B9-di-salsiccia.jpg', 'https://athome.starbucks.com/sites/default/files/2021-08/LatteArtatHome_Header_0.jpg', 'https://www.ricettedalmondo.it/images/foto-ricette/t/29620-torta-della-nonna.jpg', 'https://vegnews.com/media/W1siZiIsIjI5NDQ2L1ZlZ05ld3MuVmVnYW5GYXN0Rm9vZC5Nb250eXNHb29kQnVyZ2VyLmpwZyJdLFsicCIsInRodW1iIiwiMTYwMHg5NDYjIix7ImZvcm1hdCI6ImpwZyJ9XSxbInAiLCJvcHRpbWl6ZSJdXQ/VegNews.VeganFastFood.MontysGoodBurger.jpg?sha=892e9c726614c0f8'],
       categoryId: [],
-      filtered_restaurants: [] // isActive: false,
-
+      filtered_restaurants: [],
+      isActive: []
     };
   },
   methods: {
@@ -1926,17 +1926,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('http://127.0.0.1:8000/api/categorie').then(function (response) {
         _this.categories = response.data.results;
       });
-    },
-    getCategoryId: function getCategoryId(id) {
-      if (this.categoryId.includes(id)) {
-        var index = this.categoryId.indexOf(id);
-
-        if (index !== -1) {
-          this.categoryId.splice(index, 1);
-        }
-      } else {
-        this.categoryId.push(id);
-      }
     },
     sendCategory: function sendCategory() {
       axios.post('http://127.0.0.1:8000/api/ristoranti', {
@@ -1994,6 +1983,17 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    toggle: function toggle(array, item) {
+      if (array.includes(item)) {
+        var index = array.indexOf(item);
+
+        if (index !== -1) {
+          array.splice(index, 1);
+        }
+      } else {
+        array.push(item);
+      }
     }
   },
   mounted: function mounted() {
@@ -2277,7 +2277,10 @@ var render = function render() {
       key: index,
       staticClass: "col"
     }, [_c("div", {
-      staticClass: "card"
+      staticClass: "card",
+      "class": {
+        "is-active": _vm.isActive.includes(index)
+      }
     }, [_c("div", {
       staticClass: "card-body flex"
     }, [_c("a", {
@@ -2287,7 +2290,7 @@ var render = function render() {
       },
       on: {
         click: function click($event) {
-          return _vm.getCategoryId(category.id);
+          _vm.toggle(_vm.categoryId, category.id), _vm.toggle(_vm.isActive, index);
         }
       }
     }, [_vm._v(_vm._s(category.name))]), _vm._v(" "), _c("img", {
@@ -2342,31 +2345,31 @@ var render = function render() {
   return _c("div", {
     staticClass: "info-services"
   }, [_c("div", {
-    staticClass: "ms-small-container"
+    staticClass: "container"
   }, [_c("ul", {
-    staticClass: "row info-services-card flex"
+    staticClass: "row row-cols-lg-3 row-cols-1"
   }, _vm._l(_vm.cardDetails, function (item, index) {
     return _c("li", {
       key: index,
-      staticClass: "col-md-4 mt-4",
+      staticClass: "col",
       "class": item["class"]
     }, [_c("div", {
       staticClass: "card"
     }, [_c("div", {
       staticClass: "card-body"
     }, [_c("div", {
-      staticClass: "thumb flex"
+      staticClass: "thumb"
     }, [_c("img", {
       attrs: {
         src: item.thumb,
         alt: item.alt
       }
     })]), _vm._v(" "), _c("div", {
-      staticClass: "text flex"
+      staticClass: "text"
     }, [_c("div", {
       staticClass: "title"
     }, [_c("h4", [_vm._v(_vm._s(item.title))])]), _vm._v(" "), _c("div", {
-      staticClass: "description"
+      staticClass: "description mt-3"
     }, [_c("p", [_vm._v(_vm._s(item.description))])])])])])]);
   }), 0)])]);
 };
@@ -7092,7 +7095,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.categories-section {\n  padding-block: 60px;\n  position: relative;\n}\n.categories-section .title {\n  text-align: center;\n  position: absolute;\n  top: -77px;\n  left: 0;\n  right: 0;\n}\n.categories-section .title span {\n  font-weight: 700;\n  background-color: #FCCF4D;\n  padding: 15px 50px;\n  border-radius: 20px;\n  color: white;\n  border: 5px solid #f8fafc;\n}\n.categories-section .categories-content li .card {\n  height: 150px;\n  border-radius: 20px;\n}\n.categories-section .categories-content li .card-body {\n  justify-content: center;\n  align-items: center;\n  padding: 0;\n  overflow: hidden;\n  border-radius: 20px;\n  position: relative;\n  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);\n}\n.categories-section .categories-content li .card-body img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.categories-section .categories-content li .card-body .overlay {\n  height: 100%;\n  width: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n}\n.categories-section .categories-content li .card-body a {\n  color: white;\n  text-align: center;\n  line-height: 150px;\n  font-size: 35px;\n}\n.categories-section .btn {\n  background-color: #FCCF4D;\n  color: #49BEB7;\n  padding: 10px 50px;\n  border-radius: 16px;\n  font-weight: 600;\n  font-size: 20px;\n}\n@media screen and (max-width: 1200px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 25px;\n    line-height: 120px;\n}\n.categories-section .categories-content li .card {\n    height: 120px;\n}\n.categories-section .categories-content li {\n    padding: 0 5px;\n}\n}\n@media screen and (max-width: 992px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 20px;\n    line-height: 100px;\n}\n.categories-section .categories-content li .card {\n    height: 100px;\n}\n.categories-section .categories-content li {\n    padding: 0;\n}\n}\n@media screen and (max-width: 768px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 15px;\n    line-height: 80px;\n}\n.categories-section .categories-content li .card {\n    height: 80px;\n}\n}", ""]);
+exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.categories-section {\n  padding-block: 60px;\n  position: relative;\n}\n.categories-section .title {\n  text-align: center;\n  position: absolute;\n  top: -77px;\n  left: 0;\n  right: 0;\n}\n.categories-section .title span {\n  font-weight: 700;\n  background-color: #FCCF4D;\n  padding: 15px 50px;\n  border-radius: 20px;\n  color: white;\n  border: 5px solid #f8fafc;\n}\n.categories-section .categories-content li .card {\n  height: 150px;\n  border-radius: 20px;\n}\n.categories-section .categories-content li .card-body {\n  justify-content: center;\n  align-items: center;\n  padding: 0;\n  overflow: hidden;\n  border-radius: 20px;\n  position: relative;\n  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);\n}\n.categories-section .categories-content li .card-body img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.categories-section .categories-content li .card-body .overlay {\n  height: 100%;\n  width: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n}\n.categories-section .categories-content li .card-body a {\n  color: white;\n  text-align: center;\n  line-height: 150px;\n  font-size: 35px;\n}\n.categories-section .btn {\n  background-color: #FCCF4D;\n  color: #49BEB7;\n  padding: 10px 50px;\n  border-radius: 16px;\n  font-weight: 600;\n  font-size: 20px;\n}\n.categories-section .is-active {\n  box-shadow: 0px 0px 10px;\n  border: 3px solid #49BEB7;\n  background-color: #49BEB7;\n}\n@media screen and (max-width: 1200px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 25px;\n    line-height: 120px;\n}\n.categories-section .categories-content li .card {\n    height: 120px;\n}\n.categories-section .categories-content li {\n    padding: 0 5px;\n}\n}\n@media screen and (max-width: 992px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 20px;\n    line-height: 100px;\n}\n.categories-section .categories-content li .card {\n    height: 100px;\n}\n.categories-section .categories-content li {\n    padding: 0;\n}\n}\n@media screen and (max-width: 768px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 15px;\n    line-height: 80px;\n}\n.categories-section .categories-content li .card {\n    height: 80px;\n}\n}", ""]);
 
 // exports
 
@@ -7111,7 +7114,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "*[data-v-15624917] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container[data-v-15624917] {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container[data-v-15624917] {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex[data-v-15624917] {\n  display: flex;\n}\nimg[data-v-15624917] {\n  width: 100%;\n  display: block;\n}\nul[data-v-15624917] {\n  list-style-type: none;\n}\na[data-v-15624917] {\n  text-decoration: none;\n  color: inherit;\n}\na[data-v-15624917]:hover {\n  text-decoration: none;\n}\n.info-services[data-v-15624917] {\n  margin: 50px 0;\n}\n.info-services .row .info-services-card .flex[data-v-15624917] {\n  justify-content: space-between;\n}\n.info-services li[data-v-15624917] {\n  padding: 20px;\n}\n.info-services li .card-body[data-v-15624917] {\n  padding: 0;\n}\n.info-services li .card-body .thumb[data-v-15624917] {\n  justify-content: center;\n  padding: 30px;\n}\n.info-services li .card-body .thumb img[data-v-15624917] {\n  width: 75%;\n}\n.info-services li .card-body .text[data-v-15624917] {\n  flex-direction: column;\n  align-items: center;\n  padding: 0px 20px 20px 20px;\n}\n.info-services li .card-body .text .title[data-v-15624917], .info-services li .card-body .text .description[data-v-15624917] {\n  text-align: center;\n}\n@media screen and (max-width: 575px) {\n.info-services .down[data-v-15624917] {\n    padding-top: 0;\n    display: block;\n}\n}", ""]);
+exports.push([module.i, "*[data-v-15624917] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container[data-v-15624917] {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container[data-v-15624917] {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex[data-v-15624917] {\n  display: flex;\n}\nimg[data-v-15624917] {\n  width: 100%;\n  display: block;\n}\nul[data-v-15624917] {\n  list-style-type: none;\n}\na[data-v-15624917] {\n  text-decoration: none;\n  color: inherit;\n}\na[data-v-15624917]:hover {\n  text-decoration: none;\n}\n.info-services[data-v-15624917] {\n  margin: 50px 0;\n}\n.info-services .container[data-v-15624917] {\n  margin: 0 auto;\n}\n.info-services .container li[data-v-15624917] {\n  padding: 20px;\n}\n.info-services .container li .card[data-v-15624917] {\n  min-height: 400px;\n}\n.info-services .container li .card .card-body[data-v-15624917] {\n  padding: 0;\n}\n.info-services .container li .card .card-body .thumb[data-v-15624917] {\n  padding: 30px;\n}\n.info-services .container li .card .card-body .thumb img[data-v-15624917] {\n  display: block;\n  width: 75%;\n  margin: 0 auto;\n}\n.info-services .container li .card .card-body .text[data-v-15624917] {\n  padding: 0px 20px 20px 20px;\n}\n.info-services .container li .card .card-body .text .title[data-v-15624917], .info-services .container li .card .card-body .text .description[data-v-15624917] {\n  text-align: center;\n}\n@media screen and (max-width: 1000px) {\n.info-services .container[data-v-15624917] {\n    padding-inline: 150px;\n}\n}\n@media screen and (max-width: 770px) {\n.info-services .container[data-v-15624917] {\n    padding-inline: 75px;\n}\n}", ""]);
 
 // exports
 
