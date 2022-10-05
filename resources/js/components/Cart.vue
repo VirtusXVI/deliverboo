@@ -13,12 +13,17 @@
                 {{ menu.name }} x {{ menu.quantity }} - Prezzo: &euro;{{ menu.totalPrice }}
                 <span class="removeBtn ml-3"
                     title="Remove from cart"
-                    @click.prevent="removeFromCart(menu)">-
-                </span>
-                <!-- <span class="removeBtn ml-3"
-                    title="Remove from cart"
                     @click.prevent="increaseQuantityFromCart(menu)">+
-                </span> -->
+                </span>
+                <span class="removeBtn ml-3"
+                    title="Remove from cart"
+                    @click.prevent="decreaseQuantityFromCart(menu)">-
+                </span>
+                <span class="removeBtn ml-3"
+                    title="Remove from cart"
+                    @click.prevent="removeFromCart(menu)">X
+                </span>
+                
             </a>
 
             <a class="navbar-item" href="">
@@ -47,6 +52,12 @@ export default {
     methods: {
         removeFromCart(menu) {
             this.$store.commit('removeFromCart', menu);
+        },
+        decreaseQuantityFromCart(menu) {
+            this.$store.commit('decreaseQuantityFromCart', menu);
+        },
+        increaseQuantityFromCart(menu) {
+            this.$store.commit('increaseQuantityFromCart', menu);
         }
     },
 

@@ -21,7 +21,7 @@ let store = {
                 Vue.set(menu, 'totalPrice', menu.price);
             }
         
-            state.cartCount++;
+            state.cartCount ++;
             this.commit('saveCart');
         },
 
@@ -33,7 +33,48 @@ let store = {
                 state.cartCount -= product.quantity;
         
                 state.cart.splice(index, 1);
+
+            }
+            this.commit('saveCart');
+        },
+
+        decreaseQuantityFromCart(state, menu) {
+            let index = state.cart.indexOf(menu);
+        
+            if (index > -1) {
+                let product = state.cart[index];
+        
+                state.cartCount--;
+                product.quantity --;
+
+                if (product.quantity < 1) {
+                    let index = state.cart.indexOf(menu);
+        
+                    if (index > -1) {
+                        let product = state.cart[index];
+                        state.cartCount -= product.quantity;
+        
+                        state.cart.splice(index, 1);
+
+                    }
+                    this.commit('saveCart');
+                }
+                Vue.set(menu, 'totalPrice', menu.price);
+            }
+            this.commit('saveCart');
+        },
+
+        increaseQuantityFromCart(state, menu) {
+            let index = state.cart.indexOf(menu);
+        
+            if (index > -1) {
+                let product = state.cart[index];
+                state.cartCount ++;
+                // state.cartCount += product.quantity;
                 
+                product.quantity ++;
+
+                Vue.set(menu, 'totalPrice', menu.price);
             }
             this.commit('saveCart');
         },
@@ -46,3 +87,5 @@ let store = {
 };
 
 export default store;
+
+

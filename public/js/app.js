@@ -1919,6 +1919,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   methods: {
     removeFromCart: function removeFromCart(menu) {
       this.$store.commit('removeFromCart', menu);
+    },
+    decreaseQuantityFromCart: function decreaseQuantityFromCart(menu) {
+      this.$store.commit('decreaseQuantityFromCart', menu);
+    },
+    increaseQuantityFromCart: function increaseQuantityFromCart(menu) {
+      this.$store.commit('increaseQuantityFromCart', menu);
     }
   },
   computed: {
@@ -1931,7 +1937,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var menu = _step.value;
-          total += menu.totalPrice;
+          total += parseFloat(menu.totalPrice);
         }
       } catch (err) {
         _iterator.e(err);
@@ -2343,10 +2349,32 @@ var render = function render() {
       on: {
         click: function click($event) {
           $event.preventDefault();
+          return _vm.increaseQuantityFromCart(menu);
+        }
+      }
+    }, [_vm._v("+\n            ")]), _vm._v(" "), _c("span", {
+      staticClass: "removeBtn ml-3",
+      attrs: {
+        title: "Remove from cart"
+      },
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.decreaseQuantityFromCart(menu);
+        }
+      }
+    }, [_vm._v("-\n            ")]), _vm._v(" "), _c("span", {
+      staticClass: "removeBtn ml-3",
+      attrs: {
+        title: "Remove from cart"
+      },
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
           return _vm.removeFromCart(menu);
         }
       }
-    }, [_vm._v("-\n            ")])]);
+    }, [_vm._v("X\n            ")])]);
   }), _vm._v(" "), _c("a", {
     staticClass: "navbar-item",
     attrs: {
@@ -2431,26 +2459,16 @@ var render = function render() {
         alt: category.name
       }
     })])])]);
-  }), 0), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c("section", _vm._l(_vm.super_restaurants, function (restaurant, index) {
+  }), 0), _vm._v(" "), _vm._m(1)]), _vm._v(" "), _c("div", {
+    staticClass: "container-fluid mt-5"
+  }, [_c("div", {
+    staticClass: "row row-cols-2 row-cols-lg-4"
+  }, _vm._l(_vm.super_restaurants, function (restaurant, index) {
     return _c("div", {
-      key: index
-    }, [_c("div", {
-      staticClass: "card"
-    }, [_c("div", {
-      staticClass: "card-img-top"
-    }, [_c("img", {
-      attrs: {
-        src: "storage/" + restaurant.restaurant_image,
-        alt: restaurant.restaurant_name
-      }
-    })]), _vm._v(" "), _c("div", {
-      staticClass: "card-body"
-    }, [_c("div", {
-      staticClass: "card-title"
-    }, [_c("h5", [_vm._v(_vm._s(restaurant.restaurant_name))])]), _vm._v(" "), _c("div", {
-      staticClass: "card-text"
-    }, [_c("p", [_vm._v(_vm._s(restaurant.address))])])]), _vm._v(" "), _c("div", [_c("router-link", {
-      staticClass: "ms-btn",
+      key: index,
+      staticClass: "col mb-4"
+    }, [_c("router-link", {
+      staticClass: "card restaurant-card py-3",
       attrs: {
         to: {
           name: "menu",
@@ -2459,8 +2477,26 @@ var render = function render() {
           }
         }
       }
-    }, [_vm._v("Scopri dettagli \n                ")])], 1)])]);
-  }), 0)]);
+    }, [_c("div", {
+      staticClass: "card-img-top"
+    }, [restaurant.restaurant_image ? _c("img", {
+      attrs: {
+        src: "storage/" + restaurant.restaurant_image,
+        alt: restaurant.restaurant_name
+      }
+    }) : _c("img", {
+      attrs: {
+        src: "https://media-cdn.tripadvisor.com/media/photo-s/1a/b8/46/6d/london-stock.jpg",
+        alt: "Default Image"
+      }
+    })]), _vm._v(" "), _c("div", {
+      staticClass: "card-body"
+    }, [_c("div", {
+      staticClass: "card-title"
+    }, [_c("h3", [_vm._v(_vm._s(restaurant.restaurant_name))])]), _vm._v(" "), _c("div", {
+      staticClass: "card-text"
+    }, [_c("p", [_vm._v(_vm._s(restaurant.address))])])])])], 1);
+  }), 0)])]);
 };
 
 var staticRenderFns = [function () {
@@ -2477,7 +2513,7 @@ var staticRenderFns = [function () {
   return _c("div", {
     staticClass: "container d-flex justify-content-center align-items-center mt-5"
   }, [_c("button", {
-    staticClass: "btn",
+    staticClass: "btn btn-filter",
     attrs: {
       type: "submit"
     }
@@ -2712,11 +2748,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("section", [_c("Jumbotron")], 1), _vm._v(" "), _c("section", {
-    staticClass: "categories-section"
-  }, [_c("Categories")], 1), _vm._v(" "), _c("section", {
-    staticClass: "restaurants-section"
-  }, [_c("Restaurants")], 1), _vm._v(" "), _c("section", [_c("InfoServices")], 1), _vm._v(" "), _c("section", [_c("JoinUs")], 1)]);
+  return _c("div", [_c("section", [_c("Jumbotron")], 1), _vm._v(" "), _c("section", [_c("Categories")], 1), _vm._v(" "), _c("section", [_c("InfoServices")], 1), _vm._v(" "), _c("section", [_c("JoinUs")], 1)]);
 };
 
 var staticRenderFns = [];
@@ -7263,7 +7295,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".removeBtn[data-v-b7f93bea] {\n  margin-right: 1rem;\n  color: red;\n}", ""]);
+exports.push([module.i, ".removeBtn[data-v-b7f93bea] {\n  font-size: 20px;\n  margin-right: 1rem;\n  color: red;\n}", ""]);
 
 // exports
 
@@ -7282,7 +7314,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.categories-section {\n  padding-block: 60px;\n  position: relative;\n}\n.categories-section .title {\n  text-align: center;\n  position: absolute;\n  top: -77px;\n  left: 0;\n  right: 0;\n}\n.categories-section .title span {\n  font-weight: 700;\n  background-color: #FCCF4D;\n  padding: 15px 50px;\n  border-radius: 20px;\n  color: white;\n  border: 5px solid #f8fafc;\n}\n.categories-section .categories-content li .card {\n  height: 150px;\n  border-radius: 20px;\n}\n.categories-section .categories-content li .card-body {\n  justify-content: center;\n  align-items: center;\n  padding: 0;\n  overflow: hidden;\n  border-radius: 20px;\n  position: relative;\n  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);\n}\n.categories-section .categories-content li .card-body img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.categories-section .categories-content li .card-body .overlay {\n  height: 100%;\n  width: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n}\n.categories-section .categories-content li .card-body a {\n  color: white;\n  text-align: center;\n  line-height: 150px;\n  font-size: 35px;\n}\n.categories-section .btn {\n  background-color: #FCCF4D;\n  color: #49BEB7;\n  padding: 10px 50px;\n  border-radius: 16px;\n  font-weight: 600;\n  font-size: 20px;\n}\n.categories-section .is-active {\n  box-shadow: 0px 0px 10px;\n  border: 3px solid #49BEB7;\n  background-color: #49BEB7;\n}\n@media screen and (max-width: 1200px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 25px;\n    line-height: 120px;\n}\n.categories-section .categories-content li .card {\n    height: 120px;\n}\n.categories-section .categories-content li {\n    padding: 0 5px;\n}\n}\n@media screen and (max-width: 992px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 20px;\n    line-height: 100px;\n}\n.categories-section .categories-content li .card {\n    height: 100px;\n}\n.categories-section .categories-content li {\n    padding: 0;\n}\n}\n@media screen and (max-width: 768px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 15px;\n    line-height: 80px;\n}\n.categories-section .categories-content li .card {\n    height: 80px;\n}\n}", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.categories-section {\n  padding-top: 90px;\n  padding-bottom: 60px;\n  position: relative;\n}\n.categories-section .title {\n  text-align: center;\n  position: absolute;\n  top: -18px;\n  left: 0;\n  right: 0;\n}\n.categories-section .title span {\n  font-weight: 700;\n  background-color: #FCCF4D;\n  padding: 15px 50px;\n  border-radius: 20px;\n  color: white;\n  border: 5px solid #f8fafc;\n}\n.categories-section .categories-content li .card {\n  height: 150px;\n  border-radius: 20px;\n}\n.categories-section .categories-content li .card-body {\n  justify-content: center;\n  align-items: center;\n  padding: 0;\n  overflow: hidden;\n  border-radius: 20px;\n  position: relative;\n  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);\n}\n.categories-section .categories-content li .card-body img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.categories-section .categories-content li .card-body .overlay {\n  height: 100%;\n  width: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n}\n.categories-section .categories-content li .card-body a {\n  color: white;\n  text-align: center;\n  line-height: 150px;\n  font-size: 35px;\n}\n.categories-section .btn-filter {\n  background-color: #FCCF4D;\n  color: #49BEB7;\n  padding: 10px 50px;\n  border-radius: 16px;\n  font-weight: 600;\n  font-size: 20px;\n  position: relative;\n}\n.categories-section .btn-filter:after, .categories-section .btn-filter:before {\n  content: \"\\2B07\";\n  font-size: 25px;\n  display: inline-block;\n  position: absolute;\n  top: 50%;\n  transform: translate(-50%, -50%);\n}\n.categories-section .btn-filter:after {\n  right: 5px;\n}\n.categories-section .btn-filter:before {\n  left: 20px;\n}\n.categories-section .btn-filter:hover:after, .categories-section .btn-filter:hover:before {\n  animation: 1s infinite;\n  animation-name: go_down;\n}\n.categories-section .btn-menu {\n  background-color: #49BEB7;\n  color: white;\n  border-radius: 16px;\n  font-weight: 600;\n  font-size: 13px;\n  margin: 1rem;\n}\n.categories-section .is-active {\n  box-shadow: 0px 0px 10px;\n  border: 3px solid #49BEB7;\n  background-color: #49BEB7;\n}\n.categories-section .restaurant-card {\n  position: relative;\n  color: white;\n  border: 0;\n}\n.categories-section .restaurant-card .card-img-top {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background-color: black;\n  border-radius: 10px;\n}\n.categories-section .restaurant-card .card-img-top img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n  opacity: 0.4;\n  border-radius: 10px;\n}\n.categories-section .restaurant-card .card-body {\n  padding: 20px;\n  text-align: center;\n  z-index: 1;\n}\n.categories-section .restaurant-card .card-router {\n  position: relative;\n  z-index: 1;\n  text-align: center;\n}\n@keyframes go_down {\n0% {\n    top: 50%;\n    opacity: 1;\n}\n100% {\n    top: 85%;\n    opacity: 0;\n}\n}\n@media screen and (max-width: 1200px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 25px;\n    line-height: 120px;\n}\n.categories-section .categories-content li .card {\n    height: 120px;\n}\n.categories-section .categories-content li {\n    padding: 0 5px;\n}\n}\n@media screen and (max-width: 992px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 20px;\n    line-height: 100px;\n}\n.categories-section .categories-content li .card {\n    height: 100px;\n}\n.categories-section .categories-content li {\n    padding: 0;\n}\n}\n@media screen and (max-width: 768px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 15px;\n    line-height: 80px;\n}\n.categories-section .categories-content li .card {\n    height: 80px;\n}\n}", ""]);
 
 // exports
 
@@ -57068,6 +57100,44 @@ var store = {
         var product = state.cart[index];
         state.cartCount -= product.quantity;
         state.cart.splice(index, 1);
+      }
+
+      this.commit('saveCart');
+    },
+    decreaseQuantityFromCart: function decreaseQuantityFromCart(state, menu) {
+      var index = state.cart.indexOf(menu);
+
+      if (index > -1) {
+        var product = state.cart[index];
+        state.cartCount--;
+        product.quantity--;
+
+        if (product.quantity < 1) {
+          var _index = state.cart.indexOf(menu);
+
+          if (_index > -1) {
+            var _product = state.cart[_index];
+            state.cartCount -= _product.quantity;
+            state.cart.splice(_index, 1);
+          }
+
+          this.commit('saveCart');
+        }
+
+        Vue.set(menu, 'totalPrice', menu.price);
+      }
+
+      this.commit('saveCart');
+    },
+    increaseQuantityFromCart: function increaseQuantityFromCart(state, menu) {
+      var index = state.cart.indexOf(menu);
+
+      if (index > -1) {
+        var product = state.cart[index];
+        state.cartCount++; // state.cartCount += product.quantity;
+
+        product.quantity++;
+        Vue.set(menu, 'totalPrice', menu.price);
       }
 
       this.commit('saveCart');

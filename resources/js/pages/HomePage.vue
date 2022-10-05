@@ -6,13 +6,8 @@
         </section>
 
     <!-- Categories -->
-        <section class="categories-section">
+        <section>
             <Categories />
-        </section>
-
-    <!-- Categories -->
-        <section class="restaurants-section">
-            <Restaurants />
         </section>
 
     <!-- Info Services -->

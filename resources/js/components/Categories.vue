@@ -18,36 +18,30 @@
                 </li>
             </ul>
             <div class="container d-flex justify-content-center align-items-center mt-5">
-                <button type="submit" class="btn">Filtra</button>
+                <button type="submit" class="btn btn-filter">Filtra</button>
             </div>
         </form>
 
-        <section>
-            <div v-for="restaurant,index in super_restaurants" :key="index">
-                <div class="card">
-                    <div class="card-img-top">
-                        <img :src="'storage/' + restaurant.restaurant_image" :alt="restaurant.restaurant_name">
-                    </div>
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h5>{{restaurant.restaurant_name}}</h5>
+        <div class="container-fluid mt-5">
+            <div class="row row-cols-2 row-cols-lg-4">
+                <div v-for="restaurant,index in super_restaurants" :key="index" class="col mb-4">
+                    <router-link :to="{name: 'menu', params: {id: restaurant.id}}" class="card restaurant-card py-3">
+                        <div class="card-img-top">
+                            <img v-if="restaurant.restaurant_image" :src="'storage/' + restaurant.restaurant_image" :alt="restaurant.restaurant_name">
+                            <img v-else src="https://media-cdn.tripadvisor.com/media/photo-s/1a/b8/46/6d/london-stock.jpg" alt="Default Image">
                         </div>
-                        <div class="card-text">
-                            <p>{{restaurant.address}}</p>
-                        </div>
-                    </div>
-
-                    <div>
-                        <router-link 
-                        :to="{
-                            name: 'menu', 
-                            params: {id: restaurant.id}
-                        }" class="ms-btn">Scopri dettagli 
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3>{{restaurant.restaurant_name}}</h3>
+                            </div>
+                            <div class="card-text">
+                                <p>{{restaurant.address}}</p>
+                            </div>
+                        </div>  
                     </router-link>
-                    </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 </template>
 
@@ -162,13 +156,14 @@ export default {
 @import '../common/variables.scss';
 
 .categories-section {
-    padding-block: 60px;
+    padding-top: 90px;
+    padding-bottom: 60px;
     position: relative;
 
     .title {
         text-align: center;
         position: absolute;
-        top: -77px;
+        top: -18px;
         left: 0;
         right: 0;
 
@@ -224,19 +219,100 @@ export default {
         }
     }
 
-    .btn {
+    .btn-filter {
         background-color: $mainSecondColor;
         color: $mainFirstColor;
         padding: 10px 50px;
         border-radius: 16px;
         font-weight: 600;
         font-size: 20px;
+        position: relative;
+
+        &:after, &:before {
+            content: "\2B07";
+            font-size: 25px;
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &:after {
+            right: 5px;
+        }
+
+        &:before {
+            left: 20px;
+        }
+        
+        &:hover {
+            &:after, &:before {
+                animation: 1s infinite;
+                animation-name: go_down;
+            }
+        }
+    }
+
+    .btn-menu {
+        background-color: $mainFirstColor;
+        color: white;
+        border-radius: 16px;
+        font-weight: 600;
+        font-size: 13px;
+        margin: 1rem;
     }
 
     .is-active {
         box-shadow: 0px 0px 10px;
         border: 3px solid $mainFirstColor;
         background-color: $mainFirstColor;
+    }
+
+    .restaurant-card {
+        position: relative;
+        color: white;
+        border: 0;
+
+        .card-img-top {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: black;
+            border-radius: 10px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                opacity: 0.4;
+                border-radius: 10px;
+            }
+        }
+
+        .card-body {
+            padding: 20px;
+            text-align: center;
+            z-index:1;
+        }
+
+        .card-router {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+    }
+    @keyframes go_down {
+        0% {
+            top: 50%;
+            opacity: 1;
+        }
+        100% {
+            top: 85%;
+            opacity: 0;
+        }
     }
 }
 
