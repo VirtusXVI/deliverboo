@@ -1,27 +1,27 @@
 <template>
     <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link ms-cart" href="">
+        <a class="navbar-link ms-cart mb-3" href="">
             Il mio Carrello<span class="d-inline-block" :class="{'span-center-single' : $store.state.cartCount < 10, 'span-center-double' : $store.state.cartCount >= 10}">{{ $store.state.cartCount }}</span>
         </a>
 
         <div v-if="$store.state.cart.length > 0" class="navbar-dropdown is-boxed is-right">
-            <a  v-for="menu in $store.state.cart"
-                :key="menu.id"
-                class="navbar-item d-block"
-                href=""
-            >
-                {{ menu.name }} x {{ menu.quantity }} - Prezzo: &euro;{{ menu.totalPrice }}
+            <a  v-for="menu in $store.state.cart" :key="menu.id" class="navbar-item d-block d-flex align-items-center" href="">
+                {{ menu.name }} 
+                <button type="button" class="btn btn-success btn-number"  data-type="plus"
+                    title="Remove from cart"
+                    @click.prevent="increaseQuantityFromCart(menu)"><i class="fa-solid fa-plus"></i>
+                </button>
+                <span class="fake-input">{{menu.quantity}}</span>
+                <button type="button" class="btn btn-danger btn-number mr-4" data-type="minus"
+                    title="Remove from cart"
+                    @click.prevent="decreaseQuantityFromCart(menu)"><i class="fa-solid fa-minus"></i>
+                </button>
+                
+                Prezzo: &euro;{{ menu.totalPrice }}
+                
                 <span class="removeBtn ml-3"
                     title="Remove from cart"
-                    @click.prevent="increaseQuantityFromCart(menu)">+
-                </span>
-                <span class="removeBtn ml-3"
-                    title="Remove from cart"
-                    @click.prevent="decreaseQuantityFromCart(menu)">-
-                </span>
-                <span class="removeBtn ml-3"
-                    title="Remove from cart"
-                    @click.prevent="removeFromCart(menu)">X
+                    @click.prevent="removeFromCart(menu)">
                 </span>
                 
             </a>
@@ -78,11 +78,11 @@ export default {
 <style lang="scss" scoped>
 @import '../common/commons.scss';
 @import '../common/variables.scss';
-.removeBtn {
-    font-size: 20px;
-    margin-right: 1rem;
-    color: red;
-}
+// .removeBtn {
+//     font-size: 20px;
+//     margin-right: 1rem;
+//     color: red;
+// }
 
 .has-dropdown {
     display: flex;
@@ -92,6 +92,17 @@ export default {
 
     a {
         font-size: 20px;
+
+        .fake-input {
+            width: 50px;
+            background-color: white;
+            text-align: center;
+            border: 0.5px solid lightgrey;
+        }
+
+        button {
+            width: 25px;
+        }
     }
 
     .ms-cart {
