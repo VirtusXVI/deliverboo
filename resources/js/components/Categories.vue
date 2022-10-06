@@ -11,14 +11,14 @@
                 <li v-for="category, index in categories" :key="index" class="col">
                     <div class="card" :class="{'is-active' : isActive.includes(index)}">
                         <div class="card-body flex">
-                            <a class="overlay" href="#categories" @click="toggle(categoryId, category.id), toggle(isActive, index)">{{category.name}}</a>
+                            <button class="overlay" @click="toggle(categoryId, category.id), toggle(isActive, index)" type="submit">{{category.name}}</button>
                             <img :src="categories_images[index]" :alt="category.name">
                         </div>
                     </div>
                 </li>
             </ul>
             <div class="container d-flex justify-content-center align-items-center mt-5">
-                <button type="submit" class="btn btn-filter">Filtra</button>
+                <a href="#categories" class="btn btn-filter">Ristoranti</a>
             </div>
         </form>
 
@@ -209,11 +209,12 @@ export default {
                     right: 0;
                 }
 
-                a {
+                button {
                     color: white;
                     text-align: center;
                     line-height: 150px;
                     font-size: 35px;
+                    border: 0;
                 }
             }
         }
@@ -245,9 +246,9 @@ export default {
             left: 20px;
         }
         
-        &:hover {
+        & {
             &:after, &:before {
-                animation: 0.6s infinite;
+                animation: 1s infinite;
                 animation-name: go_down;
             }
         }
@@ -272,6 +273,7 @@ export default {
         position: relative;
         color: white;
         border: 0;
+        min-height: 200px;
 
         .card-img-top {
             position: absolute;
