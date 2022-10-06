@@ -2273,7 +2273,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      menuRestaurant: []
+      menuRestaurant: [],
+      same_restaurant: true,
+      emptyArray: []
     };
   },
   methods: {
@@ -2285,7 +2287,32 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     addToCart: function addToCart(menu) {
-      this.$store.commit('addToCart', menu);
+      var actualCart = JSON.parse(localStorage.getItem('cart'));
+      console.log(actualCart.length);
+
+      if (actualCart.length > 0) {
+        if (menu.user_id == actualCart[0].user_id) {
+          this.$store.commit('addToCart', menu);
+        } else {
+          this.same_restaurant = false;
+        }
+      } else if (actualCart.length < 1) {
+        this.$store.commit('addToCart', menu);
+      }
+    },
+    btnAbort: function btnAbort() {
+      this.same_restaurant = true;
+    },
+    btnConfirm: function btnConfirm() {
+      var actualCart = JSON.parse(localStorage.getItem('cart'));
+      var actualCartCount = JSON.parse(localStorage.getItem('cartCount'));
+      actualCart = [];
+      actualCart = JSON.stringify(actualCart);
+      actualCartCount = 0;
+      localStorage.setItem('cartCount', actualCartCount);
+      localStorage.setItem('cart', actualCart);
+      this.same_restaurant = true;
+      window.location.reload();
     }
   },
   mounted: function mounted() {
@@ -2933,7 +2960,25 @@ var render = function render() {
         }
       }
     }, [_vm._v("Add to Cart")])], 1)])])])]);
-  }), 0)])], 1);
+  }), 0)]), _vm._v(" "), !_vm.same_restaurant ? _c("div", {
+    staticClass: "not-same-restaurant"
+  }, [_c("div", {
+    staticClass: "pop-up"
+  }, [_vm._m(1), _vm._v(" "), _c("div", [_c("button", {
+    staticClass: "btn btn-outline-info",
+    on: {
+      click: function click($event) {
+        return _vm.btnConfirm(_vm.menu);
+      }
+    }
+  }, [_vm._v("Conferma")]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-outline-info",
+    on: {
+      click: function click($event) {
+        return _vm.btnAbort();
+      }
+    }
+  }, [_vm._v("Annulla")])])])]) : _vm._e()], 1);
 };
 
 var staticRenderFns = [function () {
@@ -2941,6 +2986,11 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("span", [_c("strong", [_vm._v("Prezzo:")])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", [_vm._v("\n                Stai inserendo nel carrello un piatto di un altro ristorante. "), _c("br"), _vm._v("\n                Questa operazione svuoterà il carrello, vuoi proseguire?\n            ")]);
 }];
 render._withStripped = true;
 
@@ -7502,7 +7552,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.restaurant-menu {\n  margin-top: 50px;\n}\n.restaurant-menu .menu-general {\n  width: 80%;\n}\n.restaurant-menu .menu-details {\n  padding-top: 50px;\n  margin-left: 100px;\n  width: 20%;\n  text-align: left;\n}\n.restaurant-menu .menu-details .price {\n  text-align: left;\n}\n.restaurant-menu .menu-restaurant .menu-list {\n  flex-wrap: wrap;\n  max-width: 300px;\n}\n.restaurant-menu .button {\n  margin-top: 20px;\n  margin-inline: auto;\n}\n.restaurant-menu .button .ms-btn {\n  border: trasparent;\n  background-color: #FCCF4D;\n  padding: 6px 20px;\n  cursor: pointer;\n  border-radius: 12px;\n}\n.restaurant-menu .button a:hover {\n  color: inherit;\n}", ""]);
+exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.restaurant-menu {\n  margin-top: 50px;\n}\n.restaurant-menu .menu-general {\n  width: 80%;\n}\n.restaurant-menu .menu-details {\n  padding-top: 50px;\n  margin-left: 100px;\n  width: 20%;\n  text-align: left;\n}\n.restaurant-menu .menu-details .price {\n  text-align: left;\n}\n.restaurant-menu .menu-restaurant .menu-list {\n  flex-wrap: wrap;\n  max-width: 300px;\n}\n.restaurant-menu .button {\n  margin-top: 20px;\n  margin-inline: auto;\n}\n.restaurant-menu .button .ms-btn {\n  border: trasparent;\n  background-color: #FCCF4D;\n  padding: 6px 20px;\n  cursor: pointer;\n  border-radius: 12px;\n}\n.restaurant-menu .button a:hover {\n  color: inherit;\n}\n.restaurant-menu .not-same-restaurant {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 100vh;\n  z-index: 999999;\n  background-color: rgba(0, 0, 0, 0.22);\n}\n.restaurant-menu .pop-up {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: white;\n  padding: 30px;\n  border-radius: 15px;\n  border: 5px solid #49BEB7;\n  width: 700px;\n  height: 30vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: center;\n}", ""]);
 
 // exports
 

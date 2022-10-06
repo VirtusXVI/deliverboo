@@ -39,6 +39,20 @@
                 </li>
             </ul>
         </div>
+        <div class="not-same-restaurant" v-if="!same_restaurant">
+            <div class="pop-up">
+                <div>
+                    Stai inserendo nel carrello un piatto di un altro ristorante. <br>
+                    Questa operazione svuoterà il carrello, vuoi proseguire?
+                </div>
+
+                <div>
+                    <button class="btn btn-outline-info" @click="btnConfirm(menu)">Conferma</button>
+
+                    <button class="btn btn-outline-info" @click="btnAbort()">Annulla</button>
+                </div>
+            </div>
+        </div>
     </main>
 </template>
 
@@ -53,10 +67,12 @@ import Cart from '../components/Cart.vue'
 
         data() {
             return {
-                menuRestaurant: []
+                menuRestaurant: [],
+                same_restaurant: true,
+                emptyArray: []
             }
         },
-    
+
         methods: {
             getDishes() {
                 axios.get('/api/piatti/' + this.$route.params.id)
@@ -66,12 +82,38 @@ import Cart from '../components/Cart.vue'
             },
 
             addToCart(menu) {
-                this.$store.commit('addToCart', menu);
+                let actualCart = JSON.parse(localStorage.getItem('cart'));
+                console.log(actualCart.length);
+                if(actualCart.length > 0){
+                    if(menu.user_id == actualCart[0].user_id){
+                        this.$store.commit('addToCart', menu);
+                    }else{
+                        this.same_restaurant = false;
+                    }
+                }else if(actualCart.length < 1){
+                    this.$store.commit('addToCart', menu);
+                }
             },
+
+            btnAbort(){
+                this.same_restaurant = true;
+            },
+
+            btnConfirm(){
+                let actualCart = JSON.parse(localStorage.getItem('cart'));
+                let actualCartCount = JSON.parse(localStorage.getItem('cartCount'));
+                actualCart = [];
+                actualCart = JSON.stringify(actualCart);
+                actualCartCount = 0;
+                localStorage.setItem('cartCount', actualCartCount);
+                localStorage.setItem('cart', actualCart);
+                this.same_restaurant = true;
+                window.location.reload();
+            }
         },
-    
+
         mounted() {
-             this.getDishes();
+            this.getDishes();
         }
     }
 </script>
@@ -120,6 +162,32 @@ import Cart from '../components/Cart.vue'
             a:hover {
                 color: inherit;
             }
+        }
+        .not-same-restaurant{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right:0;
+            bottom: 0;
+            height: 100vh;
+            z-index: 999999;
+            background-color: rgba(0, 0, 0, 0.22);
+        }
+        .pop-up{
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            border: 5px solid $mainFirstColor;
+            width: 700px;
+            height: 30vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
         }
     }
 </style>
