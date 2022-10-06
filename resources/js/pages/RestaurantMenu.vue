@@ -5,14 +5,15 @@
         </div>
         <Cart />
         <div class="menu-restaurant container">
-            <ul class="menu-list flex">
-                <li v-for="menu, index in menuRestaurant" :key="index">
+            <ul class="menu-list row row-cols-1 row-cols-md-3">
+                <li v-for="menu, index in menuRestaurant" :key="index" class="col mb-3">
                     <div class="card">
-                        <div v-if="menu.dish_image" class="image">
-                            <img class="card-img-top" :src="menu.dish_image" :alt="menu.name">
+                        <div class="image">
+                            <img v-if="menu.dish_image" class="card-img-top" :src="menu.dish_image" :alt="menu.name">
+                            <img v-else src="https://s3-eu-west-1.amazonaws.com/tpd/logos/55be6ade0000ff000581b457/0x0.png" alt="no-pic-found">
                         </div>
                         <div class="dish-details">
-                            <div class="card-body">
+                            <div class="card-body d-flex flex-column justify-content-between">
                                 <div class="description">
                                     <div class="title">
                                         <span><strong>{{menu.name}}</strong></span>
@@ -31,7 +32,7 @@
                                         }" class="d-block ms-btn">Scopri dettagli 
                                     </router-link>
                                     <button class="d-block button is-success btn btn-outline-info" :disabled="!menu.is_visible" @click="addToCart(menu)">Aggiungi <i class="fa-solid fa-cart-shopping"></i></button>
-                                    <div v-if="!menu.is_visible">Piatto non disponibile</div>
+                                    <div v-if="!menu.is_visible" class="text-center pt-2" style="color: grey">Piatto non disponibile</div>
                                 </div>
                                 
                             </div>
@@ -70,15 +71,18 @@ import Cart from '../components/Cart.vue'
             return {
                 menuRestaurant: [],
                 same_restaurant: true,
-                emptyArray: []
+                emptyArray: [],
+                currentPage: 1,
+                lastPage: null,
+                firstPage: 1
             }
         },
 
         methods: {
             getDishes() {
-                axios.get('/api/piatti/' + this.$route.params.id)
+                axios.get('/api/ristorante/' + this.$route.params.slug)
                 .then((response) => {
-                    this.menuRestaurant = response.data.results;
+                    this.menuRestaurant = response.data.results[0].dish;
                 })
             },
 
@@ -143,8 +147,25 @@ import Cart from '../components/Cart.vue'
         .menu-restaurant{
     
             .menu-list {
-                flex-wrap: wrap;
-                max-width: 300px;
+                
+                .col {
+                    min-height: 300px;
+                    .card{
+                        height: 100%;
+                        .image {
+                            height: 150px;
+                            background-color: rgba(0, 0, 0, 0.22);
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: contain;
+                                object-position: center;
+                            }
+                        }
+                    }
+                }
+                
             }
         }
     

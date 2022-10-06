@@ -9,8 +9,8 @@ use App\User;
 
 class DishController extends Controller
 {
-   public function index($id) {
-        $dishes = Dish::where('user_id', '=', $id)->get();
+   public function index($slug) {
+        $dishes = User::where('slug', '=', $slug)->with('dish')->get();
 
         foreach($dishes as $dish) {
             if($dish->dish_image) {

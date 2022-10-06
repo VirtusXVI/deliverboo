@@ -25,7 +25,7 @@
         <div class="container-fluid mt-5">
             <div class="row row-cols-2 row-cols-lg-4">
                 <div v-for="restaurant,index in super_restaurants" :key="index" class="col mb-4">
-                    <router-link :to="{name: 'menu', params: {id: restaurant.id}}" class="card restaurant-card py-3">
+                    <router-link :to="{name: 'menu', params: {slug: restaurant.slug}}" class="card restaurant-card py-3">
                         <div class="card-img-top">
                             <img v-if="restaurant.restaurant_image" :src="'storage/' + restaurant.restaurant_image" :alt="restaurant.restaurant_name">
                             <img v-else src="https://media-cdn.tripadvisor.com/media/photo-s/1a/b8/46/6d/london-stock.jpg" alt="Default Image">

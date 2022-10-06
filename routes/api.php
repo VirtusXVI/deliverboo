@@ -22,7 +22,7 @@ Route::post('/ristoranti', 'Api\Usercontroller@index');
 Route::get('/filteredrestaurants', 'Api\Usercontroller@filter');
 // Route::get('/posts/{slug}', 'Api\Postcontroller@show');
 
-Route::get('/piatti/{id}', 'Api\Dishcontroller@index');
+Route::get('/ristorante/{slug}', 'Api\Dishcontroller@index');
 
 Route::get('/dettagli-piatti/{slug}', 'Api\DishdetailsController@index');
 
