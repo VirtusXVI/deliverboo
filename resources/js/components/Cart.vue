@@ -32,8 +32,8 @@
                     </div>
                 </div>
                 
-                <div v-if="$store.state.cart.length > 0" class="navbar-dropdown is-boxed is-right">
-                    <div class="navbar-item" href="">Totale: &euro;{{ totalPrice }}</div>
+                <div v-if="$store.state.cart.length > 0" class="checkout navbar-dropdown is-boxed is-right">
+                    <div class="navbar-item" href="">Totale: <span class="float-right">&euro;{{ totalPrice }}</span></div>
 
                     <hr class="navbar-divider">
 
@@ -144,6 +144,13 @@ export default {
             .view-legenda > .col{
                 font-size: 14px;
                 color: gray;
+            }
+
+            .checkout {
+                position: absolute;
+                bottom: 30px;
+                left: 30px;
+                right: 30px;
             }
         }
     }
