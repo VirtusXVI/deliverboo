@@ -15,17 +15,18 @@
                 <div  v-for="menu in $store.state.cart" :key="menu.id" class="navbar-item row row-cols-3 text-center pb-3" href="">
                     <div class="col">{{ menu.name }}</div> 
                     <div class="col">
-                        <button type="button" class="btn btn-success btn-number"  data-type="plus" title="Remove from cart" @click.prevent="increaseQuantityFromCart(menu)">
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
-                        <div class="fake-input">{{menu.quantity}}</div>
                         <button type="button" class="btn btn-danger btn-number" data-type="minus" title="Remove from cart" @click.prevent="decreaseQuantityFromCart(menu)">
                             <i class="fa-solid fa-minus"></i>
+                        </button>
+                        <div class="fake-input">{{menu.quantity}}</div>
+                        <button type="button" class="btn btn-success btn-number"  data-type="plus" title="Remove from cart" @click.prevent="increaseQuantityFromCart(menu)">
+                            <i class="fa-solid fa-plus"></i>
                         </button>
                     </div>
                     
                     <div class="col d-flex justify-content-between">
-                        <div>Prezzo: &euro;{{ menu.totalPrice }}</div>
+                        <div></div>
+                        <div class="pl-4">{{ menu.totalPrice }}&euro;</div>
                         <button type="button" class="btn" title="Remove from cart" @click.prevent="removeFromCart(menu)">
                             <i class="fa-solid fa-trash"></i>
                         </button>
@@ -33,13 +34,14 @@
                 </div>
                 
                 <div v-if="$store.state.cart.length > 0" class="checkout navbar-dropdown is-boxed is-right">
-                    <div class="navbar-item" href="">Totale: <span class="float-right">&euro;{{ totalPrice }}</span></div>
+                    <div class="d-flex w-25 mx-auto justify-content-between">
+                        <div>Totale:</div>
+                        <div>{{ totalPrice }}&euro;</div>
+                    </div>
 
                     <hr class="navbar-divider">
 
-                    <a class="navbar-item" href="">
-                        Checkout
-                    </a>
+                    <a class="checkout-btn btn navbar-item" href="">Checkout</a>
                 </div>
 
                 <div v-else class="navbar-dropdown is-boxed is-right">Il carrello è vuoto</div>
@@ -151,6 +153,17 @@ export default {
                 bottom: 30px;
                 left: 30px;
                 right: 30px;
+                width: calc(100% - 60px);
+                margin: 0 auto;
+
+                .checkout-btn {
+                    background-color: $mainSecondColor;
+                    height: 30px;
+                    width: 40%;
+                    font-weight: 600;
+                    display: block; 
+                    margin: 10px auto;
+                }
             }
         }
     }
