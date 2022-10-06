@@ -28,3 +28,8 @@ Route::get('/dettagli-piatti/{slug}', 'Api\DishdetailsController@index');
 
 Route::get('/categorie', 'Api\Categoriescontroller@index');
 // Route::get('/posts/{slug}', 'Api\Postcontroller@show');
+
+
+// Get from Braintree
+Route::get('/orders/generate', 'Api\Orders\OrderController@generateToken');
+Route::post('/controll/payment', 'Api\Orders\OrderController@controllPayment');
