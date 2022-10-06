@@ -247,7 +247,7 @@ export default {
         
         &:hover {
             &:after, &:before {
-                animation: 1s infinite;
+                animation: 0.6s infinite;
                 animation-name: go_down;
             }
         }

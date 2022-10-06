@@ -2328,11 +2328,17 @@ var render = function render() {
   return _c("div", {
     staticClass: "navbar-item has-dropdown is-hoverable"
   }, [_c("a", {
-    staticClass: "navbar-link",
+    staticClass: "navbar-link ms-cart",
     attrs: {
       href: ""
     }
-  }, [_vm._v("\n        Cart (" + _vm._s(_vm.$store.state.cartCount) + ")\n    ")]), _vm._v(" "), _vm.$store.state.cart.length > 0 ? _c("div", {
+  }, [_vm._v("\n        Il mio Carrello"), _c("span", {
+    staticClass: "d-inline-block",
+    "class": {
+      "span-center-single": _vm.$store.state.cartCount < 10,
+      "span-center-double": _vm.$store.state.cartCount >= 10
+    }
+  }, [_vm._v(_vm._s(_vm.$store.state.cartCount))])]), _vm._v(" "), _vm.$store.state.cart.length > 0 ? _c("div", {
     staticClass: "navbar-dropdown is-boxed is-right"
   }, [_vm._l(_vm.$store.state.cart, function (menu) {
     return _c("a", {
@@ -2828,9 +2834,9 @@ var render = function render() {
 
   return _c("main", {
     staticClass: "restaurant-menu"
-  }, [_c("Cart"), _vm._v(" "), _c("div", {
+  }, [_c("div", {
     staticClass: "jumbotron"
-  }, [_vm._v("\n        immagine ristorante\n    ")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("\n        immagine ristorante\n    ")]), _vm._v(" "), _c("Cart"), _vm._v(" "), _c("div", {
     staticClass: "menu-restaurant container"
   }, [_c("ul", {
     staticClass: "menu-list flex"
@@ -2862,7 +2868,7 @@ var render = function render() {
     }, [_vm._v(_vm._s(menu.price) + " €")])])]), _vm._v(" "), _c("div", {
       staticClass: "button"
     }, [_c("router-link", {
-      staticClass: "ms-btn",
+      staticClass: "d-block ms-btn",
       attrs: {
         to: {
           name: "dish",
@@ -2871,14 +2877,17 @@ var render = function render() {
           }
         }
       }
-    }, [_vm._v("Scopri dettagli \n                                ")])], 1), _vm._v(" "), _c("button", {
-      staticClass: "button is-success",
+    }, [_vm._v("Scopri dettagli \n                                ")]), _vm._v(" "), _c("button", {
+      staticClass: "d-block button is-success btn btn-outline-info",
+      attrs: {
+        disabled: !menu.is_visible
+      },
       on: {
         click: function click($event) {
           return _vm.addToCart(menu);
         }
       }
-    }, [_vm._v("Add to Cart")])])])])]);
+    }, [_vm._v("Add to Cart")])], 1)])])])]);
   }), 0)])], 1);
 };
 
@@ -7292,10 +7301,10 @@ render._withStripped = true;
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
-
+exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, ".removeBtn[data-v-b7f93bea] {\n  font-size: 20px;\n  margin-right: 1rem;\n  color: red;\n}", ""]);
+exports.push([module.i, "*[data-v-b7f93bea] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container[data-v-b7f93bea] {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container[data-v-b7f93bea] {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex[data-v-b7f93bea] {\n  display: flex;\n}\nimg[data-v-b7f93bea] {\n  width: 100%;\n  display: block;\n}\nul[data-v-b7f93bea] {\n  list-style-type: none;\n}\na[data-v-b7f93bea] {\n  text-decoration: none;\n  color: inherit;\n}\na[data-v-b7f93bea]:hover {\n  text-decoration: none;\n}\n.removeBtn[data-v-b7f93bea] {\n  font-size: 20px;\n  margin-right: 1rem;\n  color: red;\n}\n.has-dropdown[data-v-b7f93bea] {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  padding-right: 30px;\n}\n.has-dropdown a[data-v-b7f93bea] {\n  font-size: 20px;\n}\n.has-dropdown .ms-cart[data-v-b7f93bea] {\n  background-color: #49BEB7;\n  padding: 10px;\n  padding-right: 30px;\n  border-radius: 10px;\n  position: relative;\n}\n.has-dropdown .ms-cart[data-v-b7f93bea]::after {\n  content: \"\\F07A\";\n  font-family: \"Font Awesome 5 Free\";\n  font-weight: 900;\n  font-size: 30px;\n  vertical-align: middle;\n  position: absolute;\n  z-index: 0;\n  top: 3px;\n  right: 12px;\n}\n.has-dropdown .ms-cart .span-center-single[data-v-b7f93bea], .has-dropdown .ms-cart .span-center-double[data-v-b7f93bea] {\n  position: relative;\n  z-index: 1;\n  color: white;\n  top: -5px;\n  font-size: 16px;\n  font-weight: 900;\n}\n.has-dropdown .ms-cart .span-center-single[data-v-b7f93bea] {\n  right: -9px;\n  padding-left: 10px;\n}\n.has-dropdown .ms-cart .span-center-double[data-v-b7f93bea] {\n  right: -13px;\n}", ""]);
 
 // exports
 
@@ -7314,7 +7323,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.categories-section {\n  padding-top: 90px;\n  padding-bottom: 60px;\n  position: relative;\n}\n.categories-section .title {\n  text-align: center;\n  position: absolute;\n  top: -18px;\n  left: 0;\n  right: 0;\n}\n.categories-section .title span {\n  font-weight: 700;\n  background-color: #FCCF4D;\n  padding: 15px 50px;\n  border-radius: 20px;\n  color: white;\n  border: 5px solid #f8fafc;\n}\n.categories-section .categories-content li .card {\n  height: 150px;\n  border-radius: 20px;\n}\n.categories-section .categories-content li .card-body {\n  justify-content: center;\n  align-items: center;\n  padding: 0;\n  overflow: hidden;\n  border-radius: 20px;\n  position: relative;\n  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);\n}\n.categories-section .categories-content li .card-body img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.categories-section .categories-content li .card-body .overlay {\n  height: 100%;\n  width: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n}\n.categories-section .categories-content li .card-body a {\n  color: white;\n  text-align: center;\n  line-height: 150px;\n  font-size: 35px;\n}\n.categories-section .btn-filter {\n  background-color: #FCCF4D;\n  color: #49BEB7;\n  padding: 10px 50px;\n  border-radius: 16px;\n  font-weight: 600;\n  font-size: 20px;\n  position: relative;\n}\n.categories-section .btn-filter:after, .categories-section .btn-filter:before {\n  content: \"\\2B07\";\n  font-size: 25px;\n  display: inline-block;\n  position: absolute;\n  top: 50%;\n  transform: translate(-50%, -50%);\n}\n.categories-section .btn-filter:after {\n  right: 5px;\n}\n.categories-section .btn-filter:before {\n  left: 20px;\n}\n.categories-section .btn-filter:hover:after, .categories-section .btn-filter:hover:before {\n  animation: 1s infinite;\n  animation-name: go_down;\n}\n.categories-section .btn-menu {\n  background-color: #49BEB7;\n  color: white;\n  border-radius: 16px;\n  font-weight: 600;\n  font-size: 13px;\n  margin: 1rem;\n}\n.categories-section .is-active {\n  box-shadow: 0px 0px 10px;\n  border: 3px solid #49BEB7;\n  background-color: #49BEB7;\n}\n.categories-section .restaurant-card {\n  position: relative;\n  color: white;\n  border: 0;\n}\n.categories-section .restaurant-card .card-img-top {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background-color: black;\n  border-radius: 10px;\n}\n.categories-section .restaurant-card .card-img-top img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n  opacity: 0.4;\n  border-radius: 10px;\n}\n.categories-section .restaurant-card .card-body {\n  padding: 20px;\n  text-align: center;\n  z-index: 1;\n}\n.categories-section .restaurant-card .card-router {\n  position: relative;\n  z-index: 1;\n  text-align: center;\n}\n@keyframes go_down {\n0% {\n    top: 50%;\n    opacity: 1;\n}\n100% {\n    top: 85%;\n    opacity: 0;\n}\n}\n@media screen and (max-width: 1200px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 25px;\n    line-height: 120px;\n}\n.categories-section .categories-content li .card {\n    height: 120px;\n}\n.categories-section .categories-content li {\n    padding: 0 5px;\n}\n}\n@media screen and (max-width: 992px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 20px;\n    line-height: 100px;\n}\n.categories-section .categories-content li .card {\n    height: 100px;\n}\n.categories-section .categories-content li {\n    padding: 0;\n}\n}\n@media screen and (max-width: 768px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 15px;\n    line-height: 80px;\n}\n.categories-section .categories-content li .card {\n    height: 80px;\n}\n}", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.categories-section {\n  padding-top: 90px;\n  padding-bottom: 60px;\n  position: relative;\n}\n.categories-section .title {\n  text-align: center;\n  position: absolute;\n  top: -18px;\n  left: 0;\n  right: 0;\n}\n.categories-section .title span {\n  font-weight: 700;\n  background-color: #FCCF4D;\n  padding: 15px 50px;\n  border-radius: 20px;\n  color: white;\n  border: 5px solid #f8fafc;\n}\n.categories-section .categories-content li .card {\n  height: 150px;\n  border-radius: 20px;\n}\n.categories-section .categories-content li .card-body {\n  justify-content: center;\n  align-items: center;\n  padding: 0;\n  overflow: hidden;\n  border-radius: 20px;\n  position: relative;\n  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.17);\n}\n.categories-section .categories-content li .card-body img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.categories-section .categories-content li .card-body .overlay {\n  height: 100%;\n  width: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n}\n.categories-section .categories-content li .card-body a {\n  color: white;\n  text-align: center;\n  line-height: 150px;\n  font-size: 35px;\n}\n.categories-section .btn-filter {\n  background-color: #FCCF4D;\n  color: #49BEB7;\n  padding: 10px 50px;\n  border-radius: 16px;\n  font-weight: 600;\n  font-size: 20px;\n  position: relative;\n}\n.categories-section .btn-filter:after, .categories-section .btn-filter:before {\n  content: \"\\2B07\";\n  font-size: 25px;\n  display: inline-block;\n  position: absolute;\n  top: 50%;\n  transform: translate(-50%, -50%);\n}\n.categories-section .btn-filter:after {\n  right: 5px;\n}\n.categories-section .btn-filter:before {\n  left: 20px;\n}\n.categories-section .btn-filter:hover:after, .categories-section .btn-filter:hover:before {\n  animation: 0.6s infinite;\n  animation-name: go_down;\n}\n.categories-section .btn-menu {\n  background-color: #49BEB7;\n  color: white;\n  border-radius: 16px;\n  font-weight: 600;\n  font-size: 13px;\n  margin: 1rem;\n}\n.categories-section .is-active {\n  box-shadow: 0px 0px 10px;\n  border: 3px solid #49BEB7;\n  background-color: #49BEB7;\n}\n.categories-section .restaurant-card {\n  position: relative;\n  color: white;\n  border: 0;\n}\n.categories-section .restaurant-card .card-img-top {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background-color: black;\n  border-radius: 10px;\n}\n.categories-section .restaurant-card .card-img-top img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -o-object-position: center;\n     object-position: center;\n  opacity: 0.4;\n  border-radius: 10px;\n}\n.categories-section .restaurant-card .card-body {\n  padding: 20px;\n  text-align: center;\n  z-index: 1;\n}\n.categories-section .restaurant-card .card-router {\n  position: relative;\n  z-index: 1;\n  text-align: center;\n}\n@keyframes go_down {\n0% {\n    top: 50%;\n    opacity: 1;\n}\n100% {\n    top: 85%;\n    opacity: 0;\n}\n}\n@media screen and (max-width: 1200px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 25px;\n    line-height: 120px;\n}\n.categories-section .categories-content li .card {\n    height: 120px;\n}\n.categories-section .categories-content li {\n    padding: 0 5px;\n}\n}\n@media screen and (max-width: 992px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 20px;\n    line-height: 100px;\n}\n.categories-section .categories-content li .card {\n    height: 100px;\n}\n.categories-section .categories-content li {\n    padding: 0;\n}\n}\n@media screen and (max-width: 768px) {\n.categories-section .categories-content li .card .card-body a {\n    font-size: 15px;\n    line-height: 80px;\n}\n.categories-section .categories-content li .card {\n    height: 80px;\n}\n}", ""]);
 
 // exports
 
@@ -7448,7 +7457,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.restaurant-menu {\n  margin-top: 50px;\n}\n.restaurant-menu .menu-general {\n  width: 80%;\n}\n.restaurant-menu .menu-details {\n  padding-top: 50px;\n  margin-left: 100px;\n  width: 20%;\n  text-align: left;\n}\n.restaurant-menu .menu-details .price {\n  text-align: left;\n}\n.restaurant-menu .menu-restaurant .menu-list {\n  flex-wrap: wrap;\n  max-width: 300px;\n}\n.restaurant-menu .button {\n  margin-top: 20px;\n}\n.restaurant-menu .button .ms-btn {\n  border: trasparent;\n  background-color: #FCCF4D;\n  padding: 6px 20px;\n  cursor: pointer;\n  border-radius: 12px;\n}\n.restaurant-menu .button a:hover {\n  color: inherit;\n}", ""]);
+exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.restaurant-menu {\n  margin-top: 50px;\n}\n.restaurant-menu .menu-general {\n  width: 80%;\n}\n.restaurant-menu .menu-details {\n  padding-top: 50px;\n  margin-left: 100px;\n  width: 20%;\n  text-align: left;\n}\n.restaurant-menu .menu-details .price {\n  text-align: left;\n}\n.restaurant-menu .menu-restaurant .menu-list {\n  flex-wrap: wrap;\n  max-width: 300px;\n}\n.restaurant-menu .button {\n  margin-top: 20px;\n  margin-inline: auto;\n}\n.restaurant-menu .button .ms-btn {\n  border: trasparent;\n  background-color: #FCCF4D;\n  padding: 6px 20px;\n  cursor: pointer;\n  border-radius: 12px;\n}\n.restaurant-menu .button a:hover {\n  color: inherit;\n}", ""]);
 
 // exports
 
@@ -57239,8 +57248,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\NicoY\boolean_projects\deliverboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\NicoY\boolean_projects\deliverboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Loris\boolean-projects\progetto-finale\deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Loris\boolean-projects\progetto-finale\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

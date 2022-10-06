@@ -1,7 +1,7 @@
 <template>
     <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" href="">
-            Cart ({{ $store.state.cartCount }})
+        <a class="navbar-link ms-cart" href="">
+            Il mio Carrello<span class="d-inline-block" :class="{'span-center-single' : $store.state.cartCount < 10, 'span-center-double' : $store.state.cartCount >= 10}">{{ $store.state.cartCount }}</span>
         </a>
 
         <div v-if="$store.state.cart.length > 0" class="navbar-dropdown is-boxed is-right">
@@ -76,9 +76,60 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../common/commons.scss';
+@import '../common/variables.scss';
 .removeBtn {
     font-size: 20px;
     margin-right: 1rem;
     color: red;
+}
+
+.has-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 30px;
+
+    a {
+        font-size: 20px;
+    }
+
+    .ms-cart {
+        background-color: $mainFirstColor;
+        padding: 10px;
+        padding-right: 30px;
+        border-radius: 10px;
+        position: relative;
+
+        &::after {
+            content: "\f07a";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 30px;
+            vertical-align: middle;
+            position: absolute;
+            z-index: 0;
+            top: 3px;
+            right: 12px;
+        }
+
+        .span-center-single, .span-center-double {
+            position: relative;
+            z-index: 1;
+            color: white;
+            top: -5px;
+            font-size: 16px;
+            font-weight: 900;
+        }
+
+        .span-center-single {
+            right: -9px;
+            padding-left: 10px;
+        }
+
+        .span-center-double {
+            right: -13px;
+        }
+    }
 }
 </style>

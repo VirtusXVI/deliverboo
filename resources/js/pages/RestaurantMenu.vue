@@ -1,9 +1,9 @@
 <template>
     <main class="restaurant-menu">
-        <Cart />
         <div class="jumbotron">
             immagine ristorante
         </div>
+        <Cart />
         <div class="menu-restaurant container">
             <ul class="menu-list flex">
                 <li v-for="menu, index in menuRestaurant" :key="index">
@@ -28,10 +28,11 @@
                                         :to="{
                                             name: 'dish', 
                                             params: {slug: menu.slug}
-                                        }" class="ms-btn">Scopri dettagli 
+                                        }" class="d-block ms-btn">Scopri dettagli 
                                     </router-link>
+                                    <button class="d-block button is-success btn btn-outline-info" :disabled="!menu.is_visible" @click="addToCart(menu)">Add to Cart</button>
                                 </div>
-                                <button class="button is-success" @click="addToCart(menu)">Add to Cart</button>
+                                
                             </div>
                         </div>
                     </div>
@@ -106,6 +107,7 @@ import Cart from '../components/Cart.vue'
     
         .button {
             margin-top: 20px;
+            margin-inline: auto;
             .ms-btn {
                 border: trasparent;
                 background-color: $mainSecondColor;
