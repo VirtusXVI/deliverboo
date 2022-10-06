@@ -108,7 +108,7 @@ export default {
         height: 100vh;
         display: none;
         z-index: 999999;
-        background-color: transparent;
+        background-color: rgba(0, 0, 0, 0.22);
         .cart-view {
             position: fixed;
             top: 50%;

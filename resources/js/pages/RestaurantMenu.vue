@@ -30,7 +30,8 @@
                                             params: {slug: menu.slug}
                                         }" class="d-block ms-btn">Scopri dettagli 
                                     </router-link>
-                                    <button class="d-block button is-success btn btn-outline-info" :disabled="!menu.is_visible" @click="addToCart(menu)">Add to Cart</button>
+                                    <button class="d-block button is-success btn btn-outline-info" :disabled="!menu.is_visible" @click="addToCart(menu)">Aggiungi <i class="fa-solid fa-cart-shopping"></i></button>
+                                    <div v-if="!menu.is_visible">Piatto non disponibile</div>
                                 </div>
                                 
                             </div>
