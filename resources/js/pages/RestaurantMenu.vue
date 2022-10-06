@@ -25,14 +25,29 @@
                                 </div>
 
                                 <div class="button">
-                                    <router-link 
-                                        :to="{
-                                            name: 'dish', 
-                                            params: {slug: menu.slug}
-                                        }" class="d-block ms-btn">Scopri dettagli 
-                                    </router-link>
+                                    <button class="btn ms-btn" @click="setActiveElement(index)" >Scopri dettagli</button>
                                     <button class="d-block button is-success btn btn-outline-info" :disabled="!menu.is_visible" @click="addToCart(menu)">Aggiungi <i class="fa-solid fa-cart-shopping"></i></button>
                                     <div v-if="!menu.is_visible" class="text-center pt-2" style="color: grey">Piatto non disponibile</div>
+                                </div>
+
+                                <div :id="index" v-if="index == currentActiveElement" class="dish-view-container">
+                                    <div class="dish-view d-flex flex-column">
+                                        <div class="dish-menu-general">
+                                            <div>
+                                                <h2>{{menu.name}}</h2>
+                                            </div>
+                                            <div>{{menu.description}}</div>
+                                        </div>
+                                        <div class="dish-menu-details d-flex flex-column">
+                                            <div class="price-menu">
+                                                <h4>Prezzo: {{menu.price}} &euro;</h4> 
+                                            </div>
+                                            <div class="ingredients">
+                                                <h5>Ingredienti: {{menu.ingredients}}</h5>
+                                            </div>                
+                                        </div>
+                                        <button class="checkout-btn btn" @click="currentActiveElement = 99">Chiudi</button>
+                                    </div>
                                 </div>
                                 
                             </div>
@@ -72,6 +87,7 @@ import Cart from '../components/Cart.vue'
                 menuRestaurant: [],
                 same_restaurant: true,
                 emptyArray: [],
+                currentActiveElement: 99,
                 currentPage: 1,
                 lastPage: null,
                 firstPage: 1
@@ -114,7 +130,12 @@ import Cart from '../components/Cart.vue'
                 localStorage.setItem('cart', actualCart);
                 this.same_restaurant = true;
                 window.location.reload();
-            }
+            },
+            setActiveElement(element) {
+                if(element !== this.currentActiveElement) {
+                    this.currentActiveElement = element;
+                }
+            },
         },
 
         mounted() {
@@ -152,15 +173,69 @@ import Cart from '../components/Cart.vue'
                     min-height: 300px;
                     .card{
                         height: 100%;
+                        border-radius: 15px;
                         .image {
                             height: 150px;
                             background-color: rgba(0, 0, 0, 0.22);
+                            border-top-left-radius: 14px;
+                            border-top-right-radius: 14px;
 
                             img {
                                 width: 100%;
                                 height: 100%;
                                 object-fit: contain;
                                 object-position: center;
+                            }
+                        }
+                        .card-body {
+                            .dish-view-container {
+                                position: fixed;
+                                top: 0;
+                                left: 0;
+                                right:0;
+                                bottom: 0;
+                                height: 100vh;
+                                z-index: 999999;
+                                background-color: rgba(0, 0, 0, 0.22);
+                                .dish-view {
+                                    position: fixed;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    background-color: white;
+                                    padding: 30px;
+                                    border-radius: 15px;
+                                    border: 5px solid $mainFirstColor;
+                                    width: 800px;
+                                    height: 50vh;
+                                    
+                                    .dish-menu-general {
+                                        flex-grow: 0;
+                                        padding-bottom: 15px;
+                                    }
+
+                                    .dish-menu-details {
+                                        flex-grow: 4;
+
+                                        .price-menu {
+                                            flex-grow: 0;
+                                            padding-bottom: 10px;
+                                        }
+
+                                        .ingredients {
+                                            flex-grow: 4;
+                                        }
+                                    }
+
+                                    .checkout-btn {
+                                        background-color: $mainSecondColor;
+                                        height: 30px;
+                                        width: 40%;
+                                        font-weight: 600;
+                                        display: block; 
+                                        margin: 10px auto;
+                                    }
+                                }
                             }
                         }
                     }
