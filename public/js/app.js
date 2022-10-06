@@ -2327,10 +2327,11 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "navbar-item has-dropdown is-hoverable"
-  }, [_c("a", {
-    staticClass: "navbar-link ms-cart",
+  }, [_c("div", {
+    staticClass: "navbar-link ms-cart mb-3",
     attrs: {
-      href: ""
+      href: "",
+      onclick: "document.querySelector('.cart-view-container').style.display='block'"
     }
   }, [_vm._v("\n        Il mio Carrello"), _c("span", {
     staticClass: "d-inline-block",
@@ -2338,18 +2339,28 @@ var render = function render() {
       "span-center-single": _vm.$store.state.cartCount < 10,
       "span-center-double": _vm.$store.state.cartCount >= 10
     }
-  }, [_vm._v(_vm._s(_vm.$store.state.cartCount))])]), _vm._v(" "), _vm.$store.state.cart.length > 0 ? _c("div", {
-    staticClass: "navbar-dropdown is-boxed is-right"
-  }, [_vm._l(_vm.$store.state.cart, function (menu) {
-    return _c("a", {
+  }, [_vm._v(_vm._s(_vm.$store.state.cartCount))])]), _vm._v(" "), _c("div", {
+    staticClass: "cart-view-container navbar-dropdown is-boxed is-right"
+  }, [_c("div", {
+    staticClass: "cart-view"
+  }, [_vm._m(0), _vm._v(" "), _c("hr", {
+    staticClass: "navbar-divider mb-2"
+  }), _vm._v(" "), _vm._l(_vm.$store.state.cart, function (menu) {
+    return _c("div", {
       key: menu.id,
-      staticClass: "navbar-item d-block",
+      staticClass: "navbar-item row row-cols-3 text-center pb-3",
       attrs: {
         href: ""
       }
-    }, [_vm._v("\n            " + _vm._s(menu.name) + " x " + _vm._s(menu.quantity) + " - Prezzo: €" + _vm._s(menu.totalPrice) + "\n            "), _c("span", {
-      staticClass: "removeBtn ml-3",
+    }, [_c("div", {
+      staticClass: "col"
+    }, [_vm._v(_vm._s(menu.name))]), _vm._v(" "), _c("div", {
+      staticClass: "col"
+    }, [_c("button", {
+      staticClass: "btn btn-success btn-number",
       attrs: {
+        type: "button",
+        "data-type": "plus",
         title: "Remove from cart"
       },
       on: {
@@ -2358,9 +2369,15 @@ var render = function render() {
           return _vm.increaseQuantityFromCart(menu);
         }
       }
-    }, [_vm._v("+\n            ")]), _vm._v(" "), _c("span", {
-      staticClass: "removeBtn ml-3",
+    }, [_c("i", {
+      staticClass: "fa-solid fa-plus"
+    })]), _vm._v(" "), _c("div", {
+      staticClass: "fake-input"
+    }, [_vm._v(_vm._s(menu.quantity))]), _vm._v(" "), _c("button", {
+      staticClass: "btn btn-danger btn-number",
       attrs: {
+        type: "button",
+        "data-type": "minus",
         title: "Remove from cart"
       },
       on: {
@@ -2369,9 +2386,14 @@ var render = function render() {
           return _vm.decreaseQuantityFromCart(menu);
         }
       }
-    }, [_vm._v("-\n            ")]), _vm._v(" "), _c("span", {
-      staticClass: "removeBtn ml-3",
+    }, [_c("i", {
+      staticClass: "fa-solid fa-minus"
+    })])]), _vm._v(" "), _c("div", {
+      staticClass: "col d-flex justify-content-between"
+    }, [_c("div", [_vm._v("Prezzo: €" + _vm._s(menu.totalPrice))]), _vm._v(" "), _c("button", {
+      staticClass: "btn",
       attrs: {
+        type: "button",
         title: "Remove from cart"
       },
       on: {
@@ -2380,30 +2402,54 @@ var render = function render() {
           return _vm.removeFromCart(menu);
         }
       }
-    }, [_vm._v("X\n            ")])]);
-  }), _vm._v(" "), _c("a", {
+    }, [_c("i", {
+      staticClass: "fa-solid fa-trash"
+    })])])]);
+  }), _vm._v(" "), _vm.$store.state.cart.length > 0 ? _c("div", {
+    staticClass: "navbar-dropdown is-boxed is-right"
+  }, [_c("div", {
     staticClass: "navbar-item",
     attrs: {
       href: ""
     }
-  }, [_vm._v("\n            Totale: €" + _vm._s(_vm.totalPrice) + "\n        ")]), _vm._v(" "), _c("hr", {
+  }, [_vm._v("Totale: €" + _vm._s(_vm.totalPrice))]), _vm._v(" "), _c("hr", {
     staticClass: "navbar-divider"
   }), _vm._v(" "), _c("a", {
     staticClass: "navbar-item",
     attrs: {
       href: ""
     }
-  }, [_vm._v("\n            Checkout\n        ")])], 2) : _c("div", {
+  }, [_vm._v("\n                    Checkout\n                ")])]) : _c("div", {
     staticClass: "navbar-dropdown is-boxed is-right"
-  }, [_c("a", {
-    staticClass: "navbar-item",
-    attrs: {
-      href: ""
-    }
-  }, [_vm._v("\n            Cart is empty\n        ")])])]);
+  }, [_vm._v("Il carrello è vuoto")]), _vm._v(" "), _vm._m(1)], 2)])]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "view-legenda row row-cols-3 w-100 text-center"
+  }, [_c("div", {
+    staticClass: "col"
+  }, [_vm._v("Piatto")]), _vm._v(" "), _c("div", {
+    staticClass: "col"
+  }, [_vm._v("Seleziona Quantità")]), _vm._v(" "), _c("div", {
+    staticClass: "col"
+  }, [_vm._v("Prezzo")])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("span", {
+    staticClass: "cross",
+    attrs: {
+      onclick: "document.querySelector('.cart-view-container').style.display='none'"
+    }
+  }, [_c("i", {
+    staticClass: "fa-solid fa-xmark"
+  })]);
+}];
 render._withStripped = true;
 
 
@@ -7304,7 +7350,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "*[data-v-b7f93bea] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container[data-v-b7f93bea] {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container[data-v-b7f93bea] {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex[data-v-b7f93bea] {\n  display: flex;\n}\nimg[data-v-b7f93bea] {\n  width: 100%;\n  display: block;\n}\nul[data-v-b7f93bea] {\n  list-style-type: none;\n}\na[data-v-b7f93bea] {\n  text-decoration: none;\n  color: inherit;\n}\na[data-v-b7f93bea]:hover {\n  text-decoration: none;\n}\n.removeBtn[data-v-b7f93bea] {\n  font-size: 20px;\n  margin-right: 1rem;\n  color: red;\n}\n.has-dropdown[data-v-b7f93bea] {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  padding-right: 30px;\n}\n.has-dropdown a[data-v-b7f93bea] {\n  font-size: 20px;\n}\n.has-dropdown .ms-cart[data-v-b7f93bea] {\n  background-color: #49BEB7;\n  padding: 10px;\n  padding-right: 30px;\n  border-radius: 10px;\n  position: relative;\n}\n.has-dropdown .ms-cart[data-v-b7f93bea]::after {\n  content: \"\\F07A\";\n  font-family: \"Font Awesome 5 Free\";\n  font-weight: 900;\n  font-size: 30px;\n  vertical-align: middle;\n  position: absolute;\n  z-index: 0;\n  top: 3px;\n  right: 12px;\n}\n.has-dropdown .ms-cart .span-center-single[data-v-b7f93bea], .has-dropdown .ms-cart .span-center-double[data-v-b7f93bea] {\n  position: relative;\n  z-index: 1;\n  color: white;\n  top: -5px;\n  font-size: 16px;\n  font-weight: 900;\n}\n.has-dropdown .ms-cart .span-center-single[data-v-b7f93bea] {\n  right: -9px;\n  padding-left: 10px;\n}\n.has-dropdown .ms-cart .span-center-double[data-v-b7f93bea] {\n  right: -13px;\n}", ""]);
+exports.push([module.i, "*[data-v-b7f93bea] {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container[data-v-b7f93bea] {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container[data-v-b7f93bea] {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex[data-v-b7f93bea] {\n  display: flex;\n}\nimg[data-v-b7f93bea] {\n  width: 100%;\n  display: block;\n}\nul[data-v-b7f93bea] {\n  list-style-type: none;\n}\na[data-v-b7f93bea] {\n  text-decoration: none;\n  color: inherit;\n}\na[data-v-b7f93bea]:hover {\n  text-decoration: none;\n}\n.has-dropdown[data-v-b7f93bea] {\n  display: flex;\n  flex-direction: column;\n  align-items: flex-end;\n  padding-right: 30px;\n}\n.has-dropdown .cart-view-container[data-v-b7f93bea] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 100vh;\n  display: none;\n  z-index: 999999;\n  background-color: transparent;\n}\n.has-dropdown .cart-view-container .cart-view[data-v-b7f93bea] {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: white;\n  padding: 30px;\n  border-radius: 15px;\n  border: 5px solid #49BEB7;\n  width: 800px;\n  height: 50vh;\n}\n.has-dropdown .cart-view-container .cart-view .cross[data-v-b7f93bea] {\n  position: absolute;\n  top: 2px;\n  right: 12px;\n  cursor: pointer;\n  font-size: 25px;\n}\n.has-dropdown .cart-view-container .cart-view .cross[data-v-b7f93bea]:hover {\n  color: red;\n}\n.has-dropdown .cart-view-container .cart-view .fake-input[data-v-b7f93bea] {\n  display: inline-block;\n  width: 40px;\n  background-color: white;\n  text-align: center;\n  border: 0.5px solid lightgrey;\n  border-radius: 5px;\n}\n.has-dropdown .cart-view-container .cart-view .view-legenda > .col[data-v-b7f93bea] {\n  font-size: 14px;\n  color: gray;\n}\n.has-dropdown div[data-v-b7f93bea] {\n  font-size: 20px;\n}\n.has-dropdown div button[data-v-b7f93bea] {\n  width: 25px;\n}\n.has-dropdown .ms-cart[data-v-b7f93bea] {\n  background-color: #49BEB7;\n  padding: 10px;\n  padding-right: 30px;\n  border-radius: 10px;\n  position: relative;\n  cursor: pointer;\n}\n.has-dropdown .ms-cart[data-v-b7f93bea]::after {\n  content: \"\\F07A\";\n  font-family: \"Font Awesome 5 Free\";\n  font-weight: 900;\n  font-size: 30px;\n  vertical-align: middle;\n  position: absolute;\n  z-index: 0;\n  top: 3px;\n  right: 12px;\n}\n.has-dropdown .ms-cart .span-center-single[data-v-b7f93bea], .has-dropdown .ms-cart .span-center-double[data-v-b7f93bea] {\n  position: relative;\n  z-index: 1;\n  color: white;\n  top: -5px;\n  font-size: 16px;\n  font-weight: 900;\n}\n.has-dropdown .ms-cart .span-center-single[data-v-b7f93bea] {\n  right: -9px;\n  padding-left: 10px;\n}\n.has-dropdown .ms-cart .span-center-double[data-v-b7f93bea] {\n  right: -13px;\n}", ""]);
 
 // exports
 
