@@ -57120,6 +57120,7 @@ var store = {
         var product = state.cart[index];
         state.cartCount--;
         product.quantity--;
+        product.totalPrice = product.quantity * product.price;
 
         if (product.quantity < 1) {
           var _index = state.cart.indexOf(menu);
@@ -57133,7 +57134,7 @@ var store = {
           this.commit('saveCart');
         }
 
-        Vue.set(menu, 'totalPrice', menu.price);
+        Vue.set(menu, 'product.totalPrice', menu.price);
       }
 
       this.commit('saveCart');
@@ -57244,8 +57245,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\NicoY\boolean_projects\deliverboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\NicoY\boolean_projects\deliverboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Loris\boolean-projects\progetto-finale\deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Loris\boolean-projects\progetto-finale\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

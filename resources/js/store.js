@@ -46,6 +46,7 @@ let store = {
         
                 state.cartCount--;
                 product.quantity --;
+                product.totalPrice = product.quantity * product.price; 
 
                 if (product.quantity < 1) {
                     let index = state.cart.indexOf(menu);
@@ -59,7 +60,7 @@ let store = {
                     }
                     this.commit('saveCart');
                 }
-                Vue.set(menu, 'totalPrice', menu.price);
+                Vue.set(menu, 'product.totalPrice', menu.price);
             }
             this.commit('saveCart');
         },
