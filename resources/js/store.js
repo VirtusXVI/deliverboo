@@ -67,15 +67,13 @@ let store = {
         increaseQuantityFromCart(state, menu) {
             let index = state.cart.indexOf(menu);
         
-            if (index > -1) {
-                let product = state.cart[index];
+            let product = state.cart[index];
                 state.cartCount ++;
-                // state.cartCount += product.quantity;
                 
                 product.quantity ++;
-
-                Vue.set(menu, 'totalPrice', menu.price);
-            }
+                product.totalPrice = product.quantity * product.price;     
+                
+                Vue.set(menu, 'product.totalPrice', menu.price);
             this.commit('saveCart');
         },
 
