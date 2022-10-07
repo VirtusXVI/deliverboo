@@ -35,6 +35,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script src="https://js.braintreegateway.com/web/dropin/1.33.4/js/dropin.min.js"></script>
+
+    
 </head>
 <body>
     <div id="app" class="front-office-layout">

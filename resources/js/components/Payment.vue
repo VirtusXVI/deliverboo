@@ -52,7 +52,8 @@ export default {
         return {
             hostedFieldInstance: false,
             nonce: '',
-            error: ''
+            error: '',
+            userToken: ''
         }
     },
     methods: {
@@ -65,16 +66,23 @@ export default {
                 this.hostedFieldInstance.tokenize().then(payload => {
                     console.log(payload);
                     this.nonce = payload.nonce;
-                    console.log(this.nonce, 'ciao');
+                    // console.log(this.nonce, 'ciao');
                 })
                 .catch(err => {
-                    console.error(err);
+                    // console.error(err);
                     this.error = err.message;
                 })
             }
         }
     },
     mounted() {
+        axios.get('/api/orders/generate')
+        .then((response) => {
+            this.userToken = response.data.token;
+
+            // console.log(this.userToken, 'ciao');
+        });
+        
        braintree.client.create({
            authorization: "sandbox_v2bk6764_gwbpbfkzyj963v7f"
        })

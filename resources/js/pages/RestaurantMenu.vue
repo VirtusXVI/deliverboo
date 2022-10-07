@@ -7,7 +7,9 @@
         <!-- Cart section  -->
         <Cart />
         <!-- Payment section -->
-        <Payment :authorization="tokenApi" />
+        <Payment />
+
+        <PaymentTwo />
 
         <div class="menu-restaurant container">
             <ul class="menu-list row row-cols-1 row-cols-md-3">
@@ -81,12 +83,14 @@
 <script>
 import Cart from '../components/Cart.vue'
 import Payment from '../components/Payment.vue'
+import PaymentTwo from '../components/PaymentTwo.vue'
     export default {
         name: 'RestaurantMenu',
 
         components: {
             Cart,
-            Payment
+            Payment,
+            PaymentTwo
         },
 
         data() {
@@ -98,7 +102,6 @@ import Payment from '../components/Payment.vue'
                 currentPage: 1,
                 lastPage: null,
                 firstPage: 1,
-                tokenApi: "blabla"
             }
         },
 
@@ -148,12 +151,6 @@ import Payment from '../components/Payment.vue'
 
         mounted() {
             this.getDishes();
-            axios.get('/api/orders/generate')
-                .then((response) => {
-                    this.tokenApi = response;
-
-                    console.log(response);
-            })
         }
     }
 </script>
