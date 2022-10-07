@@ -9,7 +9,7 @@
                 <li v-for="menu, index in menuRestaurant" :key="index" class="col mb-3">
                     <div class="card">
                         <div class="image">
-                            <img v-if="menu.dish_image" class="card-img-top" :src="'/storage/' + menu.dish_image" :alt="menu.name">
+                            <img v-if="menu.dish_image" class="card-img-top" :src="'storage/' + menu.dish_image" :alt="menu.name">
                             <img v-else src="https://s3-eu-west-1.amazonaws.com/tpd/logos/55be6ade0000ff000581b457/0x0.png" alt="no-pic-found">
                         </div>
                         <div class="dish-details">
