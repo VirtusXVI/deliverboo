@@ -108,7 +108,7 @@
 
         <footer>
             <div class="footer-content container">
-                <h2>Deliveroo</h2>
+                <h2>Deliveboo</h2>
 
                 <div class="links">
                     {{-- Social --}}

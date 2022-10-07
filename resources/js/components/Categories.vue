@@ -207,6 +207,7 @@ export default {
                     top: 0;
                     left: 0;
                     right: 0;
+                    line-height: 100%;
                 }
 
                 button {
@@ -335,10 +336,6 @@ export default {
     }
 }
 @media screen and (max-width: 992px) {
-    .categories-section .categories-content li .card .card-body a {
-        font-size: 20px;
-        line-height: 100px;
-    }
 
     .categories-section .categories-content li .card {
         height: 100px;
@@ -347,15 +344,19 @@ export default {
     .categories-section .categories-content li {
         padding: 0;
     }
+
+    .categories-section .categories-content li .card .card-body .overlay {
+        font-size: 22px;
+    }
 }
 @media screen and (max-width: 768px) {
-    .categories-section .categories-content li .card .card-body a {
-        font-size: 15px;
-        line-height: 80px;
-    }
 
     .categories-section .categories-content li .card {
         height: 80px;
+    }
+
+    .categories-section .categories-content li .card .card-body .overlay {
+        font-size: 16px;
     }
 }
 </style>
