@@ -12,13 +12,13 @@ class DishController extends Controller
    public function index($slug) {
         $dishes = User::where('slug', '=', $slug)->with('dish')->get();
 
-        foreach($dishes as $dish) {
-            if($dish->dish_image) {
-                if($dish->dish_image) {
-                    $dish->dish_image = asset('storage/' . $dish->dish_image);
-                }
-            }
-        }
+        // foreach($dishes as $dish) {
+        //     if($dish->dish_image) {
+        //         if($dish->dish_image) {
+        //             $dish->dish_image = asset('storage/' . $dish->dish_image);
+        //         }
+        //     }
+        // }
 
         $data = [
             'success' => true,
