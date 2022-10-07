@@ -123,7 +123,7 @@ export default {
             height: 50vh;
 
             .cart-items-cont {
-                max-height: 68%;
+                max-height: 67%;
                 overflow-y: auto;
 
                 &::-webkit-scrollbar {
