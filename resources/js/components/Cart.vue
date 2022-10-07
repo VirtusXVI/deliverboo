@@ -1,6 +1,6 @@
 <template>
     <div class="navbar-item has-dropdown is-hoverable">
-        <div class="navbar-link ms-cart mb-3" href="" onclick="document.querySelector('.cart-view-container').style.display='block', document.querySelector('body').style.overflow='hidden';">
+        <div class="navbar-link ms-cart mb-3" href="" onclick="document.querySelector('.cart-view-container').style.display='block', document.querySelector('body').style.overflow='hidden'">
             Il mio Carrello<span class="d-inline-block" :class="{'span-center-single' : $store.state.cartCount < 10, 'span-center-double' : $store.state.cartCount >= 10}">{{ $store.state.cartCount }}</span>
         </div>
 

@@ -1,7 +1,10 @@
 <template>
     <main class="restaurant-menu">
-        <div v-if="restaurantDetails.restaurant_image" class="jumbotron">
-            <img :src="'/storage/' + restaurantDetails.restaurant_image" :alt="restaurantDetails.restaurant_name">
+        <div class="img-restaurant-menu">
+            <img v-if="restaurantDetails.restaurant_image" :src="'/storage/' + restaurantDetails.restaurant_image"  :alt="restaurantDetails.restaurant_name">
+            <img v-else 
+            src="https://images.unsplash.com/opengraph/1x1.png?auto=format&fit=crop&w=1200&h=630&q=60&mark-w=64&mark-align=top%2Cleft&mark-pad=50&blend-w=1&mark=https%3A%2F%2Fimages.unsplash.com%2Fopengraph%2Flogo.png&blend=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1555396273-367ea4eb4db5%3Fcrop%3Dfaces%252Cedges%26cs%3Dtinysrgb%26fit%3Dcrop%26fm%3Djpg%26ixid%3DMnwxMjA3fDB8MXxzZWFyY2h8NHx8cmVzdGF1cmFudHxlbnwwfHx8fDE2NjUwNTkzNzc%26ixlib%3Drb-1.2.1%26q%3D60%26w%3D1200%26auto%3Dformat%26h%3D630%26mark-w%3D750%26mark-align%3Dmiddle%252Ccenter%26blend-mode%3Dnormal%26blend-alpha%3D10%26mark%3Dhttps%253A%252F%252Fimages.unsplash.com%252Fopengraph%252Fsearch-input.png%253Fauto%253Dformat%2526fit%253Dcrop%2526w%253D750%2526h%253D84%2526q%253D60%2526txt-color%253D000000%2526txt-size%253D40%2526txt-align%253Dmiddle%25252Cleft%2526txt-pad%253D80%2526txt-width%253D660%2526txt-clip%253Dellipsis%2526txt%253Drestaurant%26blend%3D000000" 
+            alt="Default Image">
         </div>
         <Cart />
         <div class="menu-restaurant">
@@ -154,7 +157,19 @@ import Cart from '../components/Cart.vue'
     @import '../common/variables.scss';
     
     .restaurant-menu {
-        margin-top: 70px;
+
+        .img-restaurant-menu {
+            margin-bottom: 20px;
+            img {
+                display: block;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 300px;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
     
         .menu-general {
             width: 80%;
@@ -193,8 +208,10 @@ import Cart from '../components/Cart.vue'
                             img {
                                 width: 100%;
                                 height: 100%;
-                                object-fit: contain;
+                                object-fit: cover;
                                 object-position: center;
+                                border-top-left-radius: 14px;
+                                border-top-right-radius: 14px;
                             }
                         }
                         .card-body {
