@@ -278,8 +278,8 @@ import Cart from '../components/Cart.vue'
 
                                     .title {
                                         height: 24px;
-                                        overflow-x: hidden;
-                                        padding-right: 20px;
+                                        overflow: hidden;
+                                        padding-right: 10px;
                                     }
                                 }
                             }
