@@ -23,7 +23,18 @@ class OrderController extends Controller
 
     public function controllPayment(OrderRequest $request, Gateway $gateway) {
 
-        $product = Dish::find($request->product);
+        // $product = Dish::find($request);
+        $product = $request->all();
+
+        // dd($product['product']);
+
+        $data = [
+            'success' => true,
+            'product' => $product
+        ];
+
+
+        // return response()->json($data);
 
         $result = $gateway->transaction()->sale([
             'amount' => $product->price,

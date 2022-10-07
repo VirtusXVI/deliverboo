@@ -141,6 +141,8 @@ import PaymentTwo from '../components/PaymentTwo.vue'
                 localStorage.setItem('cart', actualCart);
                 this.same_restaurant = true;
                 window.location.reload();
+
+                console.log(actualCart);
             },
             setActiveElement(element) {
                 if(element !== this.currentActiveElement) {

@@ -73,11 +73,16 @@ export default {
     computed: {
     totalPrice() {
         let total = 0;
+        let superTotal = 0;
 
         for (let menu of this.$store.state.cart) {
             total += parseFloat(menu.totalPrice);
-        }
+        };
         
+        superTotal = parseFloat(total).toFixed(2);
+        superTotal = JSON.stringify(superTotal);
+        localStorage.setItem('total', superTotal);
+
         return parseFloat(total).toFixed(2);
     }
 }

@@ -3,8 +3,10 @@
 <div>
     
 
-<div id="dropin-container"></div>
-<button id="submit-button" @click="submitPayment" class="button button--small button--green">Purchase</button>
+<form @submit.prevent="submitPayment()">
+    <div id="dropin-container"></div>
+    <button id="submit-button" type="submit"  class="button button--small button--green">Purchase</button>
+</form>
 
 </div>
 </template>
@@ -12,17 +14,24 @@
 <script>
 
 export default {
-    name: 'PaymentTwo', 
+    name: 'PaymentTwo',
+    data() {
+        return {
+            totalPrice: JSON.parse(localStorage.getItem('total')),
+            // totalPrice: 'ciao',
+            userToken: ''
+        }
+    },
     methods: {
         submitPayment() {
             axios.post('/api/controll/payment', {
-                token: "token generato",
-                product: "prodotti carrello"
+                token: this.userToken,
+                product: this.totalPrice
             })
         .then((response) => {
             // this.userToken = response.data.token;
-
-            // console.log(this.userToken, 'ciao');
+            
+            console.log(response, 'ciao');
             });
         }
     },
@@ -35,10 +44,12 @@ export default {
 
         axios.get('/api/orders/generate')
         .then((response) => {
-            // this.userToken = response.data.token;
+            this.userToken = response.data.token;
 
             // console.log(this.userToken, 'ciao');
         });
+
+        console.log(this.totalPrice, 'okay');
     }
 }
 

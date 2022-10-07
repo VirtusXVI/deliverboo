@@ -1930,6 +1930,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   computed: {
     totalPrice: function totalPrice() {
       var total = 0;
+      var superTotal = 0;
 
       var _iterator = _createForOfIteratorHelper(this.$store.state.cart),
           _step;
@@ -1945,6 +1946,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         _iterator.f();
       }
 
+      ;
+      superTotal = parseFloat(total).toFixed(2);
+      superTotal = JSON.stringify(superTotal);
+      localStorage.setItem('total', superTotal);
       return parseFloat(total).toFixed(2);
     }
   }
@@ -2218,24 +2223,35 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PaymentTwo',
+  data: function data() {
+    return {
+      totalPrice: JSON.parse(localStorage.getItem('total')),
+      // totalPrice: 'ciao',
+      userToken: ''
+    };
+  },
   methods: {
     submitPayment: function submitPayment() {
       axios.post('/api/controll/payment', {
-        token: "token generato",
-        product: "prodotti carrello"
-      }).then(function (response) {// this.userToken = response.data.token;
-        // console.log(this.userToken, 'ciao');
+        token: this.userToken,
+        product: this.totalPrice
+      }).then(function (response) {
+        // this.userToken = response.data.token;
+        console.log(response, 'ciao');
       });
     }
   },
   mounted: function mounted() {
+    var _this = this;
+
     braintree.dropin.create({
       authorization: 'sandbox_hckbgctk_gwbpbfkzyj963v7f',
       selector: '#dropin-container'
     });
-    axios.get('/api/orders/generate').then(function (response) {// this.userToken = response.data.token;
-      // console.log(this.userToken, 'ciao');
+    axios.get('/api/orders/generate').then(function (response) {
+      _this.userToken = response.data.token; // console.log(this.userToken, 'ciao');
     });
+    console.log(this.totalPrice, 'okay');
   }
 });
 
@@ -2437,6 +2453,7 @@ __webpack_require__.r(__webpack_exports__);
       localStorage.setItem('cart', actualCart);
       this.same_restaurant = true;
       window.location.reload();
+      console.log(actualCart);
     },
     setActiveElement: function setActiveElement(element) {
       if (element !== this.currentActiveElement) {
@@ -2995,19 +3012,24 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("div", {
+  return _c("div", [_c("form", {
+    on: {
+      submit: function submit($event) {
+        $event.preventDefault();
+        return _vm.submitPayment();
+      }
+    }
+  }, [_c("div", {
     attrs: {
       id: "dropin-container"
     }
   }), _vm._v(" "), _c("button", {
     staticClass: "button button--small button--green",
     attrs: {
-      id: "submit-button"
-    },
-    on: {
-      click: _vm.submitPayment
+      id: "submit-button",
+      type: "submit"
     }
-  }, [_vm._v("Purchase")])]);
+  }, [_vm._v("Purchase")])])]);
 };
 
 var staticRenderFns = [];
