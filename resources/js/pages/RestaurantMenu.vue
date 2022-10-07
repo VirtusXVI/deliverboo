@@ -6,10 +6,6 @@
 
         <!-- Cart section  -->
         <Cart />
-        <!-- Payment section -->
-        <Payment />
-
-        <PaymentTwo />
 
         <div class="menu-restaurant container">
             <ul class="menu-list row row-cols-1 row-cols-md-3">
@@ -82,15 +78,11 @@
 
 <script>
 import Cart from '../components/Cart.vue'
-import Payment from '../components/Payment.vue'
-import PaymentTwo from '../components/PaymentTwo.vue'
     export default {
         name: 'RestaurantMenu',
 
         components: {
             Cart,
-            Payment,
-            PaymentTwo
         },
 
         data() {
