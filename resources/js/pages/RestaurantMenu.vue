@@ -3,7 +3,12 @@
         <div class="jumbotron">
             immagine ristorante
         </div>
+
+        <!-- Cart section  -->
         <Cart />
+        <!-- Payment section -->
+        <Payment :authorization="tokenApi" />
+
         <div class="menu-restaurant container">
             <ul class="menu-list row row-cols-1 row-cols-md-3">
                 <li v-for="menu, index in menuRestaurant" :key="index" class="col mb-3">
@@ -75,11 +80,13 @@
 
 <script>
 import Cart from '../components/Cart.vue'
+import Payment from '../components/Payment.vue'
     export default {
         name: 'RestaurantMenu',
 
         components: {
             Cart,
+            Payment
         },
 
         data() {
@@ -90,7 +97,8 @@ import Cart from '../components/Cart.vue'
                 currentActiveElement: 99,
                 currentPage: 1,
                 lastPage: null,
-                firstPage: 1
+                firstPage: 1,
+                tokenApi: "blabla"
             }
         },
 
@@ -140,6 +148,12 @@ import Cart from '../components/Cart.vue'
 
         mounted() {
             this.getDishes();
+            axios.get('/api/orders/generate')
+                .then((response) => {
+                    this.tokenApi = response;
+
+                    console.log(response);
+            })
         }
     }
 </script>
