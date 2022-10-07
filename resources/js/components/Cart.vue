@@ -27,8 +27,8 @@
                         
                         <div class="col d-flex justify-content-between">
                             <div></div>
-                            <div class="pl-4">{{ menu.totalPrice }}&euro;</div>
-                            <button type="button" class="btn" title="Remove from cart" @click.prevent="removeFromCart(menu)">
+                            <div class="pl-5">{{ menu.totalPrice }}&euro;</div>
+                            <button type="button" class="btn mr-2" title="Remove from cart" @click.prevent="removeFromCart(menu)">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </div>
@@ -141,6 +141,11 @@ export default {
                 &::-webkit-scrollbar-thumb {
                     background-color: $mainSecondColor;
                     border-radius: 16px;
+                    visibility: hidden;
+                }
+
+                &:hover::-webkit-scrollbar-thumb {
+                visibility:visible;
                 }
 
                     /* set button(top and bottom of the scrollbar) */
@@ -149,6 +154,10 @@ export default {
                 }
                 .cart-items {
                     align-items: center;
+                    
+                    .col:first-child {
+                        overflow: hidden;
+                    }
                 }
             }
 
