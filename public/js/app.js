@@ -2909,131 +2909,9 @@ render._withStripped = true;
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function render() {
-  var _vm = this,
-      _c = _vm._self._c;
+var render = function render() {};
 
-  return _c("main", {
-    staticClass: "restaurant-menu"
-  }, [_c("div", {
-    staticClass: "jumbotron"
-  }, [_vm._v("\n        immagine ristorante\n    ")]), _vm._v(" "), _c("Cart"), _vm._v(" "), _c("div", {
-    staticClass: "menu-restaurant container"
-  }, [_c("ul", {
-    staticClass: "menu-list row row-cols-1 row-cols-md-3"
-  }, _vm._l(_vm.menuRestaurant, function (menu, index) {
-    return _c("li", {
-      key: index,
-      staticClass: "col mb-3"
-    }, [_c("div", {
-      staticClass: "card"
-    }, [_c("div", {
-      staticClass: "image"
-    }, [menu.dish_image ? _c("img", {
-      staticClass: "card-img-top",
-      attrs: {
-        src: "/storage/" + menu.dish_image,
-        alt: menu.name
-      }
-    }) : _c("img", {
-      attrs: {
-        src: "https://s3-eu-west-1.amazonaws.com/tpd/logos/55be6ade0000ff000581b457/0x0.png",
-        alt: "no-pic-found"
-      }
-    })]), _vm._v(" "), _c("div", {
-      staticClass: "dish-details"
-    }, [_c("div", {
-      staticClass: "card-body d-flex flex-column justify-content-between"
-    }, [_c("div", {
-      staticClass: "description"
-    }, [_c("div", {
-      staticClass: "title"
-    }, [_c("span", [_c("strong", [_vm._v(_vm._s(menu.name))])])]), _vm._v(" "), _c("div", {
-      staticClass: "price"
-    }, [_vm._m(0, true), _vm._v(" "), _c("p", {
-      staticClass: "card-text"
-    }, [_vm._v(_vm._s(menu.price) + " €")])])]), _vm._v(" "), _c("div", {
-      staticClass: "button"
-    }, [_c("button", {
-      staticClass: "btn ms-btn",
-      on: {
-        click: function click($event) {
-          return _vm.setActiveElement(index);
-        }
-      }
-    }, [_vm._v("Scopri dettagli")]), _vm._v(" "), _c("button", {
-      staticClass: "d-block button is-success btn btn-outline-info",
-      attrs: {
-        disabled: !menu.is_visible
-      },
-      on: {
-        click: function click($event) {
-          return _vm.addToCart(menu);
-        }
-      }
-    }, [_vm._v("Aggiungi "), _c("i", {
-      staticClass: "fa-solid fa-cart-shopping"
-    })]), _vm._v(" "), !menu.is_visible ? _c("div", {
-      staticClass: "text-center pt-2",
-      staticStyle: {
-        color: "grey"
-      }
-    }, [_vm._v("Piatto non disponibile")]) : _vm._e()]), _vm._v(" "), index == _vm.currentActiveElement ? _c("div", {
-      staticClass: "dish-view-container",
-      attrs: {
-        id: index
-      }
-    }, [_c("div", {
-      staticClass: "dish-view d-flex flex-column"
-    }, [_c("div", {
-      staticClass: "dish-menu-general"
-    }, [_c("div", [_c("h2", [_vm._v(_vm._s(menu.name))])]), _vm._v(" "), _c("div", [_vm._v(_vm._s(menu.description))])]), _vm._v(" "), _c("div", {
-      staticClass: "dish-menu-details d-flex flex-column"
-    }, [_c("div", {
-      staticClass: "price-menu"
-    }, [_c("h4", [_vm._v("Prezzo: " + _vm._s(menu.price) + " €")])]), _vm._v(" "), _c("div", {
-      staticClass: "ingredients"
-    }, [_c("h5", [_vm._v("Ingredienti: " + _vm._s(menu.ingredients))])])]), _vm._v(" "), _c("button", {
-      staticClass: "checkout-btn btn",
-      on: {
-        click: function click($event) {
-          _vm.currentActiveElement = 99;
-        }
-      }
-    }, [_vm._v("Chiudi")])])]) : _vm._e()])])])]);
-  }), 0)]), _vm._v(" "), !_vm.same_restaurant ? _c("div", {
-    staticClass: "not-same-restaurant"
-  }, [_c("div", {
-    staticClass: "pop-up"
-  }, [_vm._m(1), _vm._v(" "), _c("div", [_c("button", {
-    staticClass: "btn btn-outline-info",
-    on: {
-      click: function click($event) {
-        return _vm.btnConfirm(_vm.menu);
-      }
-    }
-  }, [_vm._v("Conferma")]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-outline-info",
-    on: {
-      click: function click($event) {
-        return _vm.btnAbort();
-      }
-    }
-  }, [_vm._v("Annulla")])])])]) : _vm._e()], 1);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("span", [_c("strong", [_vm._v("Prezzo:")])]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", [_vm._v("\n                Stai inserendo nel carrello un piatto di un altro ristorante. "), _c("br"), _vm._v("\n                Questa operazione svuoterà il carrello, vuoi proseguire?\n            ")]);
-}];
-render._withStripped = true;
+var staticRenderFns = [];
 
 
 /***/ }),
@@ -57381,8 +57259,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\NicoY\boolean_projects\deliverboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\NicoY\boolean_projects\deliverboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\acesp\Boolean66\PHP\deliverboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\acesp\Boolean66\PHP\deliverboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
