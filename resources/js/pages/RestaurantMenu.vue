@@ -1,7 +1,7 @@
 <template>
     <main class="restaurant-menu">
         <div class="jumbotron">
-            immagine ristorante
+            <img :src="'/storage/' + restaurantDetails.restaurant_image" :alt="restaurantDetails.restaurant_name">
         </div>
         <Cart />
         <div class="menu-restaurant container">
@@ -9,7 +9,7 @@
                 <li v-for="menu, index in menuRestaurant" :key="index" class="col mb-3">
                     <div class="card">
                         <div class="image">
-                            <img v-if="menu.dish_image" class="card-img-top" :src="'/storage/' + menu.dish_image" :alt="menu.name">
+                            <img v-if="menu.dish_image" class="card-img-top" :src="menu.dish_image" :alt="menu.name">
                             <img v-else src="https://s3-eu-west-1.amazonaws.com/tpd/logos/55be6ade0000ff000581b457/0x0.png" alt="no-pic-found">
                         </div>
                         <div class="dish-details">
@@ -84,6 +84,7 @@ import Cart from '../components/Cart.vue'
 
         data() {
             return {
+                restaurantDetails: [],
                 menuRestaurant: [],
                 same_restaurant: true,
                 emptyArray: [],
@@ -98,7 +99,9 @@ import Cart from '../components/Cart.vue'
             getDishes() {
                 axios.get('/api/ristorante/' + this.$route.params.slug)
                 .then((response) => {
+                    this.restaurantDetails = response.data.results[0];
                     this.menuRestaurant = response.data.results[0].dish;
+                    console.log(this.restaurantDetails);
                 })
             },
 
