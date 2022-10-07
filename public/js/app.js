@@ -2918,17 +2918,17 @@ var render = function render() {
 
   return _c("main", {
     staticClass: "restaurant-menu"
-  }, [_c("div", {
+  }, [_vm.restaurantDetails.restaurant_image ? _c("div", {
     staticClass: "jumbotron"
   }, [_c("img", {
     attrs: {
       src: "/storage/" + _vm.restaurantDetails.restaurant_image,
       alt: _vm.restaurantDetails.restaurant_name
     }
-  })]), _vm._v(" "), _c("Cart"), _vm._v(" "), _c("div", {
-    staticClass: "menu-restaurant container"
+  })]) : _vm._e(), _vm._v(" "), _c("Cart"), _vm._v(" "), _c("div", {
+    staticClass: "menu-restaurant"
   }, [_c("ul", {
-    staticClass: "menu-list row row-cols-1 row-cols-md-3"
+    staticClass: "menu-list row row-cols-1 row-cols-md-2 row-cols-xl-3"
   }, _vm._l(_vm.menuRestaurant, function (menu, index) {
     return _c("li", {
       key: index,
@@ -2953,15 +2953,17 @@ var render = function render() {
     }, [_c("div", {
       staticClass: "card-body d-flex flex-column justify-content-between"
     }, [_c("div", {
-      staticClass: "description"
+      staticClass: "desc-cont"
     }, [_c("div", {
+      staticClass: "description"
+    }, [_c("h5", {
       staticClass: "title"
-    }, [_c("span", [_c("strong", [_vm._v(_vm._s(menu.name))])])]), _vm._v(" "), _c("div", {
+    }, [_vm._v(_vm._s(menu.name))]), _vm._v(" "), _c("div", {
       staticClass: "price"
     }, [_vm._m(0, true), _vm._v(" "), _c("p", {
       staticClass: "card-text"
     }, [_vm._v(_vm._s(menu.price) + " €")])])]), _vm._v(" "), _c("div", {
-      staticClass: "button"
+      staticClass: "button-view"
     }, [_c("button", {
       staticClass: "btn ms-btn",
       on: {
@@ -2969,7 +2971,9 @@ var render = function render() {
           return _vm.setActiveElement(index);
         }
       }
-    }, [_vm._v("Scopri dettagli")]), _vm._v(" "), _c("button", {
+    }, [_vm._v("Scopri dettagli")])])]), _vm._v(" "), _c("div", {
+      staticClass: "text-center button-cart"
+    }, [_c("button", {
       staticClass: "d-block button is-success btn btn-outline-info",
       attrs: {
         disabled: !menu.is_visible
@@ -2982,7 +2986,7 @@ var render = function render() {
     }, [_vm._v("Aggiungi "), _c("i", {
       staticClass: "fa-solid fa-cart-shopping"
     })]), _vm._v(" "), !menu.is_visible ? _c("div", {
-      staticClass: "text-center pt-2",
+      staticClass: "pt-2",
       staticStyle: {
         color: "grey"
       }
@@ -7519,13 +7523,12 @@ exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var escape = __webpack_require__(/*! ../../../node_modules/css-loader/lib/url/escape.js */ "./node_modules/css-loader/lib/url/escape.js");
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.jumbotron-height {\n  height: 500px;\n}\n.jumbotron-content {\n  background-image: url(" + escape(__webpack_require__(/*! ../assets/slide-pizzeria-athena.jpg */ "./resources/js/assets/slide-pizzeria-athena.jpg")) + ");\n  height: 500px;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  justify-content: center;\n  align-items: center;\n}\n.jumbotron-content .overlay {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.7);\n}\n.jumbotron-content .jumbotron-text {\n  z-index: 10;\n  color: white;\n  text-align: center;\n  animation: jumbotronScaleText 1.8s;\n}\n.jumbotron-content .jumbotron-text h1 {\n  font-size: 60px;\n}\n.jumbotron-content .jumbotron-text p {\n  font-size: 17px;\n}\n@keyframes jumbotronScaleText {\n0% {\n    scale: 0;\n    opacity: 0;\n}\n100% {\n    scale: 1;\n    opacity: 1;\n}\n}\n@media screen and (max-width: 355px) {\n.jumbotron-content .jumbotron-text h1 {\n    font-size: 40px;\n}\n}", ""]);
+exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.jumbotron-height {\n  height: 500px;\n}\n.jumbotron-content {\n  background-image: url(\"https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80\");\n  height: 500px;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  justify-content: center;\n  align-items: center;\n}\n.jumbotron-content .overlay {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.2);\n}\n.jumbotron-content .jumbotron-text {\n  z-index: 10;\n  color: white;\n  text-align: center;\n  animation: jumbotronScaleText 1.8s;\n}\n.jumbotron-content .jumbotron-text h1 {\n  font-size: 60px;\n}\n.jumbotron-content .jumbotron-text p {\n  font-size: 17px;\n}\n@keyframes jumbotronScaleText {\n0% {\n    scale: 0;\n    opacity: 0;\n}\n100% {\n    scale: 1;\n    opacity: 1;\n}\n}\n@media screen and (max-width: 355px) {\n.jumbotron-content .jumbotron-text h1 {\n    font-size: 40px;\n}\n}", ""]);
 
 // exports
 
@@ -7601,7 +7604,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.restaurant-menu {\n  margin-top: 50px;\n}\n.restaurant-menu .menu-general {\n  width: 80%;\n}\n.restaurant-menu .menu-details {\n  padding-top: 50px;\n  margin-left: 100px;\n  width: 20%;\n  text-align: left;\n}\n.restaurant-menu .menu-details .price {\n  text-align: left;\n}\n.restaurant-menu .menu-restaurant .menu-list .col {\n  min-height: 300px;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card {\n  height: 100%;\n  border-radius: 15px;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .image {\n  height: 150px;\n  background-color: rgba(0, 0, 0, 0.22);\n  border-top-left-radius: 14px;\n  border-top-right-radius: 14px;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .image img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: contain;\n     object-fit: contain;\n  -o-object-position: center;\n     object-position: center;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .dish-view-container {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 100vh;\n  z-index: 999999;\n  background-color: rgba(0, 0, 0, 0.22);\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .dish-view-container .dish-view {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: white;\n  padding: 30px;\n  border-radius: 15px;\n  border: 5px solid #49BEB7;\n  width: 800px;\n  height: 50vh;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .dish-view-container .dish-view .dish-menu-general {\n  flex-grow: 0;\n  padding-bottom: 15px;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .dish-view-container .dish-view .dish-menu-details {\n  flex-grow: 4;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .dish-view-container .dish-view .dish-menu-details .price-menu {\n  flex-grow: 0;\n  padding-bottom: 10px;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .dish-view-container .dish-view .dish-menu-details .ingredients {\n  flex-grow: 4;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .dish-view-container .dish-view .checkout-btn {\n  background-color: #FCCF4D;\n  height: 30px;\n  width: 40%;\n  font-weight: 600;\n  display: block;\n  margin: 10px auto;\n}\n.restaurant-menu .button {\n  margin-top: 20px;\n  margin-inline: auto;\n}\n.restaurant-menu .button .ms-btn {\n  border: trasparent;\n  background-color: #FCCF4D;\n  padding: 6px 20px;\n  cursor: pointer;\n  border-radius: 12px;\n}\n.restaurant-menu .button a:hover {\n  color: inherit;\n}\n.restaurant-menu .not-same-restaurant {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 100vh;\n  z-index: 999999;\n  background-color: rgba(0, 0, 0, 0.22);\n}\n.restaurant-menu .pop-up {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: white;\n  padding: 30px;\n  border-radius: 15px;\n  border: 5px solid #49BEB7;\n  width: 700px;\n  height: 30vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: center;\n}", ""]);
+exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.restaurant-menu {\n  margin-top: 70px;\n}\n.restaurant-menu .menu-general {\n  width: 80%;\n}\n.restaurant-menu .menu-details {\n  padding-top: 50px;\n  margin-left: 100px;\n  width: 20%;\n  text-align: left;\n}\n.restaurant-menu .menu-details .price {\n  text-align: left;\n}\n.restaurant-menu .menu-restaurant {\n  width: 60%;\n  margin: 0 auto;\n}\n.restaurant-menu .menu-restaurant .menu-list .col {\n  min-height: 300px;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card {\n  height: 100%;\n  border-radius: 15px;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .image {\n  height: 150px;\n  background-color: rgba(0, 0, 0, 0.22);\n  border-top-left-radius: 14px;\n  border-top-right-radius: 14px;\n  flex-grow: 0;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .image img {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: contain;\n     object-fit: contain;\n  -o-object-position: center;\n     object-position: center;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body {\n  flex-grow: 1;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .dish-view-container {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 100vh;\n  z-index: 999999;\n  background-color: rgba(0, 0, 0, 0.22);\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .dish-view-container .dish-view {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: white;\n  padding: 80px 80px 30px 80px;\n  border-radius: 15px;\n  border: 5px solid #49BEB7;\n  width: 800px;\n  height: 50vh;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .dish-view-container .dish-view .dish-menu-general {\n  flex-grow: 0;\n  padding-bottom: 15px;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .dish-view-container .dish-view .dish-menu-details {\n  flex-grow: 4;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .dish-view-container .dish-view .dish-menu-details .price-menu {\n  flex-grow: 0;\n  padding-bottom: 10px;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .dish-view-container .dish-view .dish-menu-details .ingredients {\n  flex-grow: 4;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .dish-view-container .dish-view .checkout-btn {\n  background-color: #FCCF4D;\n  height: 30px;\n  width: 40%;\n  font-weight: 600;\n  display: block;\n  margin: 10px auto;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .desc-cont {\n  display: flex;\n  flex-wrap: wrap;\n  flex-grow: 1;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .desc-cont .button-view {\n  width: 120px;\n  margin: 0 auto;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .desc-cont .button-view .ms-btn {\n  border: trasparent;\n  background-color: #FCCF4D;\n  padding: 5px 10px;\n  cursor: pointer;\n  border-radius: 12px;\n  width: 100%;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .desc-cont .description {\n  padding: 10px;\n  width: calc(100% - 120px);\n  min-width: 50%;\n  flex-grow: 1;\n}\n.restaurant-menu .menu-restaurant .menu-list .col .card .card-body .desc-cont .description .title {\n  height: 24px;\n  overflow-x: hidden;\n  padding-right: 20px;\n}\n.restaurant-menu .button-cart {\n  margin-top: 20px;\n  margin-inline: auto;\n  flex-grow: 0;\n}\n.restaurant-menu .button-cart button {\n  width: 105px;\n  margin: 0 auto;\n}\n.restaurant-menu .button-cart a:hover {\n  color: inherit;\n}\n.restaurant-menu .not-same-restaurant {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 100vh;\n  z-index: 999999;\n  background-color: rgba(0, 0, 0, 0.22);\n}\n.restaurant-menu .pop-up {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: white;\n  padding: 30px;\n  border-radius: 15px;\n  border: 5px solid #49BEB7;\n  width: 700px;\n  height: 30vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: center;\n}", ""]);
 
 // exports
 
@@ -7690,33 +7693,6 @@ function toComment(sourceMap) {
 	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
 
 	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/lib/url/escape.js":
-/*!***************************************************!*\
-  !*** ./node_modules/css-loader/lib/url/escape.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function escape(url) {
-    if (typeof url !== 'string') {
-        return url
-    }
-    // If url is already wrapped in quotes, remove them
-    if (/^['"].*['"]$/.test(url)) {
-        url = url.slice(1, -1);
-    }
-    // Should url be wrapped?
-    // See https://drafts.csswg.org/css-values-3/#urls
-    if (/["'() \t\n]/.test(url)) {
-        return '"' + url.replace(/"/g, '\\"').replace(/\n/g, '\\n') + '"'
-    }
-
-    return url
 }
 
 
@@ -56233,17 +56209,6 @@ module.exports = "/images/online-order.png?46145a1b68f9ba03e07e6e5c7d02d004";
 
 /***/ }),
 
-/***/ "./resources/js/assets/slide-pizzeria-athena.jpg":
-/*!*******************************************************!*\
-  !*** ./resources/js/assets/slide-pizzeria-athena.jpg ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/slide-pizzeria-athena.jpg?8a7a195ce50c18615e8c1827ed2ed1f1";
-
-/***/ }),
-
 /***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
@@ -57389,8 +57354,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\NicoY\boolean_projects\deliverboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\NicoY\boolean_projects\deliverboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Loris\boolean-projects\progetto-finale\deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Loris\boolean-projects\progetto-finale\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

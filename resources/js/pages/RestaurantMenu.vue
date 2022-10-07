@@ -1,11 +1,11 @@
 <template>
     <main class="restaurant-menu">
-        <div class="jumbotron">
+        <div v-if="restaurantDetails.restaurant_image" class="jumbotron">
             <img :src="'/storage/' + restaurantDetails.restaurant_image" :alt="restaurantDetails.restaurant_name">
         </div>
         <Cart />
-        <div class="menu-restaurant container">
-            <ul class="menu-list row row-cols-1 row-cols-md-3">
+        <div class="menu-restaurant">
+            <ul class="menu-list row row-cols-1 row-cols-md-2 row-cols-xl-3">
                 <li v-for="menu, index in menuRestaurant" :key="index" class="col mb-3">
                     <div class="card">
                         <div class="image">
@@ -14,20 +14,23 @@
                         </div>
                         <div class="dish-details">
                             <div class="card-body d-flex flex-column justify-content-between">
-                                <div class="description">
-                                    <div class="title">
-                                        <span><strong>{{menu.name}}</strong></span>
+
+                                <div class="desc-cont">
+                                    <div class="description">
+                                        <h5 class="title">{{menu.name}}</h5>
+                                        <div class="price">
+                                            <span><strong>Prezzo:</strong></span>
+                                            <p class="card-text">{{menu.price}} &euro;</p>
+                                        </div>
                                     </div>
-                                    <div class="price">
-                                        <span><strong>Prezzo:</strong></span>
-                                        <p class="card-text">{{menu.price}} &euro;</p>
+                                    <div class="button-view">
+                                        <button class="btn ms-btn" @click="setActiveElement(index)">Scopri dettagli</button>
                                     </div>
                                 </div>
-
-                                <div class="button">
-                                    <button class="btn ms-btn" @click="setActiveElement(index)" >Scopri dettagli</button>
+                                
+                                <div class="text-center button-cart">
                                     <button class="d-block button is-success btn btn-outline-info" :disabled="!menu.is_visible" @click="addToCart(menu)">Aggiungi <i class="fa-solid fa-cart-shopping"></i></button>
-                                    <div v-if="!menu.is_visible" class="text-center pt-2" style="color: grey">Piatto non disponibile</div>
+                                    <div v-if="!menu.is_visible" class="pt-2" style="color: grey">Piatto non disponibile</div>
                                 </div>
 
                                 <div :id="index" v-if="index == currentActiveElement" class="dish-view-container">
@@ -151,7 +154,7 @@ import Cart from '../components/Cart.vue'
     @import '../common/variables.scss';
     
     .restaurant-menu {
-        margin-top: 50px;
+        margin-top: 70px;
     
         .menu-general {
             width: 80%;
@@ -169,6 +172,9 @@ import Cart from '../components/Cart.vue'
         }
     
         .menu-restaurant{
+
+            width: 60%;
+            margin: 0 auto;
     
             .menu-list {
                 
@@ -182,6 +188,7 @@ import Cart from '../components/Cart.vue'
                             background-color: rgba(0, 0, 0, 0.22);
                             border-top-left-radius: 14px;
                             border-top-right-radius: 14px;
+                            flex-grow: 0;
 
                             img {
                                 width: 100%;
@@ -191,6 +198,8 @@ import Cart from '../components/Cart.vue'
                             }
                         }
                         .card-body {
+                            flex-grow: 1;
+                            
                             .dish-view-container {
                                 position: fixed;
                                 top: 0;
@@ -206,7 +215,7 @@ import Cart from '../components/Cart.vue'
                                     left: 50%;
                                     transform: translate(-50%, -50%);
                                     background-color: white;
-                                    padding: 30px;
+                                    padding: 80px 80px 30px 80px;
                                     border-radius: 15px;
                                     border: 5px solid $mainFirstColor;
                                     width: 800px;
@@ -240,6 +249,40 @@ import Cart from '../components/Cart.vue'
                                     }
                                 }
                             }
+
+                            .desc-cont {
+                                // position: relative;
+                                display: flex;
+                                flex-wrap: wrap;
+
+                                flex-grow: 1;
+                                .button-view {
+                                    width: 120px;
+                                    margin: 0 auto;
+
+                                    .ms-btn {
+                                        border: trasparent;
+                                        background-color: $mainSecondColor;
+                                        padding: 5px 10px;
+                                        cursor: pointer;
+                                        border-radius: 12px;
+                                        width: 100%;
+                                    }
+                                }
+
+                                .description {
+                                    padding: 10px;
+                                    width: calc(100% - 120px);
+                                    min-width: 50%;
+                                    flex-grow: 1;               
+
+                                    .title {
+                                        height: 24px;
+                                        overflow-x: hidden;
+                                        padding-right: 20px;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -247,22 +290,22 @@ import Cart from '../components/Cart.vue'
             }
         }
     
-        .button {
+        .button-cart {
             margin-top: 20px;
             margin-inline: auto;
-            .ms-btn {
-                border: trasparent;
-                background-color: $mainSecondColor;
-                padding: 6px 20px;
-                cursor: pointer;
-                border-radius: 12px;
-    
+            flex-grow: 0;
+
+            button {
+                width: 105px;
+                margin: 0 auto;
             }
     
             a:hover {
                 color: inherit;
             }
         }
+
+        
         .not-same-restaurant{
             position: fixed;
             top: 0;
@@ -290,4 +333,5 @@ import Cart from '../components/Cart.vue'
             align-items: center;
         }
     }
+
 </style>
