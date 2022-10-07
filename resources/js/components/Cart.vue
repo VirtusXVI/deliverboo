@@ -123,7 +123,7 @@ export default {
             height: 50vh;
 
             .cart-items-cont {
-                max-height: 305px;
+                max-height: 68%;
                 overflow-y: auto;
 
                 &::-webkit-scrollbar {
@@ -195,6 +195,7 @@ export default {
                 right: 30px;
                 width: calc(100% - 60px);
                 margin: 0 auto;
+                background-color: white;
 
                 .checkout-btn {
                     background-color: $mainSecondColor;
