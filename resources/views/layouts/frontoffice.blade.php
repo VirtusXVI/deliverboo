@@ -45,8 +45,8 @@
         <header>
             <nav class="navbar navbar-expand-md navbar-light shadow-sm">
                 <div class="container">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        Deliveboo
+                    <a class="navbar-brand" style="line-height: 100%" href="{{ url('/') }}">
+                        <h4 class="mb-0">Deliveboo</h4>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                         <span class="navbar-toggler-icon"></span>
@@ -61,7 +61,7 @@
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
                             <li>
-                                <a href="/" class="btn btn-home mr-3" style="color: white">Home</a>
+                                <a href="/" class="btn btn-home mr-3" style="color: white;"><h5 class="pt-1">Home</h5></a>
                             </li>
                             <div id="navbarExampleTransparentExample" class="navbar-menu"> 
                                 <div class="navbar-end">
@@ -81,7 +81,7 @@
                             @else
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle text" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->restaurant_name }}
+                                        <strong>{{ Auth::user()->restaurant_name }}</strong>
                                     </a>
     
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -112,7 +112,7 @@
 
         <footer>
             <div class="footer-content container">
-                <h2>Deliveroo</h2>
+                <h2>Deliveboo</h2>
 
                 <div class="links">
                     {{-- Social --}}

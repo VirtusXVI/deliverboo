@@ -1,6 +1,6 @@
 <template>
     <div class="navbar-item has-dropdown is-hoverable">
-        <div class="navbar-link ms-cart mb-3" href="" onclick="document.querySelector('.cart-view-container').style.display='block'">
+        <div class="navbar-link ms-cart mb-3" href="" onclick="document.querySelector('.cart-view-container').style.display='block', document.querySelector('body').style.overflow='hidden'">
             Il mio Carrello<span class="d-inline-block" :class="{'span-center-single' : $store.state.cartCount < 10, 'span-center-double' : $store.state.cartCount >= 10}">{{ $store.state.cartCount }}</span>
         </div>
 
@@ -12,27 +12,28 @@
                     <div class="col">Prezzo</div>
                 </div>
                 <hr class="navbar-divider mb-2">
-                <div  v-for="menu in $store.state.cart" :key="menu.id" class="navbar-item row row-cols-3 text-center pb-3" href="">
-                    <div class="col">{{ menu.name }}</div> 
-                    <div class="col">
-                        <button type="button" class="btn btn-danger btn-number" data-type="minus" title="Remove from cart" @click.prevent="decreaseQuantityFromCart(menu)">
-                            <i class="fa-solid fa-minus"></i>
-                        </button>
-                        <div class="fake-input">{{menu.quantity}}</div>
-                        <button type="button" class="btn btn-success btn-number"  data-type="plus" title="Remove from cart" @click.prevent="increaseQuantityFromCart(menu)">
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
+                <div class="cart-items-cont">
+                    <div  v-for="menu in $store.state.cart" :key="menu.id" class="cart-items navbar-item row row-cols-3 text-center pb-3" href="">
+                        <div class="col">{{ menu.name }}</div> 
+                        <div class="col">
+                            <button type="button" class="btn btn-danger btn-number" data-type="minus" title="Remove from cart" @click.prevent="decreaseQuantityFromCart(menu)">
+                                <i class="fa-solid fa-minus"></i>
+                            </button>
+                            <div class="fake-input">{{menu.quantity}}</div>
+                            <button type="button" class="btn btn-success btn-number"  data-type="plus" title="Remove from cart" @click.prevent="increaseQuantityFromCart(menu)">
+                                <i class="fa-solid fa-plus"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="col d-flex justify-content-between">
+                            <div></div>
+                            <div class="pl-5">{{ menu.totalPrice }}&euro;</div>
+                            <button type="button" class="btn mr-2" title="Remove from cart" @click.prevent="removeFromCart(menu)">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
                     </div>
-                    
-                    <div class="col d-flex justify-content-between">
-                        <div></div>
-                        <div class="pl-4">{{ menu.totalPrice }}&euro;</div>
-                        <button type="button" class="btn" title="Remove from cart" @click.prevent="removeFromCart(menu)">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
-                
+                </div>                
                 <div v-if="$store.state.cart.length > 0" class="checkout navbar-dropdown is-boxed is-right">
                     <div class="d-flex w-25 mx-auto justify-content-between">
                         <div>Totale:</div>
@@ -47,7 +48,7 @@
 
                 <div v-else class="navbar-dropdown is-boxed is-right">Il carrello è vuoto</div>
 
-                <span onclick="document.querySelector('.cart-view-container').style.display='none'" class="cross"><i class="fa-solid fa-xmark"></i></span>
+                <span onclick="document.querySelector('.cart-view-container').style.display='none', document.querySelector('body').style.overflow='auto'" class="cross"><i class="fa-solid fa-xmark"></i></span>
             </div>
 
             
@@ -127,6 +128,45 @@ export default {
             width: 800px;
             height: 50vh;
 
+            .cart-items-cont {
+                max-height: 67%;
+                overflow-y: auto;
+
+                &::-webkit-scrollbar {
+                    background-color: transparent;
+                    width: 6px;
+                    height: 8px;
+                }
+
+                    /* background of the scrollbar except button or resizer */
+                    // &::-webkit-scrollbar-track {
+                    // background-color:#2e2e2e81;
+                    // }
+
+                    /* scrollbar itself */
+                &::-webkit-scrollbar-thumb {
+                    background-color: $mainSecondColor;
+                    border-radius: 16px;
+                    visibility: hidden;
+                }
+
+                &:hover::-webkit-scrollbar-thumb {
+                visibility:visible;
+                }
+
+                    /* set button(top and bottom of the scrollbar) */
+                &::-webkit-scrollbar-button {
+                    display:none;
+                }
+                .cart-items {
+                    align-items: center;
+                    
+                    .col:first-child {
+                        overflow: hidden;
+                    }
+                }
+            }
+
             .cross {
                 position: absolute; 
                 top: 2px;
@@ -156,11 +196,12 @@ export default {
 
             .checkout {
                 position: absolute;
-                bottom: 30px;
+                bottom: 15px;
                 left: 30px;
                 right: 30px;
                 width: calc(100% - 60px);
                 margin: 0 auto;
+                background-color: white;
 
                 .checkout-btn {
                     background-color: $mainSecondColor;

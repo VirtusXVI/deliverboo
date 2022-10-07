@@ -2,7 +2,7 @@
 @extends('admin.navlinks')
 
 @section('content')
-    <div class="container">
+    <div class="container bg-white mt-5" style="border-radius: 15px; padding:20px">
         <div class="mb-3"><strong>I campi contrassegnati con * sono obbligatori.</strong></div>
         <form method="POST" action="{{ route('admin.dishes.update', ['dish'=>$dish->id]) }}" enctype="multipart/form-data">
             @csrf

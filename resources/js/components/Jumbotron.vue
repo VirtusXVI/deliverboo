@@ -23,7 +23,7 @@ export default {
     height: 500px;
 }
 .jumbotron-content {
-    background-image: url('../assets/slide-pizzeria-athena.jpg');
+    background-image: url('https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
     height: 500px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -39,7 +39,7 @@ export default {
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: rgba(0, 0, 0, 0.2);
     }
 
     .jumbotron-text {
