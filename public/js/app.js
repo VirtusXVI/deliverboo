@@ -2370,7 +2370,7 @@ var render = function render() {
     staticClass: "navbar-link ms-cart mb-3",
     attrs: {
       href: "",
-      onclick: "document.querySelector('.cart-view-container').style.display='block'"
+      onclick: "document.querySelector('.cart-view-container').style.display='block', document.querySelector('body').style.overflow='hidden';"
     }
   }, [_vm._v("\n        Il mio Carrello"), _c("span", {
     staticClass: "d-inline-block",
@@ -2484,7 +2484,7 @@ var staticRenderFns = [function () {
   return _c("span", {
     staticClass: "cross",
     attrs: {
-      onclick: "document.querySelector('.cart-view-container').style.display='none'"
+      onclick: "document.querySelector('.cart-view-container').style.display='none', document.querySelector('body').style.overflow='auto'"
     }
   }, [_c("i", {
     staticClass: "fa-solid fa-xmark"

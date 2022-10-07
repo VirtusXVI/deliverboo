@@ -1,6 +1,6 @@
 <template>
     <div class="navbar-item has-dropdown is-hoverable">
-        <div class="navbar-link ms-cart mb-3" href="" onclick="document.querySelector('.cart-view-container').style.display='block'">
+        <div class="navbar-link ms-cart mb-3" href="" onclick="document.querySelector('.cart-view-container').style.display='block', document.querySelector('body').style.overflow='hidden';">
             Il mio Carrello<span class="d-inline-block" :class="{'span-center-single' : $store.state.cartCount < 10, 'span-center-double' : $store.state.cartCount >= 10}">{{ $store.state.cartCount }}</span>
         </div>
 
@@ -47,7 +47,7 @@
 
                 <div v-else class="navbar-dropdown is-boxed is-right">Il carrello è vuoto</div>
 
-                <span onclick="document.querySelector('.cart-view-container').style.display='none'" class="cross"><i class="fa-solid fa-xmark"></i></span>
+                <span onclick="document.querySelector('.cart-view-container').style.display='none', document.querySelector('body').style.overflow='auto'" class="cross"><i class="fa-solid fa-xmark"></i></span>
             </div>
 
             
