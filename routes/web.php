@@ -21,7 +21,10 @@ Route::middleware('auth')
 ->prefix('admin')
 ->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/orders','HomeController@orders')->name('orders');
+    Route::get('/charts', 'ChartController@index')->name('charts');
     Route::resource('dishes', 'DishController');
+    
 });
 
 
