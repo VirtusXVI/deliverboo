@@ -2148,7 +2148,10 @@ __webpack_require__.r(__webpack_exports__);
       totalPrice: JSON.parse(localStorage.getItem('total')),
       // totalPrice: 'ciao',
       userToken: '',
-      paymentSuccess: false
+      paymentSuccess: false,
+      userName: '',
+      userMail: '',
+      userAddress: ''
     };
   },
   methods: {
@@ -2157,7 +2160,10 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/api/controll/payment', {
         token: this.userToken,
-        product: this.totalPrice
+        product: this.totalPrice,
+        customer_name: this.userName,
+        customer_mail: this.userMail,
+        customer_address: this.userAddress
       }).then(function (response) {
         // this.userToken = response.data.token;
         _this.paymentSuccess = response.data.success;
@@ -2172,6 +2178,7 @@ __webpack_require__.r(__webpack_exports__);
         localStorage.setItem('cartCount', actualCartCount);
         localStorage.setItem('cart', actualCart);
         localStorage.setItem('total', actualTotal);
+        console.log(response);
       });
     }
   },
@@ -2542,7 +2549,8 @@ var render = function render() {
     attrs: {
       to: {
         name: "checkout"
-      }
+      },
+      onclick: "document.querySelector('body').style.overflow='auto'"
     }
   }, [_vm._v("Checkout")])], 1) : _c("div", {
     staticClass: "navbar-dropdown is-boxed is-right"
@@ -2874,14 +2882,115 @@ var render = function render() {
     attrs: {
       id: "dropin-container"
     }
-  }), _vm._v(" "), _c("button", {
+  }), _vm._v(" "), _c("div", {
+    staticClass: "card p-3"
+  }, [_c("h4", [_vm._v("Inserisci i tuoi dati")]), _vm._v(" "), _c("div", {
+    staticStyle: {
+      color: "gray"
+    }
+  }, [_vm._v("I campi contrassegnati con * sono obbligatori")]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "user-name"
+    }
+  }, [_vm._v("Nome*")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.userName,
+      expression: "userName"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "user-name",
+      name: "user-name",
+      placeholder: "Nome",
+      required: ""
+    },
+    domProps: {
+      value: _vm.userName
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.userName = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "user-address"
+    }
+  }, [_vm._v("Indirizzo*")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.userAddress,
+      expression: "userAddress"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "text",
+      id: "user-address",
+      name: "user-address",
+      placeholder: "Via Indirizzo 123",
+      required: ""
+    },
+    domProps: {
+      value: _vm.userAddress
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.userAddress = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "mb-3"
+  }, [_c("label", {
+    staticClass: "form-label",
+    attrs: {
+      "for": "user-email"
+    }
+  }, [_vm._v("Email*")]), _vm._v(" "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.userMail,
+      expression: "userMail"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      type: "email",
+      id: "user-email",
+      name: "user-email",
+      placeholder: "Email@email.com",
+      required: ""
+    },
+    domProps: {
+      value: _vm.userMail
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.userMail = $event.target.value;
+      }
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "text-center mt-2"
+  }, [_c("button", {
     staticClass: "button button--small",
     attrs: {
       id: "submit-button",
       type: "submit",
       disabled: _vm.paymentSuccess
     }
-  }, [_vm._v("Paga")])])]);
+  }, [_vm._v("Paga")])])])])]);
 };
 
 var staticRenderFns = [function () {
@@ -7722,7 +7831,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.form-checkout .button {\n  cursor: pointer;\n  font-weight: 500;\n  line-height: inherit;\n  position: relative;\n  text-decoration: none;\n  text-align: center;\n  border-style: solid;\n  border-width: 1px;\n  border-radius: 3px;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  display: inline-block;\n}\n.form-checkout .button--small {\n  padding: 10px 20px;\n  font-size: 0.875rem;\n}\n.form-checkout .button--green {\n  outline: none;\n  background-color: #64d18a;\n  border-color: #64d18a;\n  color: white;\n  transition: all 200ms ease;\n}\n.form-checkout .button--green:hover {\n  background-color: #8bdda8;\n  color: white;\n}\n.pop-up-background {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 100vh;\n  z-index: 999999;\n  background-color: rgba(0, 0, 0, 0.22);\n}\n.pop-up {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: white;\n  padding: 30px;\n  border-radius: 15px;\n  border: 5px solid #49BEB7;\n  width: 700px;\n  height: 30vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: center;\n}", ""]);
+exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.form-checkout {\n  border: 3px solid #FCCF4D;\n  border-radius: 12px;\n  background-color: #49BEB7;\n  padding: 0 30px 30px 30px;\n  margin-top: 80px;\n}\n.form-checkout .button {\n  cursor: pointer;\n  font-weight: 500;\n  line-height: inherit;\n  position: relative;\n  text-decoration: none;\n  text-align: center;\n  border-style: solid;\n  border-width: 1px;\n  border-radius: 3px;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  display: inline-block;\n}\n.form-checkout .button--small {\n  padding: 10px 20px;\n  font-size: 18px;\n  border-radius: 12px;\n  background-color: #49BEB7;\n  border: 2px solid #FCCF4D;\n  color: #FCCF4D;\n  font-weight: 600;\n}\n.form-checkout .button--green {\n  outline: none;\n  background-color: #64d18a;\n  border-color: #64d18a;\n  color: white;\n  transition: all 200ms ease;\n}\n.form-checkout .button--green:hover {\n  background-color: #8bdda8;\n  color: white;\n}\n.pop-up-background {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 100vh;\n  z-index: 999999;\n  background-color: rgba(0, 0, 0, 0.22);\n}\n.pop-up {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: white;\n  padding: 30px;\n  border-radius: 15px;\n  border: 5px solid #49BEB7;\n  width: 700px;\n  height: 30vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: center;\n}", ""]);
 
 // exports
 
@@ -57807,8 +57916,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\virtu\BooleanProjects\deliverboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\virtu\BooleanProjects\deliverboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Loris\boolean-projects\progetto-finale\deliveboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Loris\boolean-projects\progetto-finale\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

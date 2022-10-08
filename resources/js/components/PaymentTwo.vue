@@ -13,7 +13,31 @@
         </div>
         <form @submit.prevent="submitPayment()" class="form-checkout">
             <div id="dropin-container"></div>
-            <button id="submit-button" type="submit" class="button button--small" :disabled="paymentSuccess">Paga</button>
+
+            <div class="card p-3">
+                <h4>Inserisci i tuoi dati</h4>
+                <div style="color: gray">I campi contrassegnati con * sono obbligatori</div>
+                <hr>
+
+                <div class="mb-3">
+                    <label for="user-name" class="form-label">Nome*</label>
+                    <input type="text" class="form-control" id="user-name" name="user-name" placeholder="Nome" v-model="userName" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="user-address" class="form-label">Indirizzo*</label>
+                    <input type="text" class="form-control" id="user-address" name="user-address" placeholder="Via Indirizzo 123" v-model="userAddress" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="user-email" class="form-label">Email*</label>
+                    <input type="email" class="form-control" id="user-email" name="user-email" placeholder="Email@email.com" v-model="userMail" required>
+                </div>
+
+                <div class="text-center mt-2">
+                    <button id="submit-button" type="submit" class="button button--small" :disabled="paymentSuccess">Paga</button>
+                </div>
+            </div>
         </form>
     </div>
 </template>
@@ -28,13 +52,19 @@ export default {
             // totalPrice: 'ciao',
             userToken: '',
             paymentSuccess: false,
+            userName: '',
+            userMail: '',
+            userAddress: '',
         }
     },
     methods: {
         submitPayment() {
             axios.post('/api/controll/payment', {
                 token: this.userToken,
-                product: this.totalPrice
+                product: this.totalPrice,
+                customer_name: this.userName,
+                customer_mail: this.userMail,
+                customer_address: this.userAddress,
             })
         .then((response) => {
             // this.userToken = response.data.token;
@@ -50,6 +80,7 @@ export default {
             localStorage.setItem('cartCount', actualCartCount);
             localStorage.setItem('cart', actualCart);
             localStorage.setItem('total', actualTotal);
+            console.log(response);
             });
         }
     },
@@ -76,6 +107,12 @@ export default {
 @import '../common/commons.scss';
 @import '../common/variables.scss';
 .form-checkout {
+    border: 3px solid $mainSecondColor;
+    border-radius: 12px;
+    background-color: $mainFirstColor;
+    padding: 0 30px 30px 30px;
+    margin-top: 80px;
+
     .button {
     cursor: pointer;
     font-weight: 500;
@@ -92,8 +129,13 @@ export default {
     }
 
     .button--small {
-    padding: 10px 20px;
-    font-size: 0.875rem;
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 12px;
+        background-color: $mainFirstColor;
+        border: 2px solid $mainSecondColor;
+        color: $mainSecondColor;
+        font-weight: 600;
     }
 
     .button--green {
