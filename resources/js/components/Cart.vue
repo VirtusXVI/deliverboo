@@ -42,7 +42,8 @@
 
                     <hr class="navbar-divider">
 
-                    <a class="checkout-btn btn navbar-item" href="">Checkout</a>
+                    <!-- <a class="checkout-btn btn navbar-item" href="">Checkout</a> -->
+                    <router-link :to="{name: 'checkout'}" class="checkout-btn btn navbar-item">Checkout</router-link>
                 </div>
 
                 <div v-else class="navbar-dropdown is-boxed is-right">Il carrello è vuoto</div>
@@ -74,11 +75,16 @@ export default {
     computed: {
     totalPrice() {
         let total = 0;
+        let superTotal = 0;
 
         for (let menu of this.$store.state.cart) {
             total += parseFloat(menu.totalPrice);
-        }
+        };
         
+        superTotal = parseFloat(total).toFixed(2);
+        superTotal = JSON.stringify(superTotal);
+        localStorage.setItem('total', superTotal);
+
         return parseFloat(total).toFixed(2);
     }
 }

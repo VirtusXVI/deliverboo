@@ -22,16 +22,16 @@ class OrderController extends Controller
     }
 
     public function controllPayment(OrderRequest $request, Gateway $gateway) {
-
-        $product = Dish::find($request->product);
-
+        
         $result = $gateway->transaction()->sale([
-            'amount' => $product->price,
-            'paymentMethodNonce' => $request->token,
+            'amount' => $request->product,
+            'paymentMethodNonce' => 'fake-valid-nonce',
             'options' => [
                 'submitForSettlement' => true
             ]
         ]);
+
+        return response()->json($result);
 
         if($result->success){
             $data = [

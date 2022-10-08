@@ -26,10 +26,10 @@ class ValidProduct implements Rule
      */
     public function passes($attribute, $value)
     {
-        if(Dish::find($value)){
-            return true;
-        }
-        return false;
+        // if(Dish::find($value)){
+        //     return true;
+        // }
+        // return false;
     }
 
     /**

@@ -7,7 +7,7 @@
             alt="Default Image">
         </div>
         <Cart />
-        <div class="menu-restaurant">
+        <div class="menu-restaurant container">
             <ul class="menu-list row row-cols-1 row-cols-md-2 row-cols-xl-3">
                 <li v-for="menu, index in menuRestaurant" :key="index" class="col mb-3">
                     <div class="card">
@@ -97,7 +97,7 @@ import Cart from '../components/Cart.vue'
                 currentActiveElement: 99,
                 currentPage: 1,
                 lastPage: null,
-                firstPage: 1
+                firstPage: 1,
             }
         },
 
@@ -139,6 +139,8 @@ import Cart from '../components/Cart.vue'
                 localStorage.setItem('cart', actualCart);
                 this.same_restaurant = true;
                 window.location.reload();
+
+                console.log(actualCart);
             },
             setActiveElement(element) {
                 if(element !== this.currentActiveElement) {
