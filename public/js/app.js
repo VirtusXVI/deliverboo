@@ -2553,8 +2553,13 @@ var render = function render() {
       onclick: "document.querySelector('body').style.overflow='auto'"
     }
   }, [_vm._v("Checkout")])], 1) : _c("div", {
-    staticClass: "navbar-dropdown is-boxed is-right"
-  }, [_vm._v("Il carrello è vuoto")]), _vm._v(" "), _vm._m(1)])])]);
+    staticClass: "navbar-dropdown is-boxed is-right text-center w-50 p-3",
+    staticStyle: {
+      margin: "80px auto",
+      border: "3px solid #49beb7",
+      "border-radius": "12px"
+    }
+  }, [_vm._v("\n                Il carrello è vuoto\n            ")]), _vm._v(" "), _vm._m(1)])])]);
 };
 
 var staticRenderFns = [function () {

@@ -46,7 +46,9 @@
                     <router-link :to="{name: 'checkout'}" class="checkout-btn btn navbar-item" onclick="document.querySelector('body').style.overflow='auto'">Checkout</router-link>
                 </div>
 
-                <div v-else class="navbar-dropdown is-boxed is-right">Il carrello è vuoto</div>
+                <div v-else class="navbar-dropdown is-boxed is-right text-center w-50 p-3" style="margin: 80px auto; border: 3px solid #49beb7; border-radius: 12px;">
+                    Il carrello è vuoto
+                </div>
 
                 <span onclick="document.querySelector('.cart-view-container').style.display='none', document.querySelector('body').style.overflow='auto'" class="cross"><i class="fa-solid fa-xmark"></i></span>
             </div>
