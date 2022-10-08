@@ -2147,31 +2147,44 @@ __webpack_require__.r(__webpack_exports__);
     return {
       totalPrice: JSON.parse(localStorage.getItem('total')),
       // totalPrice: 'ciao',
-      userToken: ''
+      userToken: '',
+      paymentSuccess: false
     };
   },
   methods: {
     submitPayment: function submitPayment() {
+      var _this = this;
+
       axios.post('/api/controll/payment', {
         token: this.userToken,
         product: this.totalPrice
       }).then(function (response) {
         // this.userToken = response.data.token;
-        console.log(response, 'ciao');
+        _this.paymentSuccess = response.data.success;
+        var actualCart = JSON.parse(localStorage.getItem('cart'));
+        var actualCartCount = JSON.parse(localStorage.getItem('cartCount'));
+        var actualTotal = JSON.parse(localStorage.getItem('total'));
+        actualTotal = 0;
+        actualCart = [];
+        actualCart = JSON.stringify(actualCart);
+        actualTotal = JSON.stringify(actualTotal);
+        actualCartCount = 0;
+        localStorage.setItem('cartCount', actualCartCount);
+        localStorage.setItem('cart', actualCart);
+        localStorage.setItem('total', actualTotal);
       });
     }
   },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
     braintree.dropin.create({
       authorization: 'sandbox_hckbgctk_gwbpbfkzyj963v7f',
       selector: '#dropin-container'
     });
     axios.get('/api/orders/generate').then(function (response) {
-      _this.userToken = response.data.token; // console.log(this.userToken, 'ciao');
+      _this2.userToken = response.data.token; // console.log(this.userToken, 'ciao');
     });
-    console.log(this.totalPrice, 'okay');
   }
 });
 
@@ -2390,7 +2403,6 @@ __webpack_require__.r(__webpack_exports__);
       localStorage.setItem('cart', actualCart);
       this.same_restaurant = true;
       window.location.reload();
-      console.log(actualCart);
     },
     setActiveElement: function setActiveElement(element) {
       if (element !== this.currentActiveElement) {
@@ -2651,7 +2663,7 @@ var render = function render() {
       }
     }) : _c("img", {
       attrs: {
-        src: "https://images.unsplash.com/opengraph/1x1.png?auto=format&fit=crop&w=1200&h=630&q=60&mark-w=64&mark-align=top%2Cleft&mark-pad=50&blend-w=1&mark=https%3A%2F%2Fimages.unsplash.com%2Fopengraph%2Flogo.png&blend=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1555396273-367ea4eb4db5%3Fcrop%3Dfaces%252Cedges%26cs%3Dtinysrgb%26fit%3Dcrop%26fm%3Djpg%26ixid%3DMnwxMjA3fDB8MXxzZWFyY2h8NHx8cmVzdGF1cmFudHxlbnwwfHx8fDE2NjUwNTkzNzc%26ixlib%3Drb-1.2.1%26q%3D60%26w%3D1200%26auto%3Dformat%26h%3D630%26mark-w%3D750%26mark-align%3Dmiddle%252Ccenter%26blend-mode%3Dnormal%26blend-alpha%3D10%26mark%3Dhttps%253A%252F%252Fimages.unsplash.com%252Fopengraph%252Fsearch-input.png%253Fauto%253Dformat%2526fit%253Dcrop%2526w%253D750%2526h%253D84%2526q%253D60%2526txt-color%253D000000%2526txt-size%253D40%2526txt-align%253Dmiddle%25252Cleft%2526txt-pad%253D80%2526txt-width%253D660%2526txt-clip%253Dellipsis%2526txt%253Drestaurant%26blend%3D000000",
+        src: "https://c4.wallpaperflare.com/wallpaper/596/763/771/artwork-painting-nighthawks-edward-hopper-wallpaper-preview.jpg",
         alt: "Default Image"
       }
     })]), _vm._v(" "), _c("div", {
@@ -2848,7 +2860,9 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("form", {
+  return _c("div", [_vm.paymentSuccess ? _c("div", {
+    staticClass: "pop-up-background"
+  }, [_vm._m(0)]) : _vm._e(), _vm._v(" "), _c("form", {
     staticClass: "form-checkout",
     on: {
       submit: function submit($event) {
@@ -2864,12 +2878,25 @@ var render = function render() {
     staticClass: "button button--small",
     attrs: {
       id: "submit-button",
-      type: "submit"
+      type: "submit",
+      disabled: _vm.paymentSuccess
     }
   }, [_vm._v("Paga")])])]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "pop-up"
+  }, [_c("div", [_vm._v("\n                Pagamento confermato,grazie per il tuo acquisto!\n            ")]), _vm._v(" "), _c("div", [_c("a", {
+    staticClass: "btn btn-outline-info",
+    attrs: {
+      href: "/"
+    }
+  }, [_vm._v("Chiudi")])])]);
+}];
 render._withStripped = true;
 
 
@@ -3070,11 +3097,11 @@ var render = function render() {
     }
   }) : _c("img", {
     attrs: {
-      src: "https://images.unsplash.com/opengraph/1x1.png?auto=format&fit=crop&w=1200&h=630&q=60&mark-w=64&mark-align=top%2Cleft&mark-pad=50&blend-w=1&mark=https%3A%2F%2Fimages.unsplash.com%2Fopengraph%2Flogo.png&blend=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1555396273-367ea4eb4db5%3Fcrop%3Dfaces%252Cedges%26cs%3Dtinysrgb%26fit%3Dcrop%26fm%3Djpg%26ixid%3DMnwxMjA3fDB8MXxzZWFyY2h8NHx8cmVzdGF1cmFudHxlbnwwfHx8fDE2NjUwNTkzNzc%26ixlib%3Drb-1.2.1%26q%3D60%26w%3D1200%26auto%3Dformat%26h%3D630%26mark-w%3D750%26mark-align%3Dmiddle%252Ccenter%26blend-mode%3Dnormal%26blend-alpha%3D10%26mark%3Dhttps%253A%252F%252Fimages.unsplash.com%252Fopengraph%252Fsearch-input.png%253Fauto%253Dformat%2526fit%253Dcrop%2526w%253D750%2526h%253D84%2526q%253D60%2526txt-color%253D000000%2526txt-size%253D40%2526txt-align%253Dmiddle%25252Cleft%2526txt-pad%253D80%2526txt-width%253D660%2526txt-clip%253Dellipsis%2526txt%253Drestaurant%26blend%3D000000",
+      src: "https://c4.wallpaperflare.com/wallpaper/596/763/771/artwork-painting-nighthawks-edward-hopper-wallpaper-preview.jpg",
       alt: "Default Image"
     }
   })]), _vm._v(" "), _c("Cart"), _vm._v(" "), _c("div", {
-    staticClass: "menu-restaurant"
+    staticClass: "menu-restaurant container"
   }, [_c("ul", {
     staticClass: "menu-list row row-cols-1 row-cols-md-2 row-cols-xl-3"
   }, _vm._l(_vm.menuRestaurant, function (menu, index) {
@@ -7695,7 +7722,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.form-checkout .button {\n  cursor: pointer;\n  font-weight: 500;\n  line-height: inherit;\n  position: relative;\n  text-decoration: none;\n  text-align: center;\n  border-style: solid;\n  border-width: 1px;\n  border-radius: 3px;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  display: inline-block;\n}\n.form-checkout .button--small {\n  padding: 10px 20px;\n  font-size: 0.875rem;\n}\n.form-checkout .button--green {\n  outline: none;\n  background-color: #64d18a;\n  border-color: #64d18a;\n  color: white;\n  transition: all 200ms ease;\n}\n.form-checkout .button--green:hover {\n  background-color: #8bdda8;\n  color: white;\n}", ""]);
+exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n.ms-container {\n  width: 90%;\n  margin: 0 auto;\n}\n.ms-small-container {\n  width: 70%;\n  margin: 0 auto;\n}\n.flex {\n  display: flex;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nul {\n  list-style-type: none;\n}\na {\n  text-decoration: none;\n  color: inherit;\n}\na:hover {\n  text-decoration: none;\n}\n.form-checkout .button {\n  cursor: pointer;\n  font-weight: 500;\n  line-height: inherit;\n  position: relative;\n  text-decoration: none;\n  text-align: center;\n  border-style: solid;\n  border-width: 1px;\n  border-radius: 3px;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  display: inline-block;\n}\n.form-checkout .button--small {\n  padding: 10px 20px;\n  font-size: 0.875rem;\n}\n.form-checkout .button--green {\n  outline: none;\n  background-color: #64d18a;\n  border-color: #64d18a;\n  color: white;\n  transition: all 200ms ease;\n}\n.form-checkout .button--green:hover {\n  background-color: #8bdda8;\n  color: white;\n}\n.pop-up-background {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  height: 100vh;\n  z-index: 999999;\n  background-color: rgba(0, 0, 0, 0.22);\n}\n.pop-up {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  background-color: white;\n  padding: 30px;\n  border-radius: 15px;\n  border: 5px solid #49BEB7;\n  width: 700px;\n  height: 30vh;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  align-items: center;\n}", ""]);
 
 // exports
 
@@ -57780,8 +57807,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Loris\boolean-projects\progetto-finale\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Loris\boolean-projects\progetto-finale\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\virtu\BooleanProjects\deliverboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\virtu\BooleanProjects\deliverboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
