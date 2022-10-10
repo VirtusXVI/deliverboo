@@ -1989,9 +1989,7 @@ __webpack_require__.r(__webpack_exports__);
     sendCategory: function sendCategory() {
       axios.post('http://127.0.0.1:8000/api/ristoranti', {
         id: this.categoryId
-      }).then(function (response) {})["catch"](function (error) {
-        console.log(error);
-      });
+      }).then(function (response) {});
     },
     getFilteredRestaurants: function getFilteredRestaurants() {
       var _this2 = this;
@@ -2163,7 +2161,8 @@ __webpack_require__.r(__webpack_exports__);
         product: this.totalPrice,
         customer_name: this.userName,
         customer_mail: this.userMail,
-        customer_address: this.userAddress
+        customer_address: this.userAddress,
+        dish_info: this.$store.state.cart
       }).then(function (response) {
         // this.userToken = response.data.token;
         _this.paymentSuccess = response.data.success;

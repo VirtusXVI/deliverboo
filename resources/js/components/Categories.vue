@@ -81,9 +81,6 @@ export default {
             })
             .then(function (response) {
             })
-            .catch(function (error) {
-                console.log(error);
-            });
         },
         getFilteredRestaurants(){
             axios.get('http://127.0.0.1:8000/api/filteredrestaurants', { params: {id: this.categoryId} })

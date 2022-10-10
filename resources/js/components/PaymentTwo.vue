@@ -65,6 +65,7 @@ export default {
                 customer_name: this.userName,
                 customer_mail: this.userMail,
                 customer_address: this.userAddress,
+                dish_info: this.$store.state.cart,
             })
         .then((response) => {
             // this.userToken = response.data.token;
