@@ -9,6 +9,8 @@ use Braintree\Gateway;
 use App\Http\Requests\OrderRequest;
 use App\Dish;
 use App\Order;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendNewMail;
 
 class OrderController extends Controller
 {
@@ -61,6 +63,8 @@ class OrderController extends Controller
         $new_order = new Order;
         $new_order->fill($data);
         $new_order->save();
+
+        Mail::to($customer_email)->send(new SendNewMail());
 
         return response()->json($result);
 
