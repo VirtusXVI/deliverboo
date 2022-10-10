@@ -11,6 +11,7 @@ use App\Dish;
 use App\Order;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendNewMail;
+use App\Mail\SendAdminMail;
 use App\User;
 
 class OrderController extends Controller
