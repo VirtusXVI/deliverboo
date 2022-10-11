@@ -40,7 +40,7 @@ class HomeController extends Controller
             array_push($dishList, $dish_order);
         }
 
-        $orders = Order::whereIn('id', $order_array)->with('dish')->get();
+        $orders = Order::whereIn('id', $order_array)->orderBy('created_at', 'desc')->with('dish')->get();
         
         $data = [
             'orders' => $orders,

@@ -8,5 +8,6 @@
 </head>
 <body>
     <h1>Hai ricevuto un nuovo Ordine</h1>
+    <a href="{{route('admin.orders')}}">Clicca qui per visualizzare.</a>
 </body>
 </html>

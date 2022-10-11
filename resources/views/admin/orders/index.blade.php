@@ -14,7 +14,7 @@
             <div>Importo: &euro; {{$order->total_price}}</div>
             <div class="order-info flex">
                 <div class="plates">
-                    <span>Piatto: </span>
+                    <h5 class="mt-2">Piatto: </h5>
                    <ul>
                         @foreach ($order['dish'] as $dish)
                             <li>
@@ -24,7 +24,7 @@
                    </ul>
                 </div>
                 <div class="quantity">
-                    <span>Quantità:</span>
+                    <h5 class="mt-2">Quantità:</h5>
                     <ul>
                         @foreach ($dishQuantity as $item)
                             @if ($order->id == $item->order_id) 
