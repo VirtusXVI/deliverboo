@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\SendNewMail;
 use App\Mail\SendAdminMail;
 use App\User;
+use App\DishOrder;
 
 class OrderController extends Controller
 {
@@ -67,6 +68,16 @@ class OrderController extends Controller
         $new_order = new Order;
         $new_order->fill($data);
         $new_order->save();
+
+        foreach($dish_array as $dish) {
+            $dish_order = new DishOrder();
+            $dish_order->dish_id = $dish['id'];
+            $dish_order->order_id = $new_order->id;
+            $dish_order->dish_quantity = $dish['quantity'];
+            $dish_order->timestamps = false;
+            $dish_order->save();
+        }
+        
 
         $user_id = $dish_array[0]['user_id'];
 

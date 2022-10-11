@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Order;
+use App\Dish;
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -19,7 +20,9 @@ class HomeController extends Controller
     }
 
     public function orders() {
-        $orders = Order::orderBy('created_at', 'desc')->get();
+        $user = Auth::user();
+        // $orders = Order::orderBy('created_at', 'desc')->get();
+        $dish = Dish::where('user_id', '=', $user->id)->get();
 
         $data = [
             'orders' => $orders
