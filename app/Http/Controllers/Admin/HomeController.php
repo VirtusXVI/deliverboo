@@ -33,17 +33,31 @@ class HomeController extends Controller
         }
 
         $dish_order = DishOrder::whereIn('dish_id', $dish_array)->get();
+        $dishList = DishOrder::all();
 
         foreach($dish_order as $dish_order) {
             array_push($order_array, $dish_order->order_id);
         }
 
-        $orders = Order::whereIn('id', $order_array)->get();
+        $orders = Order::whereIn('id', $order_array)->with('dish')->get();
 
+        $quantity = [];
 
+        // foreach ($dishList as $value) {
+        //     foreach ($orders as $values) {
+        //         if($value->order_id === $values->id) {
+        //             $quantity[] = $value->dish_quantity;
+        //         }
+        //     }
+        // }
+        
         $data = [
-            'orders' => $orders
+            'orders' => $orders,
+            'dishQuantity' => $dishList,
+            'dishes' => $dishes
         ];
+
+        // dd($value);
 
         return view('admin.orders.index', $data);
     }

@@ -12,7 +12,41 @@
             <div>Id ordine: {{$order->id}}</div>
             <div>Data e ora: {{$order->created_at}}</div>
             <div>Importo: &euro; {{$order->total_price}}</div>
+            <div class="order-info flex">
+                <div class="plates">
+                    <span>Piatto: </span>
+                   <ul>
+                        @foreach ($order['dish'] as $dish)
+                            <li>
+                                {{$dish->name}}
+                            </li>
+                        @endforeach
+                   </ul>
+                </div>
+                <div class="quantity">
+                    <span>Quantità:</span>
+                    <ul>
+                        @foreach ($dishQuantity as $item)
+                            @if ($order->id == $item->order_id) 
+                                <li>
+                                    {{$item->dish_quantity}}
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
         </div>
     @endforeach
 </div>
 @endsection
+
+<style>
+.plates {
+    width: 200px;
+}
+
+.quantity {
+    text-align: center;
+}
+</style>
