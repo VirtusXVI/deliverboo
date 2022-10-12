@@ -57920,8 +57920,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Loris\boolean-projects\progetto-finale\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Loris\boolean-projects\progetto-finale\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\virtu\BooleanProjects\deliverboo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\virtu\BooleanProjects\deliverboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

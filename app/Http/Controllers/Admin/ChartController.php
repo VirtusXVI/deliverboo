@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Order;
 use DB;
+use Faker\Generator as Faker;
 
 class ChartController extends Controller
 {
@@ -15,20 +16,27 @@ class ChartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Faker $faker)
     {
         // Get users grouped by age
         // $orders = DB::table('orders')->select('*');
         // $orders = Order::all();
 
-        $orders = DB::table('orders')
-                  ->select('created_at', DB::raw('count(*) as total'))
-                  ->groupBy('created_at')
-                  ->pluck('total', 'created_at')->all();
-        for ($i=0; $i<=count($orders); $i++) {
-            $colours[] = '#' . substr(str_shuffle('ABCDEF0123456789'), 0, 6);
+        $orders = [];
+        $random_data = [];
+        $filled_array = [];
+        for($i = 0; $i < 10; $i++){
+            array_push($orders, $faker->date('Y-m-d'));
         }
+        for($i = 0; $i < 10; $i++){
+            array_push($random_data, rand(1,40));
+        }
+        $orders = array_combine($orders, $random_data);
 
+        // for ($i=0; $i<=count($orders); $i++) {
+        //     $colours[] = '#' . substr(str_shuffle('ABCDEF0123456789'), 0, 6);
+        // }
+        $colours = '#' . substr(str_shuffle('ABCDEF0123456789'), 0, 6);
         
         // Prepare the data for returning with the view
         $chart = new Chart;
