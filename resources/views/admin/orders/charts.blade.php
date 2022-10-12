@@ -29,7 +29,7 @@
           labels:  {!!json_encode($chart->labels)!!} ,
           datasets: [
               {
-                  label: 'Ordini annuali',
+                  label: 'Ordini Mensili',
                   backgroundColor: {!! json_encode($chart->colours)!!} ,
                   data:  {!! json_encode($chart->dataset)!!} ,
               },
@@ -44,7 +44,8 @@
                       callback: function(value) {if (value % 1 === 0) {return value;}}
                   },
                   scaleLabel: {
-                      display: false
+                      display: true,
+                      labelString: 'ordini mensili'
                   }
               }]
           },

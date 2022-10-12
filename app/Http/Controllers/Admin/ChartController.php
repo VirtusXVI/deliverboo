@@ -25,13 +25,15 @@ class ChartController extends Controller
         $orders = [];
         $random_data = [];
         $filled_array = [];
-        for($i = 0; $i < 10; $i++){
+        $month_names = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        for($i = 0; $i < 12; $i++){
             array_push($orders, $faker->date('Y-m-d'));
         }
-        for($i = 0; $i < 10; $i++){
+        for($i = 0; $i < 12; $i++){
             array_push($random_data, rand(1,40));
         }
         $orders = array_combine($orders, $random_data);
+        ksort($orders);
 
         // for ($i=0; $i<=count($orders); $i++) {
         //     $colours[] = '#' . substr(str_shuffle('ABCDEF0123456789'), 0, 6);
@@ -40,7 +42,7 @@ class ChartController extends Controller
         
         // Prepare the data for returning with the view
         $chart = new Chart;
-        $chart->labels = (array_keys($orders));
+        $chart->labels = ($month_names);
         $chart->dataset = (array_values($orders));
         $chart->colours = $colours;
         return view('admin.orders.charts', compact('chart'));
