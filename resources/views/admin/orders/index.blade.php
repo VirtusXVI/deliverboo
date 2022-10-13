@@ -4,14 +4,39 @@
 @section('content')
 <div class="container">
     <h1>Riepilogo ordini</h1>
+    {{$orders->links()}}
     @foreach ($orders as $order)
         <div class="card mt-3 p-3">
-            <h4>Nome cliente: {{$order->customer_name}}</h4>
-            <div>Indirizzo: {{$order->customer_address}}</div>
-            <div>Email: {{$order->customer_email}}</div>
-            <div>Id ordine: {{$order->id}}</div>
-            <div>Data e ora: {{$order->created_at}}</div>
-            <div>Importo: &euro; {{$order->total_price}}</div>
+           <div class="orders-info flex">
+                <div class="orders-info-title">
+                    <div class="title"><span>Nome cliente:</span></div>
+                    <div class="title"><span>Indirizzo:</span> </div>
+                    <div class="title"><span>Email:</span> </div>
+                    <div class="title"><span>Id ordine:</span> </div>
+                    <div class="title"><span>Data e ora:</span> </div>
+                    <div class="title"><span>Importo:</span> </div>
+                </div>
+                <div class="customers-info">
+                    <div class="customer-info">
+                        {{$order->customer_name}}
+                    </div>
+                    <div class="customer-info">
+                        {{$order->customer_address}}
+                    </div>
+                    <div class="customer-info">
+                        {{$order->customer_email}}
+                    </div>
+                    <div class="customer-info">
+                        {{$order->id}}
+                    </div>
+                    <div class="customer-info">
+                        {{$order->created_at}}
+                    </div>
+                    <div class="customer-info">
+                        &euro; {{$order->total_price}}
+                    </div>
+                </div>
+            </div>
             <div class="order-info flex">
                 <div class="plates">
                     <h5 class="mt-2">Piatto: </h5>
@@ -38,6 +63,9 @@
             </div>
         </div>
     @endforeach
+    <div class="mt-3">
+        {{$orders->links()}}
+    </div>
 </div>
 @endsection
 
@@ -48,5 +76,14 @@
 
 .quantity {
     text-align: center;
+}
+.orders-info-title {
+    width: 150px;
+    font-weight: 600;
+}
+
+.orders-info-title .title, 
+.customers-info .customer-info {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.281);
 }
 </style>
