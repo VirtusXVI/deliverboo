@@ -54,7 +54,7 @@
                         @foreach ($dishQuantity as $item)
                             @if ($order->id == $item->order_id) 
                                 <li>
-                                    {{$item->dish_quantity}}
+                                    x {{$item->dish_quantity}}
                                 </li>
                             @endif
                         @endforeach
