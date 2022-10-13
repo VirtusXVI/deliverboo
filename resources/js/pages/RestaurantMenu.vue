@@ -27,7 +27,7 @@
                                         </div>
                                     </div>
                                     <div class="button-view">
-                                        <button class="btn ms-btn" @click="setActiveElement(index)">Scopri dettagli</button>
+                                        <button class="btn ms-btn" @click="setActiveElement(index)" onclick="document.querySelector('body').style.overflow='hidden'">Scopri dettagli</button>
                                     </div>
                                 </div>
                                 
@@ -52,7 +52,7 @@
                                                 <h5>Ingredienti: {{menu.ingredients}}</h5>
                                             </div>                
                                         </div>
-                                        <button class="checkout-btn btn" @click="currentActiveElement = 99">Chiudi</button>
+                                        <button class="checkout-btn btn" @click="currentActiveElement = 99" onclick="document.querySelector('body').style.overflow='auto'">Chiudi</button>
                                     </div>
                                 </div>
                                 
@@ -350,5 +350,17 @@ import Cart from '../components/Cart.vue'
             align-items: center;
         }
     }
+
+@media screen and (max-width: 992px) {
+    .restaurant-menu .menu-restaurant .menu-list .col .card .card-body .dish-view-container .dish-view {
+        width: 600px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .restaurant-menu .menu-restaurant .menu-list .col .card .card-body .dish-view-container .dish-view {
+        width: 500px;
+    }
+}
 
 </style>

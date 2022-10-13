@@ -264,4 +264,16 @@ export default {
         }
     }
 }
+
+@media screen and (max-width: 992px) {
+    .has-dropdown .cart-view-container .cart-view {
+        width: 600px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .has-dropdown .cart-view-container .cart-view {
+        width: 500px;
+    }
+}
 </style>

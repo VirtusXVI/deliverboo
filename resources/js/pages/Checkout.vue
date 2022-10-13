@@ -1,5 +1,5 @@
 <template>
-    <div class="checkout-payment flex">
+    <div class="checkout-payment">
         <PaymentTwo />
     </div>
 </template>
@@ -16,9 +16,7 @@ export default {
 
 <style lang="scss">
 .checkout-payment {
-    height: 100vh;
-    // width: 100%;
-    align-items: center;
-    justify-content: center;
+    width: 480px;
+    margin: 30px auto;
 }
 </style>
