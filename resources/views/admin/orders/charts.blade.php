@@ -46,7 +46,7 @@
                   },
                   scaleLabel: {
                       display: true,
-                      labelString: 'ordini mensili'
+                      labelString: 'Ordini Mensili'
                   }
               }]
           },
@@ -96,7 +96,7 @@
                   },
                   scaleLabel: {
                       display: true,
-                      labelString: 'ordini mensili'
+                      labelString: 'Ordini Annuali'
                   }
               }]
           },
