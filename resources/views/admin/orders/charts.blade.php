@@ -6,9 +6,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading my-5">Grafico degli ordini</div>
+                <div class="panel-heading my-5">Grafici degli ordini</div>
                   <div class="col-lg-8">
-                    <canvas id="userChart" class="rounded shadow"></canvas>
+                    <canvas id="userChart" class="rounded shadow mb-5"></canvas>
                     <canvas id="userChart1" class="rounded shadow"></canvas>
                 </div>
             </div>
