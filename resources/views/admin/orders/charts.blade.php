@@ -9,6 +9,7 @@
                 <div class="panel-heading my-5">Grafico degli ordini</div>
                   <div class="col-lg-8">
                     <canvas id="userChart" class="rounded shadow"></canvas>
+                    <canvas id="userChart1" class="rounded shadow"></canvas>
                 </div>
             </div>
         </div>
@@ -32,6 +33,56 @@
                   label: 'Ordini Mensili',
                   backgroundColor: {!! json_encode($chart->colours)!!} ,
                   data:  {!! json_encode($chart->dataset)!!} ,
+              },
+          ]
+      },
+// Configuration options go here
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true,
+                      callback: function(value) {if (value % 1 === 0) {return value;}}
+                  },
+                  scaleLabel: {
+                      display: true,
+                      labelString: 'ordini mensili'
+                  }
+              }]
+          },
+          legend: {
+              labels: {
+                  // This more specific font property overrides the global property
+                  fontColor: '#122C4B',
+                  fontFamily: "'Muli', sans-serif",
+                  padding: 25,
+                  boxWidth: 25,
+                  fontSize: 14,
+              }
+          },
+          layout: {
+              padding: {
+                  left: 10,
+                  right: 10,
+                  top: 10,
+                  bottom: 10
+              }
+          }
+      }
+  });
+
+  var ctx = document.getElementById('userChart1').getContext('2d');
+  var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: 'bar',
+// The data for our dataset
+      data: {
+          labels:  {!!json_encode($chart2->labels)!!} ,
+          datasets: [
+              {
+                  label: 'Ordini Annuali',
+                  backgroundColor: {!! json_encode($chart2->colours)!!} ,
+                  data:  {!! json_encode($chart2->dataset)!!} ,
               },
           ]
       },
